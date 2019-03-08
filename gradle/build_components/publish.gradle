@@ -52,7 +52,7 @@ publishing {
 }
 
 curseforge {
-    apiKey = curseApiKey
+    apiKey = hasProperty('curseApiKey') ? curseApiKey : ''
 
     project {
         id = '316905'
