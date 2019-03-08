@@ -1,0 +1,31 @@
+{
+    modLoader: "javafml",
+    loaderVersion: "[25,)",
+    authors: "Cypher121",
+    mods: [
+        {
+            modId: "kettle",
+            version: "${version}",
+            displayName: "Kettle",
+            description: "Kotlin utilities for Minecraft Forge mod development"
+        }
+    ],
+    dependencies: {
+        examplemod: [
+            {
+                modId: "forge",
+                mandatory: true,
+                versionRange: "[25,)",
+                ordering: "NONE",
+                side: "BOTH"
+            },
+            {
+                modId: "minecraft",
+                mandatory: true,
+                versionRange: "[1.13.2]",
+                ordering: "NONE",
+                side: "BOTH"
+            }
+        ]
+    }
+}

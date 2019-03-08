@@ -1,0 +1,53 @@
+buildscript {
+    ext.kotlin_version = '1.3.21'
+    
+    repositories {
+        maven { url = 'https://files.minecraftforge.net/maven' }
+        jcenter()
+    }
+
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id 'com.matthewprenger.cursegradle' version '1.2.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+    id 'maven-publish'
+    id 'signing'
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+
+group 'coffee.cypher.kettle'
+
+ext.versionComponents = version.split('-')
+ext.gameVersion = versionComponents[0]
+ext.releaseVersion = versionComponents[1]
+
+minecraft {
+    mappings channel: 'snapshot', version: '20190308-1.13.1'
+}
+
+sourceCompatibility = targetCompatibility = compileKotlin.sourceCompatibility = compileKotlin.targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.13.2-25.0.73'
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+
+['process_json', 'generate_docs', 'build_artifacts', 'publish'].each {
+    if (file("gradle/build_components/${it}.gradle").exists()) {
+        apply from: "gradle/build_components/${it}.gradle"
+    } else if (file("gradle/build_components/${it}.gradle.kts").exists()) {
+        apply from: "gradle/build_components/${it}.gradle.kts"
+    }
+}
+
+//TODO use https://mcforge.readthedocs.io/en/latest/gettingstarted/dependencymanagement/ if/when it comes to 1.13

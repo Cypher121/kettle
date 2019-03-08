@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.17"
+    }
+}
+
+apply plugin: org.jetbrains.dokka.gradle.DokkaPlugin
+
+def commonDocConfig = {
+    reportUndocumented = false
+
+    linkMapping {
+        dir = "src/main/kotlin"
+        url = "https://github.com/Cypher121/kettle/blob/master/src/main/kotlin"
+        suffix = "#L"
+    }
+
+    jdkVersion = 8
+}
+
+tasks.register('genJavadoc', org.jetbrains.dokka.gradle.DokkaTask) {
+    outputFormat = 'javadoc'
+    outputDirectory = javadoc.destinationDir
+
+    configure commonDocConfig
+}
+
+tasks.register('genGitDoc', org.jetbrains.dokka.gradle.DokkaTask) {
+    outputFormat = 'gfm'
+    outputDirectory = 'docs/reference'
+
+    configure commonDocConfig
+}
+
+build.dependsOn(genGitDoc)
