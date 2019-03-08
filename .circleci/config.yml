@@ -24,6 +24,6 @@ jobs:
           paths:
             - ~/.m2
             - ~/.gradle/caches
-          keys: v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
+          key: v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
 
       - run: gradle build
