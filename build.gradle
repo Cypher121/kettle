@@ -21,6 +21,11 @@ plugins {
 
 apply plugin: 'net.minecraftforge.gradle'
 
+wrapper {
+    gradleVersion = '4.9'
+    distributionType = Wrapper.DistributionType.ALL
+}
+
 group 'coffee.cypher.kettle'
 
 ext.versionComponents = version.split('-')
