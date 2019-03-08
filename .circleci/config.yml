@@ -13,12 +13,13 @@ jobs:
       - run:
           name: Checksum
           command: echo gradle/build_components/* >> /tmp/components
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
             - v1-dependencies--
 
-      - run: gradle dependencies
+      - run: ./gradlew dependencies
 
       - save_cache:
           paths:
@@ -26,4 +27,4 @@ jobs:
             - ~/.gradle/caches
           key: v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
 
-      - run: gradle build
+      - run: ./gradlew build
