@@ -1,0 +1,70 @@
+ext.releaseClassifier = versionComponents.size() < 3 ? '' : "-${versionComponents[2]}"
+
+if (releaseClassifier.contains('beta') || releaseClassifier.contains('rc')) {
+    ext.buildType = 'beta'
+} else if (releaseClassifier.contains('alpha')) {
+    ext.buildType = 'alpha'
+} else {
+    ext.buildType = 'release'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
+
+            from components.java
+
+            artifact javadocJar
+            artifact libOnlyJar
+            artifact sourceJar
+
+            pom {
+                name = 'Kettle'
+                description = 'Kotlin utilities for Minecraft Forge mod development'
+                url = 'https://minecraft.curseforge.com/projects/kettle'
+
+                licenses {
+                    license {
+                        name = 'The MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'cypher121'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/Cypher121/kettle.git'
+                    developerConnection = 'scm:git:ssh://github.com/Cypher121/kettle.git'
+                    url = 'https://github.com/Cypher121/kettle/'
+                }
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
+
+curseforge {
+    apiKey = curseApiKey
+
+    project {
+        id = '316905'
+        releaseType = buildType
+
+        mainArtifact tasks.getByName('jar')
+        addArtifact tasks.getByName('libOnlyJar')
+        addArtifact tasks.getByName('sourceJar')
+        addArtifact tasks.getByName('javadocJar')
+    }
+}
+
+signing {
+    sign publishing.publications.maven
+}

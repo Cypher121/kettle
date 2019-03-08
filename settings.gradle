@@ -1,0 +1,3 @@
+rootProject.name = 'kettle'
+
+enableFeaturePreview('STABLE_PUBLISHING')
