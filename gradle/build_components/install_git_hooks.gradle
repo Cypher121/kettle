@@ -1,0 +1,8 @@
+tasks.register('installGitHooks', Copy) {
+    group 'build setup'
+    
+    from 'git_hooks'
+    into '.git/hooks'
+}
+
+build.dependsOn installGitHooks

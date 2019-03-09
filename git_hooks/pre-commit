@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -exuo pipefail
+
+echo "Verifying build"
+
+./gradlew check
+
+echo "Building JavaDoc reference"
+
+./gradlew genGitDoc
+
+git add docs/reference

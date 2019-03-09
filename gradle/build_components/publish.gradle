@@ -1,3 +1,8 @@
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'signing'
+apply plugin: 'maven-publish'
+apply plugin: 'com.matthewprenger.cursegradle'
+
 ext.releaseClassifier = versionComponents.size() < 3 ? '' : "-${versionComponents[2]}"
 
 if (releaseClassifier.contains('beta') || releaseClassifier.contains('rc')) {
@@ -35,6 +40,8 @@ publishing {
                 developers {
                     developer {
                         id = 'cypher121'
+                        name = 'Cypher121'
+                        email = 'ds98s3a@gmail.com'
                     }
                 }
                 scm {
@@ -51,9 +58,43 @@ publishing {
     }
 }
 
-curseforge {
-    apiKey = hasProperty('curseApiKey') ? curseApiKey : ''
+bintray {
+    if (project.hasProperty('bintrayUser')) {
+        user = project.bintrayUser
+    }
 
+    if (project.hasProperty('bintrayKey')) {
+        key = project.bintrayKey
+    }
+
+    publications = ['maven']
+
+    pkg {
+        repo = 'minecraft'
+        name = 'Kettle'
+        userOrg = 'cypher121'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/Cypher121/kettle.git'
+
+        version {
+            released = new Date()
+
+            name = project.version
+            desc = "$project.name $project.version"
+            vcsTag = project.version
+
+            gpg {
+                sign = true
+
+                if (project.hasProperty('signing.password')) {
+                    passphrase = project.getProperty('signing.password')
+                }
+            }
+        }
+    }
+}
+
+curseforge {
     project {
         id = '316905'
         releaseType = buildType
@@ -66,5 +107,11 @@ curseforge {
 }
 
 signing {
+    required {
+        gradle.taskGraph.allTasks.any { it.name.contains('publish') || it.name.contains('curseforge') }
+    }
+
     sign publishing.publications.maven
+
+    println(properties.keySet())
 }
