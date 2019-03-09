@@ -1,0 +1,5 @@
+[coffee.cypher.kettle.config.builder](../index.md) / [SectionBuilder](index.md) / [serializedValueList](./serialized-value-list.md)
+
+# serializedValueList
+
+`inline fun <T : `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`, S : `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`> serializedValueList(pathStart: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, vararg pathRest: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, block: `[`SerializedListValueProviderBuilder`](../../coffee.cypher.kettle.config.builder.value.serialized/-serialized-list-value-provider-builder/index.md)`<`[`T`](serialized-value-list.md#T)`, `[`S`](serialized-value-list.md#S)`>.() -> `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)
