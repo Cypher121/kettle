@@ -17,16 +17,17 @@ Which one you should use depends on your goals, as described in pros/cons below.
 
 ### External dependency
 
-In this scenario, Kettle is used as an external dependency for your mod and is handled by Forge and modpacks. 
-**Pros:**
+In this scenario, Kettle is used as an external dependency for your mod and is handled by Forge and modpacks.
+
+**Pros:**  
 * Reduces the total size of the pack when multiple mods depend on Kettle
 * Simplifies your own build
 
-**Cons:**
+**Cons:**  
 * Requires users to download and manage another JAR file
 * Possible version conflicts with other mods
 
-**How to:**
+**How to:**  
 1) Declare a dependency on Kettle in your project  
     ```Gradle
     ext.kettle_version = '...'
@@ -69,13 +70,13 @@ In this scenario, Kettle is used as an external dependency for your mod and is h
 
 In this scenario, Kettle is included as a part of your own mod and is distributed in the same JAR.
 
-**Pros:**
+**Pros:**  
 * Gives you full control over the Kettle version used
 * Does not require users to manage a separate JAR in their pack
 
-**Cons:**
+**Cons:**  
 * Complicates build setup and process, potentially slowing it down
 * Inflates the size of each JAR that includes Kettle in this way
 
-**How to:**
+**How to:**  
 WIP (shade the :lib classifier, replace the `kotlin` package references in Kettle with the new location of stdlib)
