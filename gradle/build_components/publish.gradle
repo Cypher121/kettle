@@ -95,6 +95,9 @@ bintray {
 }
 
 curseforge {
+    if (project.hasProperty('curseforgeApiKey')) {
+        apiKey = project.curseforgeApiKey
+    }
     project {
         id = '316905'
         releaseType = buildType
