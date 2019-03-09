@@ -31,12 +31,11 @@ In this scenario, Kettle is used as an external dependency for your mod and is h
 
 1) Declare a dependency on Kettle in your project  
     ```gradle
+        ext.kettle_version = '...'
     
-    ext.kettle_version = '...'
-    
-    dependencies {
-        implementation "coffee.cypher.kettle:kettle:$kettle_version"
-    }
+        dependencies {
+            implementation "coffee.cypher.kettle:kettle:$kettle_version"
+        }
     ```
     
 2) Provide a Kotlin Standard Library implementation  
@@ -48,26 +47,25 @@ In this scenario, Kettle is used as an external dependency for your mod and is h
 3) Declare a mod dependency in mods.toml  
     ```toml
     
-    [[dependencies.yourmodid]]
-        modId="kettle"
-        mandatory=true
-        versionRange="[<version>,)"
-        ordering="NONE"
-        side="BOTH"
+        [[dependencies.yourmodid]]
+           modId="kettle"
+           mandatory=true
+           versionRange="[<version>,)"
+           ordering="NONE"
+           side="BOTH"
     ```
     
 4) Declare a dependency in your CurseForge project, if you have one  
     Kettle can be found at Minecraft CurseForge under https://minecraft.curseforge.com/projects/kettle  
     Below is an example of a dependency declaration using [Matthew Prenger's CurseGradle plugin](https://github.com/matthewprenger/CurseGradle):  
     ```gradle
-    
-    curseforge {
-        project {
-            relations {
-                requiredDependency 'kettle'
+        curseforge {
+            project {
+                relations {
+                    requiredDependency 'kettle'
+                }
             }
         }
-    }
     ```
     
 ### Shaded dependency
