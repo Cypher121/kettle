@@ -27,9 +27,11 @@ In this scenario, Kettle is used as an external dependency for your mod and is h
 * Requires users to download and manage another JAR file
 * Possible version conflicts with other mods
 
-**How to:**  
+**How to:**
+
 1) Declare a dependency on Kettle in your project  
-    ```Gradle
+    ```gradle
+    
     ext.kettle_version = '...'
     
     dependencies {
@@ -45,7 +47,8 @@ In this scenario, Kettle is used as an external dependency for your mod and is h
     
 3) Declare a mod dependency in mods.toml  
     ```toml
-    [[dependencies.<yourmodid>]]
+    
+    [[dependencies.yourmodid]]
         modId="kettle"
         mandatory=true
         versionRange="[<version>,)"
@@ -56,7 +59,8 @@ In this scenario, Kettle is used as an external dependency for your mod and is h
 4) Declare a dependency in your CurseForge project, if you have one  
     Kettle can be found at Minecraft CurseForge under https://minecraft.curseforge.com/projects/kettle  
     Below is an example of a dependency declaration using [Matthew Prenger's CurseGradle plugin](https://github.com/matthewprenger/CurseGradle):  
-    ```Gradle
+    ```gradle
+    
     curseforge {
         project {
             relations {
@@ -78,5 +82,6 @@ In this scenario, Kettle is included as a part of your own mod and is distribute
 * Complicates build setup and process, potentially slowing it down
 * Inflates the size of each JAR that includes Kettle in this way
 
-**How to:**  
+**How to:**
+
 WIP (shade the :lib classifier, replace the `kotlin` package references in Kettle with the new location of stdlib)
