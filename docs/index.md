@@ -39,8 +39,7 @@ dependencies {
 ```
     
 2) Provide a Kotlin Standard Library implementation  
-  *Note: Kettle requires only the stdlib, not the kotlin-reflect library, and not any of the kotlinx extensions*
-    
+  *Note: Kettle requires only the stdlib, not the kotlin-reflect library, and not any of the kotlinx extensions*  
   It's up to you how to go about this step, but since Kettle here is a standalone JAR, it will only recognize the standard `kotlin` package.  
   As shading common libraries without changing the package name is a bad practice, it's recommended that you use a separate provider, such as [Kottle](https://github.com/autaut03/kottle).
     
