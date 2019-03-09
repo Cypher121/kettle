@@ -39,10 +39,10 @@ dependencies {
 ```
     
 2) Provide a Kotlin Standard Library implementation  
-    *Note: Kettle requires only the stdlib, not the kotlin-reflect library, and not any of the kotlinx extensions*
+  *Note: Kettle requires only the stdlib, not the kotlin-reflect library, and not any of the kotlinx extensions*
     
-    It's up to you how to go about this step, but since Kettle here is a standalone JAR, it will only recognize the standard `kotlin` package.  
-    As shading common libraries without changing the package name is a bad practice, it's recommended that you use a separate provider, such as [Kottle](https://github.com/autaut03/kottle).
+  It's up to you how to go about this step, but since Kettle here is a standalone JAR, it will only recognize the standard `kotlin` package.  
+  As shading common libraries without changing the package name is a bad practice, it's recommended that you use a separate provider, such as [Kottle](https://github.com/autaut03/kottle).
     
 3) Declare a mod dependency in mods.toml  
 ```toml
@@ -55,8 +55,8 @@ dependencies {
 ```
     
 4) Declare a dependency in your CurseForge project, if you have one  
-    Kettle can be found at Minecraft CurseForge under https://minecraft.curseforge.com/projects/kettle  
-    Below is an example of a dependency declaration using [Matthew Prenger's CurseGradle plugin](https://github.com/matthewprenger/CurseGradle):  
+  Kettle can be found at Minecraft CurseForge under https://minecraft.curseforge.com/projects/kettle  
+  Below is an example of a dependency declaration using [Matthew Prenger's CurseGradle plugin](https://github.com/matthewprenger/CurseGradle):  
 ```gradle
 curseforge {
     project {
