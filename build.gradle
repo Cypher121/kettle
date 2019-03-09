@@ -15,10 +15,9 @@ buildscript {
 }
 
 plugins {
-    id 'com.matthewprenger.cursegradle' version '1.2.0'
     id 'org.jetbrains.kotlin.jvm' version '1.3.21'
-    id 'maven-publish'
-    id 'signing'
+    id 'com.matthewprenger.cursegradle' version '1.2.0' apply false
+    id 'com.jfrog.bintray' version '1.8.4' apply false
 }
 
 apply plugin: 'net.minecraftforge.gradle'
@@ -49,7 +48,7 @@ dependencies {
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
-['process_json', 'generate_docs', 'build_artifacts', 'publish'].each {
+['install_git_hooks', 'process_json', 'generate_docs', 'build_artifacts', 'publish'].each {
     if (file("gradle/build_components/${it}.gradle").exists()) {
         apply from: "gradle/build_components/${it}.gradle"
     } else if (file("gradle/build_components/${it}.gradle.kts").exists()) {
