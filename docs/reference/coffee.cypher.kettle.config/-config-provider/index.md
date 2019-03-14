@@ -21,6 +21,7 @@
 
 | Name | Summary |
 |---|---|
+| [manage](../manage.md) | `fun `[`ConfigProvider`](./index.md)`.manage(eventBus: IEventBus?): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
 | [register](../register.md) | `fun `[`ConfigProvider`](./index.md)`.register(type: Type): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
 | [registerAndManage](../register-and-manage.md) | `fun `[`ConfigProvider`](./index.md)`.registerAndManage(type: Type, eventBus: IEventBus? = null): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
 
