@@ -41,7 +41,7 @@ private fun ModContainer.findBus(): IEventBus? {
     return busGetter?.invoke(this) as IEventBus?
 }
 
-private val LOGGER = LogManager.getLogger("testmod Config Manager")
+private val LOGGER = LogManager.getLogger("Kettle Config Manager")
 
 private object ConfigManager {
     private val registeredBuses = mutableSetOf<IEventBus>()
