@@ -60,6 +60,10 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Checksum
+          command: echo gradle/build_components/* >> /tmp/components
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
