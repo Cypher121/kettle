@@ -3,7 +3,7 @@ def manifestConfiguration = {
         attributes(
                 [
                         "Specification-Title"     : project.name,
-                        "Specification-Vendor"    : "cypher121",
+                        "Specification-Vendor"    : "Cypher121",
                         "Specification-Version"   : version,
                         "Implementation-Title"    : project.name,
                         "Implementation-Version"  : version,
@@ -41,7 +41,7 @@ tasks.register('sourceJar', Jar) {
     
     configure manifestConfiguration
 
-    classifier = 'src'
+    classifier = 'sources'
     from sourceSets.main.allSource
 }
 

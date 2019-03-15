@@ -5,8 +5,9 @@ buildscript {
     repositories {
         maven {
             url 'https://plugins.gradle.org/m2/'
-            jcenter()
         }
+        
+        gradlePluginPortal()
     }
 
     dependencies {
@@ -69,10 +70,6 @@ publishing {
                 }
             }
         }
-    }
-
-    repositories {
-        mavenLocal()
     }
 }
 
@@ -148,5 +145,5 @@ tasks.register('release') {
         }
     }
 
-    finalizedBy 'publish', 'bintrayUpload', 'curseforge'
+    finalizedBy('publish', 'bintrayUpload', 'curseforge')
 }
