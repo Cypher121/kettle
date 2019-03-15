@@ -148,5 +148,5 @@ tasks.register('release') {
         }
     }
 
-    finalizedBy 'publish', 'bintrayPublish', 'curseforge'
+    finalizedBy 'publish', 'bintrayUpload', 'curseforge'
 }
