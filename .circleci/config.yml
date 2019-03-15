@@ -53,6 +53,13 @@ jobs:
       - run: ./gradlew build
 
   release:
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+
+    environment:
+      JVM_OPTS: -Xmx3G
+      TERM: dumb
+
     steps:
       - checkout
       - run: ./gradlew release
