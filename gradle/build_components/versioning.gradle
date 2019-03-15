@@ -95,16 +95,16 @@ tasks.register('gameVersion', VersionShiftTask) {
     incrementPart = 'game'
 }
 
-tasks.register('pushVersionTag') {
+tasks.register('addVersionTag') {
     group = 'versioning'
     description = 'Tags current commit for release with the project version'
     doLast {
         def git = grgit.open()
 
         if (git.tag.list().any { it.name == "v$project.version" }) {
-            throw new IllegalArgumentException("Tag 'v$project.version' already exists")    
+            throw new IllegalArgumentException("Tag 'v$project.version' already exists")
         }
-        
+
         git.tag.add(name: "v$project.version", message: "Tag release $project.version")
     }
 }
