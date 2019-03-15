@@ -59,6 +59,12 @@ jobs:
 
     steps:
       - checkout
+
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
+          - v1-dependencies--
+
       - run:
           name: Decode Keyring
           command: |
