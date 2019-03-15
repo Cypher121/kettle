@@ -77,13 +77,8 @@ publishing {
 }
 
 bintray {
-    if (project.hasProperty('bintrayUser')) {
-        user = project.bintrayUser
-    }
-
-    if (project.hasProperty('bintrayKey')) {
-        key = project.bintrayKey
-    }
+    user = System.getenv('BINTRAY_USER') ?: ''
+    key = System.getenv('BINTRAY_KEY') ?: ''
 
     publications = ['maven']
 
@@ -114,9 +109,8 @@ bintray {
 }
 
 curseforge {
-    if (project.hasProperty('curseforgeApiKey')) {
-        apiKey = project.curseforgeApiKey
-    }
+    apiKey = System.getenv('CURSEFORGE_API_KEY') ?: ''
+
     project {
         id = '316905'
         releaseType = buildType
@@ -129,6 +123,10 @@ curseforge {
 }
 
 signing {
+    ext.'signing.password' = System.getenv('SIGNING_PASSWORD') ?: ''
+    ext.'signing.keyId' = System.getenv('SIGNING_KEY_ID') ?: ''
+    ext.'signing.secretKeyRingFile' = System.getenv('SIGNING_KEYRING_LOCATION') ?: ''
+
     required {
         gradle.taskGraph.allTasks.any { it.name.contains('publish') || it.name.contains('curseforge') }
     }
@@ -136,4 +134,21 @@ signing {
     sign publishing.publications.maven
 
     println(properties.keySet())
+}
+
+tasks.register('release') {
+    group = 'publishing'
+    description = 'Perform release across all registered platforms'
+
+    dependsOn build
+
+    doLast {
+        def git = grgit.open()
+
+        if (git.describe() != "v$project.version") {
+            throw IllegalStateException("Current release tag '${git.describe()} does not match the version specified in properties '$project.version'")
+        }
+    }
+
+    finalizedBy publish, bintrayPublish, curseforge
 }
