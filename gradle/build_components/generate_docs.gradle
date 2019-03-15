@@ -24,6 +24,9 @@ def commonDocConfig = {
 }
 
 tasks.register('genJavadoc', org.jetbrains.dokka.gradle.DokkaTask) {
+    group = 'documentation'
+    description = 'Generates Javadoc for the project'
+    
     outputFormat = 'javadoc'
     outputDirectory = javadoc.destinationDir
 
@@ -31,6 +34,9 @@ tasks.register('genJavadoc', org.jetbrains.dokka.gradle.DokkaTask) {
 }
 
 tasks.register('genGitDoc', org.jetbrains.dokka.gradle.DokkaTask) {
+    group = 'documentation'
+    description = 'Generates GitHub Markdown reference for the project'
+    
     outputFormat = 'gfm'
     outputDirectory = 'docs/reference'
 

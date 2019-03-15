@@ -15,6 +15,9 @@ def manifestConfiguration = {
 }
 
 tasks.register('javadocJar', Jar) {
+    group = 'build'
+    description = 'Creates a Javadoc artifact'
+    
     classifier = 'javadoc'
     from javadoc.destinationDir
 
@@ -23,6 +26,7 @@ tasks.register('javadocJar', Jar) {
 
 tasks.register('libOnlyJar', Jar) {
     group = 'build'
+    description = 'Creates an artifact with mod definitions stripped out'
 
     configure manifestConfiguration
 
@@ -33,7 +37,8 @@ tasks.register('libOnlyJar', Jar) {
 
 tasks.register('sourceJar', Jar) {
     group = 'build'
-
+    description = 'Creates a source code artifact'
+    
     configure manifestConfiguration
 
     classifier = 'src'
