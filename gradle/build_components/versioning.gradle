@@ -95,7 +95,7 @@ tasks.register('gameVersion', VersionShiftTask) {
     incrementPart = 'game'
 }
 
-tasks.register('addVersionTag') {
+tasks.register('pushVersionTag') {
     group = 'versioning'
     description = 'Tags current commit for release with the project version'
     doLast {
