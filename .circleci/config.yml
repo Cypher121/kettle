@@ -1,53 +1,59 @@
+version: 2.1
+
 workflows:
   version: 2.1
   build-and-release:
     jobs:
-      build:
-        filters:
-          tags:
-            only: /.*/
+      - build
+      - release
 
-        docker:
-          - image: circleci/openjdk:8-jdk-browsers
+jobs:
+  build:
+    filters:
+      tags:
+        only: /.*/
 
-        environment:
-          JVM_OPTS: -Xmx3G
-          TERM: dumb
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
 
-        steps:
-          - checkout
-          - run:
-              name: Decode Keyring
-              command: base64 -d <<< $SIGNING_KEYRING_DATA > "${SIGNING_KEYRING_LOCATION}"
-          - run:
-              name: Checksum
-              command: echo gradle/build_components/* >> /tmp/components
+    environment:
+      JVM_OPTS: -Xmx3G
+      TERM: dumb
 
-          - restore_cache:
-              keys:
-                - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
-                - v1-dependencies--
+    steps:
+      - checkout
+      - run:
+          name: Decode Keyring
+          command: base64 -d <<< $SIGNING_KEYRING_DATA > "${SIGNING_KEYRING_LOCATION}"
+      - run:
+          name: Checksum
+          command: echo gradle/build_components/* >> /tmp/components
 
-          - run: ./gradlew dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
+            - v1-dependencies--
 
-          - save_cache:
-              paths:
-                - ~/.m2
-                - ~/.gradle/caches
-              key: v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
+      - run: ./gradlew dependencies
 
-          - run: ./gradlew build
+      - save_cache:
+          paths:
+            - ~/.m2
+            - ~/.gradle/caches
+          key: v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
 
-      release:
-        requires:
-          - build
+      - run: ./gradlew build
 
-        filters:
-          tags:
-            only: /^v.*/
-          branches:
-            ignore: /.*/
+  release:
+    requires:
+      - build
 
-        steps:
-          - checkout
-          - run: ./gradlew release
+    filters:
+      tags:
+        only: /^v.*/
+      branches:
+        ignore: /.*/
+
+    steps:
+      - checkout
+      - run: ./gradlew release
