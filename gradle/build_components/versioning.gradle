@@ -48,6 +48,7 @@ class VersionShiftTask extends DefaultTask {
         def newVersionComponents = [newGameVersion, newReleaseVersionComponents.join('.')]
         newVersionComponents.addAll project.versionComponents.drop(2)
         project.version = newVersionComponents.join('-')
+        println "Changing version to $project.version"
 
         def propFile = project.file('gradle.properties')
         def lines = propFile.withReader { r ->
