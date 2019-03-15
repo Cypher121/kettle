@@ -27,10 +27,6 @@ wrapper {
 
 group 'coffee.cypher.kettle'
 
-ext.versionComponents = version.split('-')
-ext.gameVersion = versionComponents[0]
-ext.releaseVersion = versionComponents[1]
-
 minecraft {
     mappings channel: 'snapshot', version: '20190308-1.13.1'
 }
@@ -46,7 +42,7 @@ dependencies {
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
-['install_git_hooks', 'process_json', 'generate_docs', 'build_artifacts', 'publish'].each {
+['versioning', 'install_git_hooks', 'process_json', 'generate_docs', 'build_artifacts', 'publish'].each {
     if (file("gradle/build_components/${it}.gradle").exists()) {
         apply from: "gradle/build_components/${it}.gradle"
     } else if (file("gradle/build_components/${it}.gradle.kts").exists()) {

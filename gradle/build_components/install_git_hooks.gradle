@@ -1,5 +1,6 @@
 tasks.register('installGitHooks', Copy) {
-    group 'build setup'
+    group = 'build setup'
+    description = 'Installs recommended git hooks for the project'
     
     from 'git_hooks'
     into '.git/hooks'
