@@ -150,5 +150,5 @@ tasks.register('release') {
         }
     }
 
-    finalizedBy publish, bintrayPublish, curseforge
+    finalizedBy 'publish', 'bintrayPublish', 'curseforge'
 }
