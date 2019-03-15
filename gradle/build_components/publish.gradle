@@ -1,7 +1,25 @@
-apply plugin: 'com.jfrog.bintray'
+import com.jfrog.bintray.gradle.BintrayPlugin
+import com.matthewprenger.cursegradle.CurseGradlePlugin
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+            jcenter()
+        }
+    }
+
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.2.0'
+    }
+}
+
+apply plugin: CurseGradlePlugin
+apply plugin: BintrayPlugin
+
 apply plugin: 'signing'
 apply plugin: 'maven-publish'
-apply plugin: 'com.matthewprenger.cursegradle'
 
 ext.releaseClassifier = versionComponents.size() < 3 ? '' : "-${versionComponents[2]}"
 
@@ -75,6 +93,7 @@ bintray {
         userOrg = 'cypher121'
         licenses = ['MIT']
         vcsUrl = 'https://github.com/Cypher121/kettle.git'
+        labels = ['minecraft', 'minecraftforge', 'kotlin']
 
         version {
             released = new Date()
