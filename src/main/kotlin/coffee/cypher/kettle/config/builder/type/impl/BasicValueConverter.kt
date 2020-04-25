@@ -2,7 +2,7 @@ package coffee.cypher.kettle.config.builder.type.impl
 
 import coffee.cypher.kettle.config.builder.type.ValueConverter
 
-internal class BasicValueConverter<T, S> : ValueConverter<T, S> {
+internal class BasicValueConverter<T : Any, S : Any> : ValueConverter<T, S> {
     var serializer: ((T) -> S)? = null
         private set
 

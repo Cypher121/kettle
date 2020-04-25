@@ -6,8 +6,8 @@ import coffee.cypher.kettle.config.builder.value.AbstractValueProviderBuilder
 import coffee.cypher.kettle.config.builder.type.DefaultValueAcceptor
 import net.minecraftforge.common.ForgeConfigSpec
 
-abstract class AbstractSerializedValueProviderBuilder<T : Any, S : Any, B : AbstractValueProviderBuilder<S>>(
-        val baseBuilder: B
+abstract class AbstractSerializedValueProviderBuilder<T : Any, S : Any, B : AbstractValueProviderBuilder<S>> internal constructor(
+        protected val baseBuilder: B
 ) : ConfigElementBuilder<ValueProvider<T>>, DefaultValueAcceptor<T> {
 
     val combinedPath: String

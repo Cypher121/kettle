@@ -11,7 +11,7 @@ abstract class AbstractValueProviderBuilder<T : Any> private constructor(
         private val defaultValueDelegate: BasicDefaultValueAcceptor<T>
 ) : ConfigElementBuilder<ValueProvider<T>>, DefaultValueAcceptor<T> by defaultValueDelegate {
 
-    constructor(path: List<String>) : this(path, BasicDefaultValueAcceptor())
+    internal constructor(path: List<String>) : this(path, BasicDefaultValueAcceptor())
 
     protected val defaultValueSupplier: (() -> T)?
         get() = defaultValueDelegate.defaultValueSupplier

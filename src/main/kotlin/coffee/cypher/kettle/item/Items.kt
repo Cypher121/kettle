@@ -1,10 +1,10 @@
 package coffee.cypher.kettle.item
 
 import net.minecraft.item.ItemStack
-import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.nbt.CompoundNBT
 import net.minecraft.util.IItemProvider
 
-fun IItemProvider.createStack(size: Int = 1, tag: NBTTagCompound? = null) = ItemStack(this, size, tag)
+fun IItemProvider.createStack(size: Int = 1, tag: CompoundNBT? = null) = ItemStack(this, size, tag)
 
 fun ItemStack?.equals(
     that: ItemStack?,

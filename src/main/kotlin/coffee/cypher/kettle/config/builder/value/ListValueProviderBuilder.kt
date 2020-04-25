@@ -10,12 +10,15 @@ class ListValueProviderBuilder<T : Any> private constructor(
         path: List<String>,
         private val predicateAcceptorDelegate: BasicValuePredicateAcceptor<T>
 ) : AbstractValueProviderBuilder<List<T>>(path), ValuePredicateAcceptor<T> by predicateAcceptorDelegate {
-    constructor(path: List<String>) : this(path, BasicValuePredicateAcceptor())
+    @PublishedApi
+    internal constructor(path: List<String>) : this(path, BasicValuePredicateAcceptor())
 
     @Suppress("UNCHECKED_CAST")
     override fun doBuild(builder: ForgeConfigSpec.Builder): ValueProvider<List<T>> {
+        val configValue = builder.defineList(path, { defaultValueSupplier!!.invoke() }) { it as? T != null && predicateAcceptorDelegate.predicate?.invoke(it) != false }
+
         return ConfigValueProvider(
-                builder.defineList(path, { defaultValueSupplier!!.invoke() }) { it as? T != null && predicateAcceptorDelegate.predicate?.invoke(it) != false }
+                configValue
         )
     }
 }

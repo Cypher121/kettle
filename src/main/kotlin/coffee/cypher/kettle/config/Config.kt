@@ -18,6 +18,7 @@ class Config internal constructor(
                 ?: throw NoSuchElementException("No config value with name '$combinedPath' was found")
     }
 
+
     override fun refresh() {
         token = UUID.randomUUID()
     }

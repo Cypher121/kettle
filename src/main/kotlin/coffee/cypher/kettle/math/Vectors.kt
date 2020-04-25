@@ -1,6 +1,6 @@
 package coffee.cypher.kettle.math
 
-import net.minecraft.util.EnumFacing
+import net.minecraft.util.Direction
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.Vec3i
@@ -40,7 +40,7 @@ operator fun Vec3i.component3() = z
 
 
 val BlockPos.neighbors
-    get() = enumValues<EnumFacing>().map { offset(it) }
+    get() = enumValues<Direction>().map { offset(it) }
 
 val BlockPos.horizontalNeighbors
-    get() = enumValues<EnumFacing>().filter { it.horizontalIndex >= 0 }.map { offset(it) }
+    get() = enumValues<Direction>().filter { it.horizontalIndex >= 0 }.map { offset(it) }

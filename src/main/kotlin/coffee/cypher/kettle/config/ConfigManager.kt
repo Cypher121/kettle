@@ -16,7 +16,7 @@ fun ConfigProvider.register(type: ModConfig.Type) {
     ModLoadingContext.get().registerConfig(type, this.spec)
 }
 
-fun ConfigProvider.manage(eventBus: IEventBus?) {
+fun ConfigProvider.manage(eventBus: IEventBus? = null) {
     val container = ModLoadingContext.get().activeContainer
 
     val bus = eventBus?: container.findBus() ?: throw IllegalStateException(
