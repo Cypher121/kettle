@@ -2,11 +2,12 @@ package coffee.cypher.kettle.config.builder
 
 import coffee.cypher.kettle.config.Config
 import coffee.cypher.kettle.config.builder.type.ConfigElementBuilder
+import net.minecraft.util.Direction
 import net.minecraftforge.common.ForgeConfigSpec
 
 fun config(block: SectionBuilder.() -> Unit) = ConfigBuilder().apply { rootSectionBuilder.block() }.build()
 
-class ConfigBuilder : ConfigElementBuilder<Config> {
+class ConfigBuilder internal constructor() : ConfigElementBuilder<Config> {
     internal val rootSectionBuilder = SectionBuilder("")
 
     override fun build(builder: ForgeConfigSpec.Builder): Config {
@@ -16,4 +17,3 @@ class ConfigBuilder : ConfigElementBuilder<Config> {
 
     fun build() = build(ForgeConfigSpec.Builder())
 }
-

@@ -1,9 +1,0 @@
-tasks.register('installGitHooks', Copy) {
-    group = 'build setup'
-    description = 'Installs recommended git hooks for the project'
-    
-    from 'git_hooks'
-    into '.git/hooks'
-}
-
-build.dependsOn installGitHooks

@@ -30,13 +30,10 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Checksum
-          command: echo gradle/build_components/* >> /tmp/components
 
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
+            - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "buildSrc" }}
             - v1-dependencies--
 
       - run: ./gradlew dependencies
@@ -45,7 +42,7 @@ jobs:
           paths:
             - ~/.m2
             - ~/.gradle/caches
-          key: v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
+          key: v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "buildSrc" }}
 
       - run: ./gradlew build
 
@@ -60,19 +57,9 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Checksum
-          command: echo gradle/build_components/* >> /tmp/components
-
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "/tmp/components" }}
+            - v1-dependencies-{{ checksum "build.gradle" }}-{{ checksum "buildSrc" }}
             - v1-dependencies--
-
-      - run:
-          name: Decode Keyring
-          command: |
-            mkdir .signing
-            base64 -d <<< $SIGNING_KEYRING_DATA > "${SIGNING_KEYRING_LOCATION}"
 
       - run: ./gradlew release

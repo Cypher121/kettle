@@ -2,10 +2,9 @@ package coffee.cypher.kettle.coroutine.tickdispatcher
 
 import coffee.cypher.kettle.coroutine.tickdispatcher.ExecutionConfiguration.Companion.once
 import coffee.cypher.kettle.coroutine.tickdispatcher.TaskHandle.TaskAction.*
-import net.minecraft.util.ITickable
 import kotlin.coroutines.*
 
-class TickCoroutineDispatcher : ITickable {
+class TickCoroutineDispatcher {
     private val currentContinuations = mutableMapOf<TaskHandle, Continuation<Unit>>()
 
     val tasks: List<TaskHandle>
@@ -17,7 +16,7 @@ class TickCoroutineDispatcher : ITickable {
     private var tickStartedAt = -1.0
     private var currentYieldThreshold = -1.0
 
-    override fun tick() {
+    fun tick() {
         processScheduledActions()
 
         val toRun = currentContinuations.filter {
@@ -42,7 +41,7 @@ class TickCoroutineDispatcher : ITickable {
             it.actionQueue.isNotEmpty()
         }.forEach { handle ->
             while (handle.actionQueue.isNotEmpty()) {
-                val action = handle.actionQueue.pop()!!
+                val action: TaskHandle.TaskAction = handle.actionQueue.pop()
 
                 when (action) {
                     START -> currentContinuations[handle] = handle.createCoroutine(executor)
