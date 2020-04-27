@@ -1,6 +1,4 @@
 buildscript {
-    ext.kotlin_version = '1.4-M1'
-
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
         jcenter()
@@ -14,7 +12,7 @@ buildscript {
 }
 
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.4-M1'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.71'
     id 'org.jetbrains.dokka' version '0.10.1'
     id "org.ajoberstar.grgit" version "4.0.1"
     id "com.jfrog.bintray" version "1.8.4"
@@ -72,6 +70,13 @@ minecraft {
 
 sourceCompatibility = targetCompatibility = compileKotlin.sourceCompatibility = compileKotlin.targetCompatibility = '1.8'
 
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs += '-XXLanguage:+NewInference'
+        freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
+    }
+}
+
 //deps
 repositories {
     jcenter()
@@ -83,7 +88,7 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.15.2-31.1.24'
-    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 //env setup

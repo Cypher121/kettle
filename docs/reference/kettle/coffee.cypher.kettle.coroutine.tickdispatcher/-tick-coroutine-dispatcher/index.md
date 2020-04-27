@@ -2,7 +2,7 @@
 
 # TickCoroutineDispatcher
 
-(jvm) `class TickCoroutineDispatcher` [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/coroutine/tickdispatcher/TickCoroutineDispatcher.kt#L7)
+(jvm) `class TickCoroutineDispatcher` [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/coroutine/tickdispatcher/TickCoroutineDispatcher.kt#L8)
 
 ### Types
 

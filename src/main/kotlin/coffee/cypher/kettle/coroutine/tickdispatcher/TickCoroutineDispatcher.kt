@@ -1,5 +1,6 @@
 package coffee.cypher.kettle.coroutine.tickdispatcher
 
+import coffee.cypher.kettle.UnstableApi
 import coffee.cypher.kettle.coroutine.tickdispatcher.ExecutionConfiguration.Companion.once
 import coffee.cypher.kettle.coroutine.tickdispatcher.TaskHandle.TaskAction.*
 import kotlin.coroutines.*
@@ -11,7 +12,6 @@ class TickCoroutineDispatcher {
         get() = _tasks.toList()
 
     private val _tasks = mutableSetOf<TaskHandle>()
-    private val executor = TaskExecutor()
 
     private var tickStartedAt = -1.0
     private var currentYieldThreshold = -1.0
@@ -44,7 +44,7 @@ class TickCoroutineDispatcher {
                 val action: TaskHandle.TaskAction = handle.actionQueue.pop()
 
                 when (action) {
-                    START -> currentContinuations[handle] = handle.createCoroutine(executor)
+                    START -> currentContinuations[handle] = handle.createCoroutine(TaskExecutor(handle))
                     STOP, RESET -> currentContinuations -= handle
                 }
 
@@ -79,7 +79,7 @@ class TickCoroutineDispatcher {
         currentContinuations -= handle
     }
 
-    inner class TaskExecutor {
+    inner class TaskExecutor(val taskHandle: TaskHandle) {
         suspend fun yield() {
             val timePassed = System.nanoTime() / 1e6 - tickStartedAt
 
@@ -115,39 +115,20 @@ class TickCoroutineDispatcher {
             }
         }
 
-        suspend fun <T> obtain(key: String): T? {
-            yield()
+        @UnstableApi
+        fun <T> obtain(key: String): T? = taskHandle.dataStore[key]
 
-            return suspendCoroutine {
-                it.resume(it.handle.dataStore[key])
-            }
+        @UnstableApi
+        fun store(key: String, value: Any, lifespan: TaskDataStore.Lifespan) {
+            taskHandle.dataStore.store(key, value, lifespan)
         }
 
-        suspend fun store(key: String, value: Any, lifespan: TaskDataStore.Lifespan) {
-            yield()
+        @UnstableApi
+        fun recordExists(key: String) = key in taskHandle.dataStore
 
-            suspendCoroutine<Unit> {
-                it.handle.dataStore.store(key, value, lifespan)
-                it.resume(Unit)
-            }
-        }
-
-        suspend fun recordExists(key: String): Boolean {
-            yield()
-
-            return suspendCoroutine {
-
-                it.resume(key in it.handle.dataStore)
-            }
-        }
-
-        suspend fun remove(key: String) {
-            yield()
-
-            suspendCoroutine<Unit> {
-                it.handle.dataStore -= key
-                it.resume(Unit)
-            }
+        @UnstableApi
+        fun remove(key: String) {
+            taskHandle.dataStore -= key
         }
     }
 }

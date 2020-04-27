@@ -2,4 +2,4 @@
 
 # obtain
 
-(jvm) `suspend fun <T> obtain(key: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): T?` [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/coroutine/tickdispatcher/TickCoroutineDispatcher.kt#L118)
+(jvm) `fun <T> obtain(key: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): T?` [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/coroutine/tickdispatcher/TickCoroutineDispatcher.kt#L119)

@@ -36,4 +36,8 @@ jobs:
 
     steps:
       - name: Release
+        env:
+          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
+          BINTRAY_KEY:  ${{ secrets.BINTRAY_KEY  }}
+          CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
         run: ./gradlew release
