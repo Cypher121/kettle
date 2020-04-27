@@ -2,7 +2,7 @@
 
 # Lifespan
 
-(jvm) `enum class Lifespan` [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/coroutine/tickdispatcher/TaskDataStore.kt#L36)
+(jvm) `enum class Lifespan` [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/coroutine/tickdispatcher/TaskDataStore.kt#L38)
 
 ### Enum Values
 

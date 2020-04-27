@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation "coffee.cypher.kettle:kettle:$kettle_version"
+    implementation fg.deobf("coffee.cypher.kettle:kettle:$kettle_version")
 }
 ```
     
@@ -84,4 +84,4 @@ In this scenario, Kettle is included as a part of your own mod and is distribute
 
 **How to:**
 
-WIP (shade the :lib classifier, replace the `kotlin` package references in Kettle with the new location of stdlib)
+WIP (shade the :lib classifier, replace the `kotlin` package references in Kettle with the new location of stdlib)  

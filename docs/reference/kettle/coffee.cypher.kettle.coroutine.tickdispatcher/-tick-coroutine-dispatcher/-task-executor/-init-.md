@@ -2,4 +2,4 @@
 
 # &lt;init&gt;
 
-(jvm) `TaskExecutor()`
+(jvm) `TaskExecutor(taskHandle: `[`TaskHandle`](../../-task-handle/index.md)`)`

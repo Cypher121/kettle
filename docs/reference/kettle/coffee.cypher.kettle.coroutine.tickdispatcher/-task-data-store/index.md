@@ -2,7 +2,7 @@
 
 # TaskDataStore
 
-(jvm) `class TaskDataStore` [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/coroutine/tickdispatcher/TaskDataStore.kt#L3)
+(jvm) `class TaskDataStore` [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/coroutine/tickdispatcher/TaskDataStore.kt#L5)
 
 ### Types
 

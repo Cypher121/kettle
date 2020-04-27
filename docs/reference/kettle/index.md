@@ -4,6 +4,7 @@
 
 | Name | Summary |
 |---|---|
+| (jvm) [coffee.cypher.kettle](coffee.cypher.kettle/index.md) |  |
 | (jvm) [coffee.cypher.kettle.capability](coffee.cypher.kettle.capability/index.md) |  |
 | (jvm) [coffee.cypher.kettle.config](coffee.cypher.kettle.config/index.md) |  |
 | (jvm) [coffee.cypher.kettle.config.builder](coffee.cypher.kettle.config.builder/index.md) |  |

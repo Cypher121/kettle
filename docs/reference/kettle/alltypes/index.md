@@ -191,6 +191,11 @@
 
 |(jvm)
 
+##### [coffee.cypher.kettle.UnstableApi](../coffee.cypher.kettle/-unstable-api/index.md)
+
+
+|(jvm)
+
 ##### [coffee.cypher.kettle.config.builder.type.ValueConverter](../coffee.cypher.kettle.config.builder.type/-value-converter.md)
 
 

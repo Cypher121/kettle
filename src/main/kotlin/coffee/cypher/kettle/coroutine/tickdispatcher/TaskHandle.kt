@@ -1,5 +1,6 @@
 package coffee.cypher.kettle.coroutine.tickdispatcher
 
+import coffee.cypher.kettle.UnstableApi
 import java.util.*
 import kotlin.coroutines.AbstractCoroutineContextElement
 import kotlin.coroutines.Continuation
@@ -43,6 +44,8 @@ class TaskHandle internal constructor(
     val isSleeping
         get() = untilNextExecution > 0
 
+
+    @UnstableApi
     val dataStore = TaskDataStore()
 
     internal val shouldExecute
@@ -97,6 +100,7 @@ class TaskHandle internal constructor(
         start()
     }
 
+    @OptIn(UnstableApi::class)
     fun stop() {
         actionQueue.add(TaskAction.STOP)
         dataStore.clearExecutionLocalData()

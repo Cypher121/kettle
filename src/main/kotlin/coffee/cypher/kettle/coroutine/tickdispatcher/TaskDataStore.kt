@@ -1,5 +1,7 @@
 package coffee.cypher.kettle.coroutine.tickdispatcher
 
+//TODO reconsider if this is needed at all
+//if it is, rework to prioritize single > exec > persistent
 class TaskDataStore {
     private val map = mutableMapOf<String, Pair<Lifespan, Any>>()
 

@@ -53,6 +53,7 @@ $dokka.location:coffee.cypher.kettle.world$onClient(net.minecraft.tileentity.Til
 $dokka.location:coffee.cypher.kettle.world$onClient(net.minecraft.world.IWorld, kotlin.Function0((kotlin.Unit)))coffee.cypher.kettle.world/net.minecraft.world.-i-world/on-client.md
 $dokka.location:coffee.cypher.kettle.world$onServer(net.minecraft.tileentity.TileEntity, kotlin.Function0((kotlin.Unit)))coffee.cypher.kettle.world/net.minecraft.tileentity.-tile-entity/on-server.md
 $dokka.location:coffee.cypher.kettle.world$onServer(net.minecraft.world.IWorld, kotlin.Function0((kotlin.Unit)))coffee.cypher.kettle.world/net.minecraft.world.-i-world/on-server.md
+coffee.cypher.kettle
 coffee.cypher.kettle.capability
 coffee.cypher.kettle.config
 coffee.cypher.kettle.config.builder
