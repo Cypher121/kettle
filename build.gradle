@@ -293,17 +293,7 @@ tasks.register('release') {
 
     dependsOn build
 
-    doLast {
-        def git = grgit.open()
-
-        if (git.describe() != "v$project.version") {
-            throw IllegalStateException("Current release tag '${git.describe()} does not match the version specified in properties '$project.version'")
-        }
-    }
-
     finalizedBy('publish', 'bintrayUpload', 'curseforge')
 }
 
-
-
-//TODO use https://mcforge.readthedocs.io/en/latest/gettingstarted/dependencymanagement/ if/when it comes to 1.13
+//TODO use https://mcforge.readthedocs.io/en/latest/gettingstarted/dependencymanagement/ if/when it comes to 1.13+
