@@ -34,7 +34,7 @@ In this scenario, Kettle is used as an external dependency for your mod and is h
 ext.kettle_version = '...'
 
 repositories {
-    jcenter() // mavenCentral() coming soon
+    mavenCentral()
 }
 
 dependencies {
