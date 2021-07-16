@@ -8,6 +8,6 @@ echo "Verifying build"
 
 echo "Building JavaDoc reference"
 
-./gradlew genGitDoc
+./gradlew dokkaGfm
 
 git add docs/reference

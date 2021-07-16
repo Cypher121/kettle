@@ -1,10 +1,10 @@
 package coffee.cypher.kettle.resource
 
-import net.minecraft.client.Minecraft
-import net.minecraft.resources.IResource
-import net.minecraft.util.ResourceLocation
-import net.minecraftforge.api.distmarker.Dist
-import net.minecraftforge.api.distmarker.OnlyIn
+import net.fabricmc.api.EnvType
+import net.fabricmc.api.Environment
+import net.minecraft.client.MinecraftClient
+import net.minecraft.resource.Resource
+import net.minecraft.util.Identifier
 
-@OnlyIn(Dist.CLIENT)
-fun ResourceLocation.getClientResource(): IResource = Minecraft.getInstance().resourceManager.getResource(this)
+@Environment(EnvType.CLIENT)
+public fun Identifier.getClientResource(): Resource = MinecraftClient.getInstance().resourceManager.getResource(this)

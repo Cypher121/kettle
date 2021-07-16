@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "kettle",
+  "version": "${version}",
+  "name": "Kettle",
+  "description": "Kotlin Mod library",
+  "authors": [
+    "Cypher121"
+  ],
+  "contact": {
+    "homepage": "https://cypher121.github.io/kettle/",
+    "issues": "https://github.com/Cypher121/kettle/issues",
+    "sources": "https://github.com/Cypher121/kettle"
+  },
+  "license": "MIT License",
+  "icon": "assets/kettle/icon.png",
+  "environment": "*",
+  "depends": {
+    "fabricloader": ">=0.11.6",
+    "fabric": "*",
+    "fabric-language-kotlin": ">=1.6.2+kotlin.1.5.20",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  }
+}

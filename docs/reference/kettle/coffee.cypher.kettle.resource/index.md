@@ -1,9 +1,9 @@
-[kettle](../index.md) / [coffee.cypher.kettle.resource](./index.md)
+//[kettle](../../index.md)/[coffee.cypher.kettle.resource](index.md)
 
-## Package coffee.cypher.kettle.resource
+# Package coffee.cypher.kettle.resource
 
-### Extensions for External Classes
+## Functions
 
 | Name | Summary |
 |---|---|
-| (jvm) [net.minecraft.util.ResourceLocation](net.minecraft.util.-resource-location/index.md) |  |
+| [getClientResource](get-client-resource.md) | [jvm]<br>@Environment(value = EnvType.CLIENT)<br>fun Identifier.[getClientResource](get-client-resource.md)(): Resource |

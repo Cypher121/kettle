@@ -1,6 +1,0 @@
-[kettle](../index.md) / [coffee.cypher.kettle.config.builder](index.md) / [deserializeAsRegistryEntry](./deserialize-as-registry-entry.md)
-
-# deserializeAsRegistryEntry
-
-(jvm) `fun <reified T : IForgeRegistryEntry<T>> `[`ValueDeserializer`](../coffee.cypher.kettle.config.builder.type/-value-deserializer/index.md)`<T, `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`>.deserializeAsRegistryEntry(): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/config/builder/Extensions.kt#L30)
-`fun <reified T : IForgeRegistryEntry<T>> `[`OptionalValueDeserializer`](../coffee.cypher.kettle.config.builder.type/-optional-value-deserializer/index.md)`<T, `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`>.deserializeAsRegistryEntry(errorOnMissing: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = false): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/config/builder/Extensions.kt#L45)

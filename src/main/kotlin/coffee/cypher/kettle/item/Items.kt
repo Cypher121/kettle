@@ -1,12 +1,17 @@
 package coffee.cypher.kettle.item
 
+import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemStack
-import net.minecraft.nbt.CompoundNBT
-import net.minecraft.util.IItemProvider
+import net.minecraft.nbt.NbtCompound
 
-fun IItemProvider.createStack(size: Int = 1, tag: CompoundNBT? = null) = ItemStack(this, size, tag)
+public fun ItemConvertible.createStack(size: Int = 1, nbt: NbtCompound? = null): ItemStack =
+    ItemStack(this, size).apply {
+        if (nbt != null) {
+            this.nbt = nbt
+        }
+    }
 
-fun ItemStack?.equals(
+public fun ItemStack?.equals(
     that: ItemStack?,
     ignoreDurability: Boolean = false,
     ignoreSize: Boolean = false,
@@ -28,7 +33,7 @@ fun ItemStack?.equals(
         return false
     }
 
-    if (!ignoreNBT && !(this.tag == that.tag && this.areCapsCompatible(that))) {
+    if (!ignoreNBT && this.nbt != that.nbt) {
         return false
     }
 

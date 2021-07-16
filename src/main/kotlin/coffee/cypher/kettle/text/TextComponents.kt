@@ -1,7 +1,7 @@
 package coffee.cypher.kettle.text
 
-import net.minecraft.util.text.StringTextComponent
-import net.minecraft.util.text.TranslationTextComponent
+import net.minecraft.text.LiteralText
+import net.minecraft.text.TranslatableText
 
-fun String.toTextComponent() = StringTextComponent(this)
-fun String.toTranslatedComponent(vararg formatArgs: Any) = TranslationTextComponent(this, *formatArgs)
+public fun String.toLiteralText(): LiteralText = LiteralText(this)
+public fun String.toTranslatableText(vararg formatArgs: Any): TranslatableText = TranslatableText(this, *formatArgs)

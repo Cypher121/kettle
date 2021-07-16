@@ -1,70 +1,124 @@
-$dokka.format:gfm
+$dokka.format:gfm-v1
 $dokka.linkExtension:md
-$dokka.location:coffee.cypher.kettle.capability$asIterable(net.minecraftforge.items.IItemHandler)coffee.cypher.kettle.capability/net.minecraftforge.items.-i-item-handler/as-iterable.md
-$dokka.location:coffee.cypher.kettle.capability$asList(net.minecraftforge.items.IItemHandler)coffee.cypher.kettle.capability/net.minecraftforge.items.-i-item-handler/as-list.md
-$dokka.location:coffee.cypher.kettle.capability$asSequence(net.minecraftforge.items.IItemHandler)coffee.cypher.kettle.capability/net.minecraftforge.items.-i-item-handler/as-sequence.md
-$dokka.location:coffee.cypher.kettle.capability$contains(net.minecraftforge.items.IItemHandler, net.minecraft.item.ItemStack)coffee.cypher.kettle.capability/net.minecraftforge.items.-i-item-handler/contains.md
-$dokka.location:coffee.cypher.kettle.capability$get(net.minecraftforge.items.IItemHandler, kotlin.Int)coffee.cypher.kettle.capability/net.minecraftforge.items.-i-item-handler/get.md
-$dokka.location:coffee.cypher.kettle.capability$isEmpty(net.minecraftforge.items.IItemHandler)coffee.cypher.kettle.capability/net.minecraftforge.items.-i-item-handler/is-empty.md
-$dokka.location:coffee.cypher.kettle.capability$iterator(net.minecraftforge.items.IItemHandler)coffee.cypher.kettle.capability/net.minecraftforge.items.-i-item-handler/iterator.md
-$dokka.location:coffee.cypher.kettle.capability$set(net.minecraftforge.items.ItemStackHandler, kotlin.Int, net.minecraft.item.ItemStack)coffee.cypher.kettle.capability/net.minecraftforge.items.-item-stack-handler/set.md
-$dokka.location:coffee.cypher.kettle.capability$slotRange#net.minecraftforge.items.IItemHandlercoffee.cypher.kettle.capability/net.minecraftforge.items.-i-item-handler/slot-range.md
-$dokka.location:coffee.cypher.kettle.item$createStack(net.minecraft.util.IItemProvider, kotlin.Int, net.minecraft.nbt.CompoundNBT)coffee.cypher.kettle.item/net.minecraft.util.-i-item-provider/create-stack.md
-$dokka.location:coffee.cypher.kettle.item$equals(net.minecraft.item.ItemStack, net.minecraft.item.ItemStack, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)coffee.cypher.kettle.item/net.minecraft.item.-item-stack/equals.md
-$dokka.location:coffee.cypher.kettle.math$aabb(net.minecraft.util.math.Vec3d, net.minecraft.util.math.Vec3d)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/aabb.md
-$dokka.location:coffee.cypher.kettle.math$aabb(net.minecraft.util.math.Vec3i, net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/aabb.md
-$dokka.location:coffee.cypher.kettle.math$component1(net.minecraft.util.math.AxisAlignedBB)coffee.cypher.kettle.math/net.minecraft.util.math.-axis-aligned-b-b/component1.md
-$dokka.location:coffee.cypher.kettle.math$component1(net.minecraft.util.math.Vec3d)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/component1.md
-$dokka.location:coffee.cypher.kettle.math$component1(net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/component1.md
-$dokka.location:coffee.cypher.kettle.math$component2(net.minecraft.util.math.AxisAlignedBB)coffee.cypher.kettle.math/net.minecraft.util.math.-axis-aligned-b-b/component2.md
-$dokka.location:coffee.cypher.kettle.math$component2(net.minecraft.util.math.Vec3d)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/component2.md
-$dokka.location:coffee.cypher.kettle.math$component2(net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/component2.md
-$dokka.location:coffee.cypher.kettle.math$component3(net.minecraft.util.math.Vec3d)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/component3.md
-$dokka.location:coffee.cypher.kettle.math$component3(net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/component3.md
-$dokka.location:coffee.cypher.kettle.math$copy(net.minecraft.util.math.Vec3d, kotlin.Double, kotlin.Double, kotlin.Double)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/copy.md
-$dokka.location:coffee.cypher.kettle.math$copy(net.minecraft.util.math.Vec3i, kotlin.Int, kotlin.Int, kotlin.Int)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/copy.md
-$dokka.location:coffee.cypher.kettle.math$div(net.minecraft.util.math.Vec3d, kotlin.Double)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/div.md
-$dokka.location:coffee.cypher.kettle.math$horizontalNeighbors#net.minecraft.util.math.BlockPoscoffee.cypher.kettle.math/net.minecraft.util.math.-block-pos/horizontal-neighbors.md
-$dokka.location:coffee.cypher.kettle.math$length(net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/length.md
-$dokka.location:coffee.cypher.kettle.math$minus(net.minecraft.util.math.Vec3d, net.minecraft.util.math.Vec3d)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/minus.md
-$dokka.location:coffee.cypher.kettle.math$minus(net.minecraft.util.math.Vec3i, net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/minus.md
-$dokka.location:coffee.cypher.kettle.math$neighbors#net.minecraft.util.math.BlockPoscoffee.cypher.kettle.math/net.minecraft.util.math.-block-pos/neighbors.md
-$dokka.location:coffee.cypher.kettle.math$plus(net.minecraft.util.math.Vec3d, net.minecraft.util.math.Vec3d)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/plus.md
-$dokka.location:coffee.cypher.kettle.math$plus(net.minecraft.util.math.Vec3i, net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/plus.md
-$dokka.location:coffee.cypher.kettle.math$times(net.minecraft.util.math.Vec3d, kotlin.Double)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/times.md
-$dokka.location:coffee.cypher.kettle.math$times(net.minecraft.util.math.Vec3i, kotlin.Int)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/times.md
-$dokka.location:coffee.cypher.kettle.math$toBlockPos(net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/to-block-pos.md
-$dokka.location:coffee.cypher.kettle.math$toDoubleVector(net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/to-double-vector.md
-$dokka.location:coffee.cypher.kettle.math$toTriple(net.minecraft.util.math.Vec3d)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/to-triple.md
-$dokka.location:coffee.cypher.kettle.math$toTriple(net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/to-triple.md
-$dokka.location:coffee.cypher.kettle.math$toVector(kotlin.Triple((kotlin.Double, , )))coffee.cypher.kettle.math/kotlin.-triple/to-vector.md
-$dokka.location:coffee.cypher.kettle.math$toVector(kotlin.Triple((kotlin.Int, , )))coffee.cypher.kettle.math/kotlin.-triple/to-vector.md
-$dokka.location:coffee.cypher.kettle.math$unaryMinus(net.minecraft.util.math.Vec3d)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3d/unary-minus.md
-$dokka.location:coffee.cypher.kettle.math$unaryMinus(net.minecraft.util.math.Vec3i)coffee.cypher.kettle.math/net.minecraft.util.math.-vec3i/unary-minus.md
-$dokka.location:coffee.cypher.kettle.misc$getValue(net.minecraftforge.common.util.LazyOptional((coffee.cypher.kettle.misc.getValue.T)), kotlin.Any, kotlin.reflect.KProperty((kotlin.Any)))coffee.cypher.kettle.misc/net.minecraftforge.common.util.-lazy-optional/get-value.md
-$dokka.location:coffee.cypher.kettle.misc$orNull(net.minecraftforge.common.util.LazyOptional((coffee.cypher.kettle.misc.orNull.T)))coffee.cypher.kettle.misc/net.minecraftforge.common.util.-lazy-optional/or-null.md
-$dokka.location:coffee.cypher.kettle.misc$toNonNullList(kotlin.collections.List((coffee.cypher.kettle.misc.toNonNullList.T)))coffee.cypher.kettle.misc/kotlin.collections.-list/to-non-null-list.md
-$dokka.location:coffee.cypher.kettle.resource$getClientResource(net.minecraft.util.ResourceLocation)coffee.cypher.kettle.resource/net.minecraft.util.-resource-location/get-client-resource.md
-$dokka.location:coffee.cypher.kettle.text$toTextComponent(kotlin.String)coffee.cypher.kettle.text/kotlin.-string/to-text-component.md
-$dokka.location:coffee.cypher.kettle.text$toTranslatedComponent(kotlin.String, kotlin.Array((kotlin.Any)))coffee.cypher.kettle.text/kotlin.-string/to-translated-component.md
-$dokka.location:coffee.cypher.kettle.world$getBlock(net.minecraft.world.IBlockReader, net.minecraft.util.math.BlockPos)coffee.cypher.kettle.world/net.minecraft.world.-i-block-reader/get-block.md
-$dokka.location:coffee.cypher.kettle.world$getTile(net.minecraft.world.IBlockReader, net.minecraft.util.math.BlockPos)coffee.cypher.kettle.world/net.minecraft.world.-i-block-reader/get-tile.md
-$dokka.location:coffee.cypher.kettle.world$onClient(net.minecraft.tileentity.TileEntity, kotlin.Function0((kotlin.Unit)))coffee.cypher.kettle.world/net.minecraft.tileentity.-tile-entity/on-client.md
-$dokka.location:coffee.cypher.kettle.world$onClient(net.minecraft.world.IWorld, kotlin.Function0((kotlin.Unit)))coffee.cypher.kettle.world/net.minecraft.world.-i-world/on-client.md
-$dokka.location:coffee.cypher.kettle.world$onServer(net.minecraft.tileentity.TileEntity, kotlin.Function0((kotlin.Unit)))coffee.cypher.kettle.world/net.minecraft.tileentity.-tile-entity/on-server.md
-$dokka.location:coffee.cypher.kettle.world$onServer(net.minecraft.world.IWorld, kotlin.Function0((kotlin.Unit)))coffee.cypher.kettle.world/net.minecraft.world.-i-world/on-server.md
+$dokka.location:coffee.cypher.kettle.inventory////PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/index.md
+$dokka.location:coffee.cypher.kettle.inventory//asIterable/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/as-iterable.md
+$dokka.location:coffee.cypher.kettle.inventory//asList/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/as-list.md
+$dokka.location:coffee.cypher.kettle.inventory//asSequence/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/as-sequence.md
+$dokka.location:coffee.cypher.kettle.inventory//contains/net.minecraft.inventory.Inventory#net.minecraft.item.Item/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/contains.md
+$dokka.location:coffee.cypher.kettle.inventory//get/net.minecraft.inventory.Inventory#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/get.md
+$dokka.location:coffee.cypher.kettle.inventory//iterator/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/iterator.md
+$dokka.location:coffee.cypher.kettle.inventory//set/net.minecraft.inventory.Inventory#kotlin.Int#net.minecraft.item.ItemStack/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/set.md
+$dokka.location:coffee.cypher.kettle.inventory//slotRange/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/slot-range.md
+$dokka.location:coffee.cypher.kettle.item////PointingToDeclaration/kettle/coffee.cypher.kettle.item/index.md
+$dokka.location:coffee.cypher.kettle.item//createStack/net.minecraft.item.ItemConvertible#kotlin.Int#net.minecraft.nbt.NbtCompound?/PointingToDeclaration/kettle/coffee.cypher.kettle.item/create-stack.md
+$dokka.location:coffee.cypher.kettle.item//equals/net.minecraft.item.ItemStack?#net.minecraft.item.ItemStack?#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/kettle/coffee.cypher.kettle.item/equals.md
+$dokka.location:coffee.cypher.kettle.math////PointingToDeclaration/kettle/coffee.cypher.kettle.math/index.md
+$dokka.location:coffee.cypher.kettle.math//boxTo/net.minecraft.util.math.Vec3d#net.minecraft.util.math.Vec3d/PointingToDeclaration/kettle/coffee.cypher.kettle.math/box-to.md
+$dokka.location:coffee.cypher.kettle.math//boxTo/net.minecraft.util.math.Vec3i#net.minecraft.util.math.Vec3i/PointingToDeclaration/kettle/coffee.cypher.kettle.math/box-to.md
+$dokka.location:coffee.cypher.kettle.math//component1/net.minecraft.util.math.Box#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component1.md
+$dokka.location:coffee.cypher.kettle.math//component1/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component1.md
+$dokka.location:coffee.cypher.kettle.math//component1/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component1.md
+$dokka.location:coffee.cypher.kettle.math//component2/net.minecraft.util.math.Box#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component2.md
+$dokka.location:coffee.cypher.kettle.math//component2/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component2.md
+$dokka.location:coffee.cypher.kettle.math//component2/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component2.md
+$dokka.location:coffee.cypher.kettle.math//component3/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component3.md
+$dokka.location:coffee.cypher.kettle.math//component3/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component3.md
+$dokka.location:coffee.cypher.kettle.math//copy/net.minecraft.util.math.Vec3d#kotlin.Double#kotlin.Double#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.math/copy.md
+$dokka.location:coffee.cypher.kettle.math//copy/net.minecraft.util.math.Vec3i#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.math/copy.md
+$dokka.location:coffee.cypher.kettle.math//div/net.minecraft.util.math.Vec3d#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.math/div.md
+$dokka.location:coffee.cypher.kettle.math//horizontalNeighbors/net.minecraft.util.math.BlockPos#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/horizontal-neighbors.md
+$dokka.location:coffee.cypher.kettle.math//length/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/length.md
+$dokka.location:coffee.cypher.kettle.math//minus/net.minecraft.util.math.Vec3d#net.minecraft.util.math.Vec3d/PointingToDeclaration/kettle/coffee.cypher.kettle.math/minus.md
+$dokka.location:coffee.cypher.kettle.math//minus/net.minecraft.util.math.Vec3i#net.minecraft.util.math.Vec3i/PointingToDeclaration/kettle/coffee.cypher.kettle.math/minus.md
+$dokka.location:coffee.cypher.kettle.math//neighbors/net.minecraft.util.math.BlockPos#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/neighbors.md
+$dokka.location:coffee.cypher.kettle.math//plus/net.minecraft.util.math.Vec3d#net.minecraft.util.math.Vec3d/PointingToDeclaration/kettle/coffee.cypher.kettle.math/plus.md
+$dokka.location:coffee.cypher.kettle.math//plus/net.minecraft.util.math.Vec3i#net.minecraft.util.math.Vec3i/PointingToDeclaration/kettle/coffee.cypher.kettle.math/plus.md
+$dokka.location:coffee.cypher.kettle.math//times/net.minecraft.util.math.Vec3d#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.math/times.md
+$dokka.location:coffee.cypher.kettle.math//times/net.minecraft.util.math.Vec3i#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.math/times.md
+$dokka.location:coffee.cypher.kettle.math//toBlockPos/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-block-pos.md
+$dokka.location:coffee.cypher.kettle.math//toDoubleVector/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-double-vector.md
+$dokka.location:coffee.cypher.kettle.math//toTriple/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-triple.md
+$dokka.location:coffee.cypher.kettle.math//toTriple/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-triple.md
+$dokka.location:coffee.cypher.kettle.math//toVector/kotlin.Triple[kotlin.Double,kotlin.Double,kotlin.Double]#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-vector.md
+$dokka.location:coffee.cypher.kettle.math//toVector/kotlin.Triple[kotlin.Int,kotlin.Int,kotlin.Int]#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-vector.md
+$dokka.location:coffee.cypher.kettle.math//unaryMinus/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/unary-minus.md
+$dokka.location:coffee.cypher.kettle.math//unaryMinus/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/unary-minus.md
+$dokka.location:coffee.cypher.kettle.resource////PointingToDeclaration/kettle/coffee.cypher.kettle.resource/index.md
+$dokka.location:coffee.cypher.kettle.resource//getClientResource/net.minecraft.util.Identifier#/PointingToDeclaration/kettle/coffee.cypher.kettle.resource/get-client-resource.md
+$dokka.location:coffee.cypher.kettle.scheduler////PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/index.md
+$dokka.location:coffee.cypher.kettle.scheduler/BasicTaskContext///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-basic-task-context/index.md
+$dokka.location:coffee.cypher.kettle.scheduler/BasicTaskContext/BasicTaskContext/#coffee.cypher.kettle.scheduler.TickingScheduler[coffee.cypher.kettle.scheduler.BasicTaskContext]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-basic-task-context/-basic-task-context.md
+$dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration.Companion///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/-companion/index.md
+$dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration.Companion/infinite/#kotlin.Int#kotlin.Int#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/-companion/infinite.md
+$dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration.Companion/once/#kotlin.Int#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/-companion/once.md
+$dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration.Companion/repeat/#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/-companion/repeat.md
+$dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/index.md
+$dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration/initialDelay/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/initial-delay.md
+$dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration/yieldsAfterMs/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/yields-after-ms.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskContext///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/index.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskContext/TaskContext/#coffee.cypher.kettle.scheduler.TickingScheduler[TypeParam(bounds=[coffee.cypher.kettle.scheduler.TaskContext[^]])]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/-task-context.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskContext/endTick/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/end-tick.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskContext/sleepFor/#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/sleep-for.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskContext/waitForCondition/#kotlin.Int#kotlin.Boolean#kotlin.Function0[kotlin.Boolean]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/wait-for-condition.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskContext/yield/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/yield.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskExecutionException///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-execution-exception/index.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/index.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/abortWait/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/abort-wait.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/await/#kotlin.Int#kotlin.Function0[kotlin.Boolean]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/await.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/isInProgress/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/is-in-progress.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/isPaused/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/is-paused.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/isRunning/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/is-running.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/isSleeping/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/is-sleeping.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/isStarted/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/is-started.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/isStopped/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/is-stopped.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/isWaiting/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/is-waiting.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/name/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/name.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/pause/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/pause.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/reset/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/reset.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/restart/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/restart.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/resume/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/resume.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/sleep/#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/sleep.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/start/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/start.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/stop/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/stop.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/tick/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/tick.md
+$dokka.location:coffee.cypher.kettle.scheduler/TaskHandle/yieldsAfter/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-handle/yields-after.md
+$dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/index.md
+$dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/TickingScheduler/#kotlin.Function1[coffee.cypher.kettle.scheduler.TickingScheduler[TypeParam(bounds=[coffee.cypher.kettle.scheduler.TaskContext[^]])],TypeParam(bounds=[coffee.cypher.kettle.scheduler.TaskContext[^]])]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/-ticking-scheduler.md
+$dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/addNewTask/#kotlin.String#coffee.cypher.kettle.scheduler.ExecutionConfiguration#kotlin.Boolean#kotlin.coroutines.SuspendFunction1[TypeParam(bounds=[coffee.cypher.kettle.scheduler.TaskContext[^]]),kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/add-new-task.md
+$dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/addTask/#coffee.cypher.kettle.scheduler.TaskHandle[TypeParam(bounds=[coffee.cypher.kettle.scheduler.TaskContext[^]])]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/add-task.md
+$dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/removeTask/#coffee.cypher.kettle.scheduler.TaskHandle[TypeParam(bounds=[coffee.cypher.kettle.scheduler.TaskContext[^]])]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/remove-task.md
+$dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/tasks/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/tasks.md
+$dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/tick/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/tick.md
+$dokka.location:coffee.cypher.kettle.text////PointingToDeclaration/kettle/coffee.cypher.kettle.text/index.md
+$dokka.location:coffee.cypher.kettle.text//toLiteralText/kotlin.String#/PointingToDeclaration/kettle/coffee.cypher.kettle.text/to-literal-text.md
+$dokka.location:coffee.cypher.kettle.text//toTranslatableText/kotlin.String#kotlin.Array[kotlin.Any]/PointingToDeclaration/kettle/coffee.cypher.kettle.text/to-translatable-text.md
+$dokka.location:coffee.cypher.kettle.tickers.task////PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/index.md
+$dokka.location:coffee.cypher.kettle.tickers.task/BlockEntityTaskContext///PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/-block-entity-task-context/index.md
+$dokka.location:coffee.cypher.kettle.tickers.task/BlockEntityTaskContext/BlockEntityTaskContext/#coffee.cypher.kettle.scheduler.TickingScheduler[coffee.cypher.kettle.tickers.task.BlockEntityTaskContext[TypeParam(bounds=[net.minecraft.block.entity.BlockEntity])]]#TypeParam(bounds=[net.minecraft.block.entity.BlockEntity])/PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/-block-entity-task-context/-block-entity-task-context.md
+$dokka.location:coffee.cypher.kettle.tickers.task/BlockEntityTaskContext/blockEntity/#/PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/-block-entity-task-context/block-entity.md
+$dokka.location:coffee.cypher.kettle.tickers.task/TaskBlockEntityTicker///PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/-task-block-entity-ticker/index.md
+$dokka.location:coffee.cypher.kettle.tickers.task/TaskBlockEntityTicker/TaskBlockEntityTicker/#kotlin.Function1[coffee.cypher.kettle.scheduler.TickingScheduler[coffee.cypher.kettle.tickers.task.BlockEntityTaskContext[TypeParam(bounds=[net.minecraft.block.entity.BlockEntity])]],kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/-task-block-entity-ticker/-task-block-entity-ticker.md
+$dokka.location:coffee.cypher.kettle.tickers.task/TaskBlockEntityTicker/tick/#net.minecraft.world.World#net.minecraft.util.math.BlockPos#net.minecraft.block.BlockState#TypeParam(bounds=[net.minecraft.block.entity.BlockEntity])/PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/-task-block-entity-ticker/tick.md
+$dokka.location:coffee.cypher.kettle.tickers////PointingToDeclaration/kettle/coffee.cypher.kettle.tickers/index.md
+$dokka.location:coffee.cypher.kettle.tickers//asSimpleTicker/kotlin.Function4[net.minecraft.world.World,net.minecraft.util.math.BlockPos,net.minecraft.block.BlockState,TypeParam(bounds=[net.minecraft.block.entity.BlockEntity]),kotlin.Unit]#/PointingToDeclaration/kettle/coffee.cypher.kettle.tickers/as-simple-ticker.md
+$dokka.location:coffee.cypher.kettle.tickers//cast/net.minecraft.block.entity.BlockEntityTicker[TypeParam(bounds=[net.minecraft.block.entity.BlockEntity])]#/PointingToDeclaration/kettle/coffee.cypher.kettle.tickers/cast.md
+$dokka.location:coffee.cypher.kettle.world////PointingToDeclaration/kettle/coffee.cypher.kettle.world/index.md
+$dokka.location:coffee.cypher.kettle.world//onClient/net.minecraft.block.entity.BlockEntity#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.world/on-client.md
+$dokka.location:coffee.cypher.kettle.world//onClient/net.minecraft.world.WorldView#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.world/on-client.md
+$dokka.location:coffee.cypher.kettle.world//onServer/net.minecraft.block.entity.BlockEntity#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.world/on-server.md
+$dokka.location:coffee.cypher.kettle.world//onServer/net.minecraft.world.WorldView#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.world/on-server.md
+$dokka.location:coffee.cypher.kettle.world//typedBlockEntity/net.minecraft.world.BlockView#net.minecraft.util.math.BlockPos/PointingToDeclaration/kettle/coffee.cypher.kettle.world/typed-block-entity.md
+$dokka.location:coffee.cypher.kettle////PointingToDeclaration/kettle/coffee.cypher.kettle/index.md
+$dokka.location:coffee.cypher.kettle/UnstableApi///PointingToDeclaration/kettle/coffee.cypher.kettle/-unstable-api/index.md
+$dokka.location:coffee.cypher.kettle/UnstableApi/UnstableApi/#/PointingToDeclaration/kettle/coffee.cypher.kettle/-unstable-api/-unstable-api.md
 coffee.cypher.kettle
-coffee.cypher.kettle.capability
-coffee.cypher.kettle.config
-coffee.cypher.kettle.config.builder
-coffee.cypher.kettle.config.builder.type
-coffee.cypher.kettle.config.builder.value
-coffee.cypher.kettle.config.builder.value.serialized
-coffee.cypher.kettle.config.value
-coffee.cypher.kettle.coroutine.tickdispatcher
+coffee.cypher.kettle.inventory
 coffee.cypher.kettle.item
 coffee.cypher.kettle.math
-coffee.cypher.kettle.misc
 coffee.cypher.kettle.resource
+coffee.cypher.kettle.scheduler
 coffee.cypher.kettle.text
+coffee.cypher.kettle.tickers
+coffee.cypher.kettle.tickers.task
 coffee.cypher.kettle.world
+

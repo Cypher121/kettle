@@ -1,9 +1,9 @@
-[kettle](../index.md) / [coffee.cypher.kettle](./index.md)
+//[kettle](../../index.md)/[coffee.cypher.kettle](index.md)
 
-## Package coffee.cypher.kettle
+# Package coffee.cypher.kettle
 
-### Annotations
+## Types
 
 | Name | Summary |
 |---|---|
-| (jvm) [UnstableApi](-unstable-api/index.md) | `annotation class UnstableApi` |
+| [UnstableApi](-unstable-api/index.md) | [jvm]<br>annotation class [UnstableApi](-unstable-api/index.md) |

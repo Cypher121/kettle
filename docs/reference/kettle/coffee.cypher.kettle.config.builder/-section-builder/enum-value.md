@@ -1,5 +1,0 @@
-[kettle](../../index.md) / [coffee.cypher.kettle.config.builder](../index.md) / [SectionBuilder](index.md) / [enumValue](./enum-value.md)
-
-# enumValue
-
-(jvm) `@JvmName("enumValue") inline fun <reified T : `[`Enum`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)`<T>> enumValue(pathStart: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, vararg pathRest: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, block: `[`SingleEnumValueProviderBuilder`](../../coffee.cypher.kettle.config.builder.value/-single-enum-value-provider-builder/index.md)`<T>.() -> `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/Cypher121/kettle/blob/master/src/main/kotlin/coffee/cypher/kettle/config/builder/SectionBuilder.kt#L76)
