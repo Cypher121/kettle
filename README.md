@@ -9,4 +9,4 @@
 
 Kotlin mod development library for Fabric/Quilt
 
-Read the User Guide [here](https://kettle.cypher.coffee)!
+Read the User Guide [here](http://kettle.cypher.coffee)!

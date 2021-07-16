@@ -172,14 +172,15 @@ curseforge {
         }
 
         addGameVersion(minecraftVersion)
+        addGameVersion("Fabric")
+
+        mainArtifact(tasks.remapJar.get().archiveFile)
 
         afterEvaluate {
-            mainArtifact(tasks.named("remapJar"))
-            uploadTask.dependsOn(tasks.named("remapJar"))
+            uploadTask.dependsOn(tasks.remapJar)
         }
 
         relations(closureOf<CurseRelation> {
-            requiredDependency("fabric")
             requiredDependency("fabric-language-kotlin")
         })
     })
@@ -188,11 +189,14 @@ curseforge {
 val modrinth by tasks.registering(TaskModrinthUpload::class) {
     val modrinthApiKey: String by project
 
+    detectLoaders = true
 
     token = modrinthApiKey
     projectId = "SRCaBfKA"
 
-    uploadFile = tasks.remapJar
+    uploadFile = tasks.remapJar.get().archiveFile
+
+    addGameVersion(minecraftVersion)
 
     versionNumber = modVersion
     versionType = when {
@@ -242,7 +246,17 @@ publishing {
     }
 
     repositories {
-        mavenCentral()
+        maven {
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+
+            credentials {
+                val ossUsername: String by project
+                val ossPassword: String by project
+
+                username = ossUsername
+                password = ossPassword
+            }
+        }
         mavenLocal()
     }
 }
@@ -252,5 +266,6 @@ signing {
 }
 
 tasks.register("release") {
+    group = "publishing"
     dependsOn(tasks.publish, tasks.curseforge, modrinth)
 }
