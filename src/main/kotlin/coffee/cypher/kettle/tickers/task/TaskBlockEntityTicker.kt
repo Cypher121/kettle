@@ -7,6 +7,7 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
+import kotlin.experimental.ExperimentalTypeInference
 
 public class TaskBlockEntityTicker<T : BlockEntity>(
     private val config: TickingScheduler<BlockEntityTaskContext<T>>.() -> Unit
@@ -32,3 +33,9 @@ public class BlockEntityTaskContext<T : BlockEntity>(
 }
 
 public typealias TickerTask<T> = BlockEntityTaskContext<T>.() -> Unit
+
+@OptIn(ExperimentalTypeInference::class)
+@BuilderInference
+public fun <T : BlockEntity> taskTicker(
+    @BuilderInference config: TickingScheduler<BlockEntityTaskContext<T>>.() -> Unit
+): TaskBlockEntityTicker<T> = TaskBlockEntityTicker(config)

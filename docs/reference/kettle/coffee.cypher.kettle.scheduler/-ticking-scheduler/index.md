@@ -19,3 +19,9 @@ class [TickingScheduler](index.md)<[C](index.md) : [TaskContext](../-task-contex
 | Name | Summary |
 |---|---|
 | [tasks](tasks.md) | [jvm]<br>val [tasks](tasks.md): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)<[TaskHandle](../-task-handle/index.md)<[C](index.md)>> |
+
+## Extensions
+
+| Name | Summary |
+|---|---|
+| [task](../task.md) | [jvm]<br>fun <[C](../task.md) : [TaskContext](../-task-context/index.md)<[C](../task.md)>> [TickingScheduler](index.md)<[C](../task.md)>.[task](../task.md)(config: [TaskBuilder](../-task-builder/index.md)<[C](../task.md)>.() -> [Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)): [TaskHandle](../-task-handle/index.md)<[C](../task.md)> |

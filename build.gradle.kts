@@ -4,6 +4,7 @@ import com.modrinth.minotaur.TaskModrinthUpload
 import com.modrinth.minotaur.request.VersionType
 import org.jetbrains.dokka.gradle.DokkaTask
 import java.net.URL
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("fabric-loom")
@@ -65,7 +66,7 @@ tasks {
         options.release.set(javaVersion.toString().toInt())
     }
 
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = javaVersion.toString()
             freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
@@ -267,3 +268,5 @@ tasks.register("release") {
     group = "publishing"
     dependsOn(tasks.publish, tasks.curseforge, modrinth)
 }
+
+val compileKotlin: KotlinCompile by tasks
