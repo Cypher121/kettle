@@ -11,8 +11,9 @@
 | [asSequence](as-sequence.md) | [jvm]<br>fun Inventory.[asSequence](as-sequence.md)(): [Sequence](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html)<ItemStack> |
 | [contains](contains.md) | [jvm]<br>operator fun Inventory.[contains](contains.md)(item: Item): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
 | [get](get.md) | [jvm]<br>operator fun Inventory.[get](get.md)(slot: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)): ItemStack |
+| [getSideAccess](get-side-access.md) | [jvm]<br>fun Inventory.[getSideAccess](get-side-access.md)(side: Direction): Inventory |
 | [iterator](iterator.md) | [jvm]<br>operator fun Inventory.[iterator](iterator.md)(): [Iterator](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html)<ItemStack> |
-| [set](set.md) | [jvm]<br>operator fun Inventory.[set](set.md)(slot: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), stack: ItemStack) |
+| [set](set.md) | [jvm]<br>operator fun Inventory.[set](set.md)(slot: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), stack: ItemStack?) |
 
 ## Properties
 

@@ -3,4 +3,4 @@
 # set
 
 [jvm]\
-operator fun Inventory.[set](set.md)(slot: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), stack: ItemStack)
+operator fun Inventory.[set](set.md)(slot: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), stack: ItemStack?)

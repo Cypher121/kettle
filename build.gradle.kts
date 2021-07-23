@@ -103,7 +103,19 @@ tasks.register<Copy>("installGitHooks") {
 
 //Docs
 
-fun DokkaTask.commonConfig() {
+tasks.dokkaGfm.configure {
+    description = "Generates GitHub Markdown reference for the project"
+
+    outputDirectory.set(projectDir.resolve("docs/reference"))
+}
+
+tasks.dokkaJavadoc.configure {
+    description = "Generates Javadoc for the project"
+
+    outputDirectory.set(tasks.javadoc.map { it.destinationDir!! })
+}
+
+tasks.withType<DokkaTask> {
     group = "documentation"
 
     dokkaSourceSets {
@@ -120,20 +132,6 @@ fun DokkaTask.commonConfig() {
             reportUndocumented.set(true)
         }
     }
-}
-
-tasks.dokkaGfm.configure {
-    description = "Generates GitHub Markdown reference for the project"
-
-    outputDirectory.set(projectDir.resolve("docs/reference"))
-    commonConfig()
-}
-
-tasks.dokkaJavadoc.configure {
-    description = "Generates Javadoc for the project"
-
-    outputDirectory.set(tasks.javadoc.map { it.destinationDir!! })
-    commonConfig()
 }
 
 val javadocJar by tasks.registering(Jar::class) {

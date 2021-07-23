@@ -6,8 +6,9 @@ $dokka.location:coffee.cypher.kettle.inventory//asList/net.minecraft.inventory.I
 $dokka.location:coffee.cypher.kettle.inventory//asSequence/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/as-sequence.md
 $dokka.location:coffee.cypher.kettle.inventory//contains/net.minecraft.inventory.Inventory#net.minecraft.item.Item/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/contains.md
 $dokka.location:coffee.cypher.kettle.inventory//get/net.minecraft.inventory.Inventory#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/get.md
+$dokka.location:coffee.cypher.kettle.inventory//getSideAccess/net.minecraft.inventory.Inventory#net.minecraft.util.math.Direction/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/get-side-access.md
 $dokka.location:coffee.cypher.kettle.inventory//iterator/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/iterator.md
-$dokka.location:coffee.cypher.kettle.inventory//set/net.minecraft.inventory.Inventory#kotlin.Int#net.minecraft.item.ItemStack/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/set.md
+$dokka.location:coffee.cypher.kettle.inventory//set/net.minecraft.inventory.Inventory#kotlin.Int#net.minecraft.item.ItemStack?/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/set.md
 $dokka.location:coffee.cypher.kettle.inventory//slotRange/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/slot-range.md
 $dokka.location:coffee.cypher.kettle.item////PointingToDeclaration/kettle/coffee.cypher.kettle.item/index.md
 $dokka.location:coffee.cypher.kettle.item//createStack/net.minecraft.item.ItemConvertible#kotlin.Int#net.minecraft.nbt.NbtCompound?/PointingToDeclaration/kettle/coffee.cypher.kettle.item/create-stack.md
