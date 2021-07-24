@@ -3,8 +3,8 @@ import com.matthewprenger.cursegradle.CurseRelation
 import com.modrinth.minotaur.TaskModrinthUpload
 import com.modrinth.minotaur.request.VersionType
 import org.jetbrains.dokka.gradle.DokkaTask
-import java.net.URL
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.net.URL
 
 plugins {
     id("fabric-loom")
@@ -31,30 +31,68 @@ val mavenGroup: String by project
 group = mavenGroup
 
 val javaVersion = JavaVersion.VERSION_16
+//
+//val configBuilderSources = sourceSets.create("configBuilder") {
+//    java {
+//        srcDir("src/configBuilder/kotlin")
+//    }
+//}
 
-minecraft {}
-
-repositories {}
-
-dependencies {
-    val minecraftVersion: String by project
-    minecraft("com.mojang:minecraft:$minecraftVersion")
-
-    val yarnMappings: String by project
-    mappings("net.fabricmc:yarn:$yarnMappings:v2")
-
-    val loaderVersion: String by project
-    modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
-
-    val fabricVersion: String by project
-    modImplementation("net.fabricmc.fabric-api:fabric-api:$fabricVersion")
-
-    val fabricKotlinVersion: String by project
-    modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
+val geckoExtensionsSources = sourceSets.create("geckoExtensions") {
+    java {
+        srcDir("src/geckoExtensions/kotlin")
+    }
 }
 
 kotlin {
     explicitApi()
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(javaVersion.toString()))
+    }
+
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    withSourcesJar()
+
+//    registerFeature("configBuilder") {
+//        usingSourceSet(configBuilderSources)
+//        withSourcesJar()
+//    }
+
+//    registerFeature("geckoExtensions") {
+//        usingSourceSet(geckoExtensionsSources)
+//        withSourcesJar()
+//    }
+}
+
+//tasks.withType<Jar>().named("geckoExtensionsJar") {
+//    archiveClassifier.set("${archiveClassifier.get()}-dev")
+//}
+//
+//configurations.named("geckoExtensionsCompileClasspath").get()
+//    .extendsFrom(configurations.named("compileClasspath").get())
+
+dependencies {
+    minecraft(libs.minecraft)
+
+    mappings(libs.yarn.mappings) {
+        artifact {
+            classifier = "v2"
+        }
+    }
+
+    modImplementation(libs.bundles.fabric)
+
+//    "geckoExtensionsApi"(libs.gecko) {
+//        artifact {
+//            classifier = "dev"
+//        }
+//    }
+//
+//    "geckoExtensionsImplementation"(sourceSets["main"].output)
 }
 
 tasks {
@@ -80,16 +118,6 @@ tasks {
     processResources {
         inputs.property("version", project.version)
         filesMatching("fabric.mod.json") { expand(mutableMapOf("version" to project.version)) }
-    }
-
-    java {
-        toolchain {
-            languageVersion.set(JavaLanguageVersion.of(javaVersion.toString()))
-        }
-
-        sourceCompatibility = javaVersion
-        targetCompatibility = javaVersion
-        withSourcesJar()
     }
 }
 
@@ -122,6 +150,7 @@ tasks.withType<DokkaTask> {
     dokkaSourceSets {
         configureEach {
             sourceLink {
+                //TODO
                 localDirectory.set(projectDir.resolve("src/main/kotlin"))
                 remoteLineSuffix.set("#L")
                 remoteUrl.set(URL("https://github.com/Cypher121/kettle/blob/master/src/main/kotlin"))
@@ -154,8 +183,6 @@ tasks.assemble {
 
 // Publishing
 
-val minecraftVersion: String by project
-
 curseforge {
     val curseforgeApiKey: String by project
     apiKey = curseforgeApiKey
@@ -170,13 +197,13 @@ curseforge {
             else -> "release"
         }
 
-        addGameVersion(minecraftVersion)
+        addGameVersion(libs.versions.minecraft.get())
         addGameVersion("Fabric")
 
-        mainArtifact(tasks.remapJar.get().archiveFile)
+        mainArtifact(tasks.withType<net.fabricmc.loom.task.RemapJarTask>().named("remapJar").get().archiveFile)
 
         afterEvaluate {
-            uploadTask.dependsOn(tasks.remapJar)
+            uploadTask.dependsOn(tasks.named("remapJar"))
         }
 
         relations(closureOf<CurseRelation> {
@@ -193,9 +220,9 @@ val modrinth by tasks.registering(TaskModrinthUpload::class) {
     token = modrinthApiKey
     projectId = "SRCaBfKA"
 
-    uploadFile = tasks.remapJar.get().archiveFile
+    uploadFile = tasks.withType<net.fabricmc.loom.task.RemapJarTask>().named("remapJar").get().archiveFile
 
-    addGameVersion(minecraftVersion)
+    addGameVersion(libs.versions.minecraft.get())
 
     versionNumber = modVersion
     versionType = when {
@@ -212,7 +239,7 @@ publishing {
             artifactId = project.name
             version = modVersion
 
-            artifact(tasks.remapJar)
+            artifact(tasks.named("remapJar"))
             artifact(javadocJar)
             artifact(sourcesJar)
 
@@ -268,5 +295,3 @@ tasks.register("release") {
     group = "publishing"
     dependsOn(tasks.publish, tasks.curseforge, modrinth)
 }
-
-val compileKotlin: KotlinCompile by tasks
