@@ -7,6 +7,6 @@
 ![Kettle logo](../master/src/main/resources/assets/kettle/icon.png)
 
 
-Kotlin mod development library for Fabric/Quilt
+Kotlin mod development library for Quilt
 
 Read the User Guide [here](http://kettle.cypher.coffee)!
