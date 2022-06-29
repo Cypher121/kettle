@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -exuo pipefail
 
@@ -8,6 +8,6 @@ echo "Verifying build"
 
 echo "Building JavaDoc reference"
 
-#./gradlew dokkaGfm
+./gradlew dokkaJekyll
 
 git add docs/reference

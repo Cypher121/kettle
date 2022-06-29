@@ -1,15 +1,18 @@
-pluginManagement {
-    includeBuild("dependency-management")
-}
-includeBuild("build-logic")
-
-enableFeaturePreview("VERSION_CATALOGS")
-
-plugins {
-    id("kettle.dependencies")
-}
-
 rootProject.name = "kettle"
 
-include("modules:core")
-//include("user-dist")
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+
+        maven("https://maven.quiltmc.org/repository/release") {
+            name = "Quilt"
+        }
+        maven("https://maven.architectury.dev/")
+
+        // Currently needed for Intermediary and other temporary dependencies
+        maven("https://maven.fabricmc.net/") {
+            name = "Fabric"
+        }
+    }
+}

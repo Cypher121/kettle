@@ -5,8 +5,8 @@ own mod.
 
 ## Note on compatibility
 
-This library is ultimately intended for use with Quilt mods. It will likely remain compatible with Fabric for a long
-time, but no guarantees are given yet.
+This library is intended for use with Quilt mods.
+It will likely not be compatible with Fabric.
 
 ## Table of Contents
 
@@ -29,7 +29,7 @@ dependencies {
 }
 ```
 
-2) Declare the dependency in your fabric.mod.json
+2) Declare the dependency in your quilt.mod.json
 
 ```json
 {

@@ -1,10 +1,30 @@
-.idea
-*.iml
-.gradle
-
-Thumbs.db
-.DS_Store
-
+# Gradle
+.gradle/
 build/
 out/
-run*/
+classes/
+
+# Quilt Loom
+run/
+
+# Eclipse
+*.launch
+
+# IntelliJ Idea
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Visual Studio Code
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# Eclipse JDT LS
+workspace/
+
+# macOS
+*.DS_Store

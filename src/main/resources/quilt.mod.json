@@ -1,0 +1,39 @@
+{
+    "schema_version": 1,
+    "quilt_loader": {
+        "group": "coffee.cypher.kettle",
+        "id": "kettle",
+        "version": "${version}",
+        "metadata": {
+            "name": "Kettle",
+            "description": "Kotlin Mod library",
+            "contributors": {
+                "Cypher121": "Owner"
+            },
+            "contact": {
+                "homepage": "https://kettle.cypher.coffee/",
+                "issues": "https://github.com/Cypher121/kettle/issues",
+                "sources": "https://github.com/Cypher121/kettle"
+            },
+            "icon": "assets/kettle/icon.png"
+        },
+        "intermediate_mappings": "net.fabricmc:intermediary",
+        "entrypoints": {
+        },
+        "depends": [
+            {
+                "id": "quilt_loader",
+                "versions": ">=0.17.0-"
+            },
+            {
+                "id": "quilted_fabric_api",
+                "versions": ">=2.0.0-"
+            },
+            {
+                "id": "minecraft",
+                "versions": ">=1.19"
+            }
+        ]
+    },
+    "mixin": "kettle.mixins.json"
+}

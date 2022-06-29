@@ -1,0 +1,32 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+tab_width = 4
+trim_trailing_whitespace = true
+
+[*.gradle.kts]
+indent_style = space
+indent_size = 4
+
+[*.java]
+indent_style = space
+indent_size = 4
+
+[*.json]
+indent_style = space
+indent_size = 4
+
+[*.toml]
+indent_style = space
+indent_size = 4
+
+[*.properties]
+indent_style = space
+indent_size = 4
+
+[.editorconfig]
+indent_style = space
+indent_size = 4
