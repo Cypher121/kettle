@@ -8,7 +8,11 @@ public sealed class ExecutionConfiguration(public val initialDelay: Int, public 
             return Once(initialDelay, yieldsAfterMs)
         }
 
-        public fun infinite(initialDelay: Int = 0, pause: Int = 1, yieldsAfterMs: Double = 50.0): ExecutionConfiguration {
+        public fun infinite(
+            initialDelay: Int = 0,
+            pause: Int = 1,
+            yieldsAfterMs: Double = 50.0
+        ): ExecutionConfiguration {
             require(initialDelay >= 0) { "initialDelay must be non-negative, was $initialDelay" }
             require(pause > 0) { "pause must be positive, was $pause" }
 
@@ -30,10 +34,10 @@ public sealed class ExecutionConfiguration(public val initialDelay: Int, public 
 
     }
 
-    internal abstract fun <C: TaskContext<C>> buildCoroutine(block: suspend C.() -> Unit): suspend C.() -> Unit
+    internal abstract fun <T : Any> buildCoroutine(block: suspend TaskContext<T>.() -> Unit): suspend TaskContext<T>.() -> Unit
 
     private class Once(initialDelay: Int, yieldsAfterMs: Double) : ExecutionConfiguration(initialDelay, yieldsAfterMs) {
-        override fun <C : TaskContext<C>> buildCoroutine(block: suspend C.() -> Unit): suspend C.() -> Unit =
+        override fun <T : Any> buildCoroutine(block: suspend TaskContext<T>.() -> Unit): suspend TaskContext<T>.() -> Unit =
             {
                 sleepFor(initialDelay)
                 block()
@@ -43,7 +47,7 @@ public sealed class ExecutionConfiguration(public val initialDelay: Int, public 
 
     private class Infinite(initialDelay: Int, val pause: Int, yieldsAfterMs: Double) :
         ExecutionConfiguration(initialDelay, yieldsAfterMs) {
-        override fun <C : TaskContext<C>> buildCoroutine(block: suspend C.() -> Unit): suspend C.() -> Unit =
+        override fun <T : Any> buildCoroutine(block: suspend TaskContext<T>.() -> Unit): suspend TaskContext<T>.() -> Unit =
             {
                 sleepFor(initialDelay)
                 while (true) {
@@ -56,10 +60,10 @@ public sealed class ExecutionConfiguration(public val initialDelay: Int, public 
 
     private class Repeat(initialDelay: Int, val pause: Int, val times: Int, yieldsAfterMs: Double) :
         ExecutionConfiguration(initialDelay, yieldsAfterMs) {
-        override fun <C : TaskContext<C>> buildCoroutine(block: suspend C.() -> Unit): suspend C.() -> Unit =
+        override fun <T : Any> buildCoroutine(block: suspend TaskContext<T>.() -> Unit): suspend TaskContext<T>.() -> Unit =
             {
                 sleepFor(initialDelay)
-                repeat(times) {
+                repeat(times) { _ ->
                     block()
                     sleepFor(pause)
                 }

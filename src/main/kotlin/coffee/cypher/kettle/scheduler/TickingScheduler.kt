@@ -1,140 +1,47 @@
 package coffee.cypher.kettle.scheduler
 
-import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
-public class TickingScheduler<C : TaskContext<C>>(
-    private val contextFactory: () -> C
-) {
-    private val currentContinuations = mutableMapOf<TaskHandle<C>, Continuation<Unit>>()
-
-    public val tasks: List<TaskHandle<C>>
+public class TickingScheduler<T : Any> {
+    public val tasks: List<Task<T>>
         get() = _tasks.toList()
 
-    private val _tasks = mutableSetOf<TaskHandle<C>>()
+    private val _tasks = mutableSetOf<TaskInternals<T>>()
 
-    private var tickStartedAt = -1.0
-    private var currentYieldThreshold = -1.0
+    public fun tick(newContext: () -> T, updateContext: (T) -> Unit = {}) {
+        _tasks.forEach {
+            it.context.updateContext(newContext, updateContext)
+            it.advanceWaitTimers()
 
-    public fun tick() {
-        processScheduledActions()
+            if (it.isExecuting) {
+                it.executionContext = ContextForTask()
 
-        val toRun = currentContinuations.filter {
-            it.key.shouldExecute
-        }
-
-        currentContinuations -= toRun.keys
-
-        toRun.forEach {
-            tickStartedAt = System.nanoTime() / 1e6
-            currentYieldThreshold = it.key.yieldsAfter
-            it.key.schedulerContext = ContextForTask(it.key)
-            it.value.resume(Unit)
-        }
-
-        currentContinuations.forEach {
-            it.key.tick()
-        }
-    }
-
-    private fun processScheduledActions() {
-        tasks.filter {
-            it.actionQueue.isNotEmpty()
-        }.forEach { handle ->
-            while (handle.actionQueue.isNotEmpty()) {
-                val action: TaskHandle.TaskAction = handle.actionQueue.pop()
-
-                when (action) {
-                    TaskHandle.TaskAction.START -> currentContinuations[handle] =
-                        handle.createCoroutine(contextFactory())
-
-                    TaskHandle.TaskAction.STOP, TaskHandle.TaskAction.RESET -> currentContinuations -= handle
+                (it.state as? TaskInternals.RunningInternal)?.withContinuation { c ->
+                    c.resume(Unit)
                 }
-
-                action.onComplete(handle)
             }
         }
     }
 
-    public fun addNewTask(
-        name: String,
-        configuration: ExecutionConfiguration = ExecutionConfiguration.once(),
-        start: Boolean = false,
-        block: suspend C.() -> Unit
-    ): TaskHandle<C> {
-        val task = TaskHandle.newTask(name, configuration, block)
-
-        addTask(task)
+    public fun addTask(task: Task<T>, start: Boolean = false) {
+        _tasks += task.internal()
 
         if (start) {
             task.start()
         }
-
-        return task
     }
 
-    public fun addTask(handle: TaskHandle<C>) {
-        _tasks += handle
+    public fun removeTask(task: Task<T>) {
+        _tasks -= task.internal()
     }
 
-    public fun removeTask(handle: TaskHandle<C>) {
-        _tasks -= handle
-        currentContinuations -= handle
-    }
+    private inner class ContextForTask : ExecutionContext<T> {
+        override val executionStartedAt = System.nanoTime() / 1e6
 
-    private inner class ContextForTask(private val task: TaskHandle<C>) : SchedulerContext {
-        override fun registerContinuation(continuation: Continuation<Unit>) {
-            currentContinuations[task] = continuation
-        }
-
-        override fun shouldYield(): Boolean {
-            val timePassed = System.nanoTime() / 1e6 - tickStartedAt
-
-            return currentYieldThreshold > 0 && timePassed > currentYieldThreshold
-        }
-
+        override val currentScheduler = this@TickingScheduler
     }
 }
 
-public open class TaskContext<C : TaskContext<C>> {
-    public suspend fun yield() {
-        sleepFor(0)
-    }
-
-    public suspend fun endTick() {
-        sleepFor(1)
-    }
-
-    public suspend fun sleepFor(ticks: Int) {
-        suspendCoroutine {
-            val handle = it.getHandle<C>()
-
-            if (ticks > 0) {
-                handle.sleep(ticks)
-                handle.schedulerContext.registerContinuation(it)
-            } else {
-                if (handle.schedulerContext.shouldYield()) {
-                    handle.schedulerContext.registerContinuation(it)
-                } else {
-                    it.resume(Unit)
-                }
-            }
-        }
-    }
-
-    public suspend fun waitUntil(checkEvery: Int = 1, checkNow: Boolean = true, check: () -> Boolean) {
-        if (checkNow && check()) {
-            yield()
-            return
-        }
-
-        suspendCoroutine {
-            val handle = it.getHandle<C>()
-            handle.waitUntil(checkEvery, check)
-            handle.schedulerContext.registerContinuation(it)
-        }
-    }
+public fun TickingScheduler<Unit>.tick() {
+    tick({})
 }
-
-public class BasicTaskContext : TaskContext<BasicTaskContext>()

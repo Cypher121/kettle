@@ -1,6 +1,6 @@
 package coffee.cypher.kettle.mixins;
 
-import coffee.cypher.kettle.accessors.BlockEntitySchedulerAccessor;
+import coffee.cypher.kettle.tickers.mixinaccessors.BlockEntitySchedulerAccessor;
 import coffee.cypher.kettle.scheduler.TickingScheduler;
 import coffee.cypher.kettle.tickers.task.TaskTicker;
 import net.minecraft.block.BlockState;
