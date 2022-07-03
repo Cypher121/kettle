@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import java.lang.ref.WeakReference
 
-public class TickerAdditionalContext<T : BlockEntity>(
+public class TickerContext<T : BlockEntity>(
     world: World,
     pos: BlockPos,
     state: BlockState,
@@ -27,29 +27,29 @@ public class TickerAdditionalContext<T : BlockEntity>(
     public var world: World = world
         internal set
 
-    public fun T.findScheduler(): BlockEntityTickerScheduler<T>? {
+    public fun T.findScheduler(): TaskTickerScheduler<T>? {
         val ticker = tickerRef.get() ?: return null
 
         return getSchedulers()[ticker]
     }
 }
 
-public typealias BlockEntityTickerTask<T> = TaskContext<TickerAdditionalContext<T>>.() -> Unit
-public typealias BlockEntityTickerScheduler<T> = TickingScheduler<TickerAdditionalContext<T>>
+public typealias TaskTickerAction<T> = TaskContext<TickerContext<T>>.() -> Unit
+public typealias TaskTickerScheduler<T> = TickingScheduler<TickerContext<T>>
 
 public class TaskTicker<T : BlockEntity>(
-    private val config: BlockEntityTickerScheduler<T>.() -> Unit
+    private val config: TaskTickerScheduler<T>.() -> Unit
 ) : BlockEntityTicker<T> {
     override fun tick(world: World, pos: BlockPos, state: BlockState, blockEntity: T) {
         val schedulers = blockEntity.getSchedulers()
 
         val scheduler = schedulers.getOrPut(this) {
-            BlockEntityTickerScheduler<T>().apply(config)
+            TaskTickerScheduler<T>().apply(config)
         }
 
         scheduler.tick(
             newContext = {
-                TickerAdditionalContext(world, pos, state, blockEntity, WeakReference(this))
+                TickerContext(world, pos, state, blockEntity, WeakReference(this))
             },
             updateContext = {
                 it.pos = pos
@@ -63,5 +63,5 @@ public class TaskTicker<T : BlockEntity>(
 
 @SchedulerDsl
 public fun <T : BlockEntity> taskTicker(
-    config: BlockEntityTickerScheduler<T>.() -> Unit
+    config: TaskTickerScheduler<T>.() -> Unit
 ): TaskTicker<T> = TaskTicker(config)
