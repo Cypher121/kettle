@@ -10,7 +10,8 @@ title: removeTask
 
 
 [jvm]\
-fun [removeTask](remove-task.html)(handle: [TaskHandle](../-task-handle/index.html)&lt;[C](index.html)&gt;)
+fun [removeTask](remove-task.html)(task: [Task](../-task/index.html)
+&lt;[T](index.html)&gt;)
 
 
 
