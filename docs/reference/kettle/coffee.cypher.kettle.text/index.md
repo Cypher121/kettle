@@ -15,5 +15,5 @@ title: coffee.cypher.kettle.text
 | Name | Summary |
 |---|---|
 | [toLiteralComponent](to-literal-component.html) | [jvm]<br>fun [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html).[toLiteralComponent](to-literal-component.html)(): LiteralComponent |
-| [toTranslatableText](to-translatable-text.html) | [jvm]<br>fun [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html).[toTranslatableText](to-translatable-text.html)(vararg formatArgs: [Any](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)): TranslatableComponent |
+| [toTranslatableComponent](to-translatable-component.html) | [jvm]<br>fun [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html).[toTranslatableComponent](to-translatable-component.html)(vararg formatArgs: [Any](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)): TranslatableComponent |
 

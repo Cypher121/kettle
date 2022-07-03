@@ -10,6 +10,10 @@ title: SchedulerDsl
 
 
 [jvm]\
+@[DslMarker](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-dsl-marker/index.html)
+
+
+
 annotation class [SchedulerDsl](index.html)
 
 

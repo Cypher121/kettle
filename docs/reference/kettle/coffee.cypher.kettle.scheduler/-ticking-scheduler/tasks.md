@@ -10,7 +10,7 @@ title: tasks
 
 
 [jvm]\
-val [tasks](tasks.html): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[TaskHandle](../-task-handle/index.html)&lt;[C](index.html)&gt;&gt;
+val [tasks](tasks.html): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[Task](../-task/index.html)&lt;[T](index.html)&gt;&gt;
 
 
 
