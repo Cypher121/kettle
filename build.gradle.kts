@@ -1,9 +1,10 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URL
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     `maven-publish`
     signing
@@ -11,6 +12,7 @@ plugins {
     alias(libs.plugins.quilt.loom)
     alias(libs.plugins.dokka)
     alias(libs.plugins.unipub)
+    alias(libs.plugins.githooks)
 }
 
 apply(plugin = "org.jetbrains.dokka")
@@ -24,6 +26,13 @@ group = "coffee.cypher.kettle"
 
 repositories {
     mavenCentral()
+}
+
+sourceSets {
+    create("testmod") {
+        compileClasspath += sourceSets.main.get().compileClasspath
+        runtimeClasspath += sourceSets.main.get().runtimeClasspath
+    }
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -40,7 +49,11 @@ dependencies {
     // TODO consider this
     // QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
     // Quilted Fabric API will automatically pull in the correct QSL version.
-    modImplementation(libs.qsl)
+    modImplementation(libs.bundles.qsl)
+
+    afterEvaluate {
+        "testmodImplementation"(sourceSets.main.map { it.output })
+    }
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -76,9 +89,9 @@ tasks {
 
     withType<KotlinCompile> {
         kotlinOptions {
-            useK2 = true
+            useK2 = false
             jvmTarget = javaVersion.toString()
-            freeCompilerArgs = listOf("-Xenable-builder-inference")
+            freeCompilerArgs = listOf("-Xenable-builder-inference", "-Xcontext-receivers")
         }
     }
 
@@ -131,11 +144,13 @@ unifiedPublishing {
     project {
         gameVersions.set(libs.versions.minecraft.map { listOf(it) })
         gameLoaders.set(listOf("quilt"))
-        releaseType.set(when {
-            "alpha" in project.version.toString() -> "alpha"
-            "beta" in project.version.toString() -> "beta"
-            else -> "release"
-        })
+        releaseType.set(
+            when {
+                "alpha" in project.version.toString() -> "alpha"
+                "beta" in project.version.toString() -> "beta"
+                else -> "release"
+            }
+        )
 
         mainPublication(tasks.remapJar.get())
 
@@ -210,4 +225,8 @@ publishing {
 
 signing {
     sign(publishing.publications)
+}
+
+gitHooks {
+    setHooks(mapOf("pre-commit" to "check dokkaJekyll"))
 }

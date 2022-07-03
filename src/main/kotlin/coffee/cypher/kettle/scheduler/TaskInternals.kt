@@ -1,24 +1,18 @@
 package coffee.cypher.kettle.scheduler
 
-import java.lang.IllegalStateException
-import kotlin.coroutines.*
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.EmptyCoroutineContext
+import kotlin.coroutines.createCoroutine
+import kotlin.coroutines.resume
 
 internal class TaskInternals<T : Any> internal constructor(
     override val name: String,
     private val configuration: ExecutionConfiguration,
     private val taskBlock: TaskBlock<T>
-) : AbstractCoroutineContextElement(TaskInternals), Task<T> {
-    companion object Key : CoroutineContext.Key<TaskInternals<*>> {
-        context(TaskContext<T>)
-        fun <T : Any> of(continuation: Continuation<*>): TaskInternals<T> {
-            @Suppress("UNCHECKED_CAST")
-            return continuation.context[TaskInternals]!! as TaskInternals<T>
-        }
-    }
+) : Task<T> {
+    private var lockedForExecution = false
 
-    internal var lockedForExecution = false
-
-    internal val context = TaskContext<T>()
+    private val context = TaskContext(this)
 
     internal lateinit var executionContext: ExecutionContext<T>
 
@@ -69,7 +63,7 @@ internal class TaskInternals<T : Any> internal constructor(
         configuration.buildCoroutine(taskBlock).createCoroutine(
             context,
             Continuation(EmptyCoroutineContext) { result ->
-                stop()
+                state = StoppedInternal
 
                 result.onFailure {
                     throw TaskExecutionException(name, it)
@@ -125,7 +119,21 @@ internal class TaskInternals<T : Any> internal constructor(
         state = RunningInternal(continuation, this)
     }
 
-    fun advanceWaitTimers() {
+    fun tick(executionContext: ExecutionContext<T>) {
+        this.executionContext = executionContext
+
+        context.updateContext()
+
+        advanceWaitTimers()
+
+        if (isExecuting) {
+            (state as? RunningInternal)?.withContinuation { c ->
+                c.resume(Unit)
+            }
+        }
+    }
+
+    private fun advanceWaitTimers() {
         if (state !is Task.State.Running) {
             return
         }
@@ -154,27 +162,27 @@ internal class TaskInternals<T : Any> internal constructor(
         }
     }
 
-    internal object CreatedInternal : Task.State.Created()
-    internal object StoppedInternal : Task.State.Created()
+    private object CreatedInternal : Task.State.Created()
+    private object StoppedInternal : Task.State.Created()
 
-    internal class RunningInternal internal constructor(
+    private class RunningInternal(
         private val continuation: Continuation<Unit>,
         private val task: TaskInternals<*>
     ) : Task.State.Running() {
-        internal fun toPaused() = PausedInternal(continuation, task)
+        fun toPaused() = PausedInternal(continuation, task)
 
-        internal fun withContinuation(action: (Continuation<Unit>) -> Unit) {
+        fun withContinuation(action: (Continuation<Unit>) -> Unit) {
             task.lockedForExecution = true
             action(continuation)
             task.lockedForExecution = false
         }
     }
 
-    internal class PausedInternal internal constructor(
+    private class PausedInternal(
         private val continuation: Continuation<Unit>,
         private val task: TaskInternals<*>
     ) : Task.State.Paused() {
-        internal fun toRunning() = RunningInternal(continuation, task)
+        fun toRunning() = RunningInternal(continuation, task)
     }
 
     private sealed class Suspension {

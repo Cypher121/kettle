@@ -4,6 +4,8 @@ minecraft = "1.19"
 quilt_mappings = "1.19+build.1"
 quilt_loader = "0.17.1-beta.4"
 qsl = "2.0.0-beta.7+1.19"
+quilt-fapi = "2.0.0-beta.3+0.57.0-1.19"
+qkl = "0.1.0-SNAPSHOT"
 
 kotlin = "1.7.0"
 
@@ -13,14 +15,18 @@ quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_m
 quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loader" }
 
 qsl = { module = "org.quiltmc:qsl", version.ref = "qsl" }
+quilt-fapi = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilt-fapi" }
+qkl = { module = "org.quiltmc.quilt-kotlin-libraries:quilt-kotlin-libraries", version.ref = "qkl" }
 
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 
 [bundles]
 kotlin = ["kotlin-stdlib"]
+qsl = ["quilt-fapi", "qkl"]
 
 [plugins]
 quilt_loom = { id = "org.quiltmc.loom", version = "0.12.+" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 unipub = { id = "me.shedaniel.unified-publishing", version = "0.1.+" }
+githooks = { id = "com.github.jakemarsden.git-hooks", version = "0.0.2" }

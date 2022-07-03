@@ -1,0 +1,28 @@
+{
+    "schema_version": 1,
+    "quilt_loader": {
+        "group": "coffee.cypher.kettle",
+        "id": "kettle_test",
+        "version": "${version}",
+        "metadata": {
+            "name": "Kettle Test Mod",
+            "description": "Kettle Test Mod",
+            "contributors": {
+                "Cypher121": "Owner"
+            },
+            "contact": {
+                "homepage": "https://kettle.cypher.coffee/",
+                "issues": "https://github.com/Cypher121/kettle/issues",
+                "sources": "https://github.com/Cypher121/kettle"
+            },
+            "license": "MIT"
+        },
+        "intermediate_mappings": "net.fabricmc:intermediary",
+        "entrypoints": {
+            "init": {
+                "adapter": "kotlin",
+                "value": "coffee.cypher.kettle.testmod.SchedulerTestMod"
+            }
+        }
+    }
+}

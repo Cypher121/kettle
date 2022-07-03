@@ -1,7 +1,5 @@
 package coffee.cypher.kettle.scheduler
 
-import kotlin.coroutines.resume
-
 public class TickingScheduler<T : Any> {
     public val tasks: List<Task<T>>
         get() = _tasks.toList()
@@ -10,16 +8,7 @@ public class TickingScheduler<T : Any> {
 
     public fun tick(newContext: () -> T, updateContext: (T) -> Unit = {}) {
         _tasks.forEach {
-            it.context.updateContext(newContext, updateContext)
-            it.advanceWaitTimers()
-
-            if (it.isExecuting) {
-                it.executionContext = ContextForTask()
-
-                (it.state as? TaskInternals.RunningInternal)?.withContinuation { c ->
-                    c.resume(Unit)
-                }
-            }
+            it.tick(ContextForTask(newContext, updateContext))
         }
     }
 
@@ -35,10 +24,16 @@ public class TickingScheduler<T : Any> {
         _tasks -= task.internal()
     }
 
-    private inner class ContextForTask : ExecutionContext<T> {
+    private inner class ContextForTask(
+        private val newContext: () -> T,
+        private val updateContext: (T) -> Unit
+    ) : ExecutionContext<T> {
         override val executionStartedAt = System.nanoTime() / 1e6
 
         override val currentScheduler = this@TickingScheduler
+
+        override fun newContext() = newContext.invoke()
+        override fun updateContext(context: T) = updateContext.invoke(context)
     }
 }
 
