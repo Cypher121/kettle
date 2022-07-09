@@ -12,7 +12,6 @@ plugins {
     alias(libs.plugins.quilt.loom)
     alias(libs.plugins.dokka)
     alias(libs.plugins.unipub)
-    alias(libs.plugins.githooks)
 }
 
 apply(plugin = "org.jetbrains.dokka")
@@ -110,6 +109,10 @@ tasks {
         description = "Generates GitHub Pages reference for the project"
 
         outputDirectory.set(projectDir.resolve("docs/reference"))
+
+        doFirst {
+            delete(projectDir.resolve("docs/reference"))
+        }
     }
 
     dokkaJavadoc.configure {
@@ -225,8 +228,4 @@ publishing {
 
 signing {
     sign(publishing.publications)
-}
-
-gitHooks {
-    setHooks(mapOf("pre-commit" to "check dokkaJekyll"))
 }

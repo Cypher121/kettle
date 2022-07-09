@@ -51,21 +51,32 @@ val testTicker = taskTicker {
 
                 val tntPositions = mutableListOf<BlockPos>()
 
-                do {
+                nextBlock@while (true) {
                     tntPositions += pos.up()
                     world.setBlockState(pos.up(), Blocks.TNT.defaultState)
 
                     sleepFor(20)
 
-                    val positions = Box(pos).expand(10.0).getContainedBlockPos().toList()
-                    val next = positions.filter {
-                        (world.isAir(it.up()) && world.typedBlockEntity<TestBlockEntity>(it)
-                            ?.findScheduler() != null).also { yield() }
-                    }.minByOrNull { pos.getSquaredDistance(it) }
-                        ?.let { world.typedBlockEntity<TestBlockEntity>(it)?.findScheduler() }
+                    val positions = Box(pos).expand(10.0).getContainedBlockPos().toList().sortedBy {
+                        pos.getSquaredDistance(it)
+                    }
 
-                    next?.let { rescheduleOn(it) }
-                } while (next != null)
+                    for (candidate in positions) {
+                        yield()
+
+                        if (world.isAir(candidate.up())) {
+                            continue
+                        }
+
+                        val be = world.typedBlockEntity<TestBlockEntity>(candidate) ?: continue
+                        val scheduler = be.findScheduler() ?: continue
+
+                        rescheduleOn(scheduler)
+                        continue@nextBlock
+                    }
+
+                    break
+                }
 
                 tntPositions.forEach {
                     if (world.getBlockState(it).block == Blocks.TNT) {
