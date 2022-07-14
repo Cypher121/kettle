@@ -90,7 +90,8 @@ tasks {
         kotlinOptions {
             useK2 = false
             jvmTarget = javaVersion.toString()
-            freeCompilerArgs = listOf("-Xenable-builder-inference", "-Xcontext-receivers")
+            freeCompilerArgs =
+                listOf("-Xenable-builder-inference", "-Xcontext-receivers")
         }
     }
 
@@ -108,10 +109,10 @@ tasks {
     dokkaJekyll.configure {
         description = "Generates GitHub Pages reference for the project"
 
-        outputDirectory.set(projectDir.resolve("docs/reference"))
+        outputDirectory.set(project.buildDir.resolve("docs/reference"))
 
         doFirst {
-            delete(projectDir.resolve("docs/reference"))
+            delete(project.buildDir.resolve("docs/reference"))
         }
     }
 
@@ -141,6 +142,14 @@ tasks {
     }
 
     javadoc { dependsOn(dokkaJavadoc) }
+
+    register("buildUserGuide", Copy::class) {
+        group = "documentation"
+        dependsOn(dokkaJekyll)
+
+        from(projectDir.resolve("docs"))
+        into(project.buildDir.resolve("docs"))
+    }
 }
 
 unifiedPublishing {
@@ -212,7 +221,8 @@ publishing {
 
     repositories {
         maven {
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+            url =
+                uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
 
             credentials {
                 val sonatypeUsername: String? by project

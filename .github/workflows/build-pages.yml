@@ -1,0 +1,24 @@
+  name: Deploy Pages branch
+  on:
+    push:
+      branches:
+        - master
+    workflow_dispatch:
+  jobs:
+    deploy:
+      name: Deploy Pages branch
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/setup-java@v3
+          with:
+            distribution: "temurin"
+            java-version: "17"
+        - uses: actions/checkout@v3
+        - run: chmod +x ./gradlew
+        - run: ./gradlew buildUserGuide
+        - uses: s0/git-publish-subdir-action@develop
+          env:
+            REPO: self
+            BRANCH: gh-pages
+            FOLDER: build/docs
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
