@@ -46,6 +46,7 @@ scheduler.tick(server)
 }
 }
 ```
+
 </details>
 
 # Why use scheduling?
