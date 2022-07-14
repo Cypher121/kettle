@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation("coffee.cypher.kettle:kettle:latest_version")
+    modImplementation("coffee.cypher.kettle:kettle:<latest_version>")
 }
 ```
 
@@ -34,7 +34,7 @@ dependencies {
 ```json
 {
   "depends": {
-    "kettle": ">=latest_version"
+    "kettle": ">=<latest_version>"
   }
 }
 ```
@@ -54,19 +54,15 @@ Kettle includes a variety of extension functions and properties, such as:
 
 See the [API reference](reference/index.md) for the full list.
 
+Note: more extensions are available in the [Quilt Kotlin Libraries](https://github.com/QuiltMC/quilt-kotlin-libraries/),
+which is highly recommended for Kotlin development on Quilt!
+
 ## Schedulers
 
 Tick-based schedulers allow the user to control several concurrent tasks at once.
 [TickingScheduler](reference/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/index.md) can be manually
 controlled,
-while [TaskBlockEntityController](reference/kettle/coffee.cypher.kettle.tickers.task/-task-block-entity-ticker/index.md)
+while [TaskTicker](build/docs/reference/kettle/coffee.cypher.kettle.tickers.task/-task-ticker/index.md)
 can be used directly as the BlockEntity ticker.
 
-Schedulers allow for control of the task execution via
-a [TaskHandle](reference/kettle/coffee.cypher.kettle.scheduler/-task-handle/index.md) and take
-an [ExecutionConfiguration](reference/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/index.md), which
-specifies how each task will be repeated, as well as how much time it is allowed to spend each tick before being
-suspended.
-
-**Note: tasks, like all coroutines, operate on cooperative concurrency. Using `yield()` often will help prevent the task
-from running too long in one tick.**
+Read more on schedulers, in the [Scheduling API Guide](schedulers.md).
