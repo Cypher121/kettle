@@ -6,47 +6,47 @@ allowing creation of configurable suspendable tasks. The tasks, similarly to the
 coroutines to describe computations that can be stopped, delayed, and resume at will.
 
 For example, the code below drops TNT on a random living player in the Overworld once a minute:
-<details markdown="1">
+<details>
     <summary>Example</summary>
-
+<div markdown="1">
 ```kotlin
-    //create a scheduler with a server world context
-    val scheduler = scheduler<ServerWorld> {
-        //add a task
-        task {
-            //that runs infinitely and pauses
-            //for 1 minute (1200 ticks) after every run
-            run infinitely {
-                pause = 60 * 20
-            }
+//create a scheduler with a server world context
+val scheduler = scheduler<ServerWorld> {
+    //add a task
+    task {
+        //that runs infinitely and pauses
+        //for 1 minute (1200 ticks) after every run
+        run infinitely {
+            pause = 60 * 20
+        }
 
-            action {
-                //use the ServerWorld as `this`
-                withContext {
-                    randomAlivePlayer?.let {
-                        it.sendMessage(
-                            Text.literal("Think fast"),
-                            MessageType.SYSTEM
-                        )
+        action {
+            //use the ServerWorld as `this`
+            withContext {
+                randomAlivePlayer?.let {
+                    it.sendMessage(
+                        Text.literal("Think fast"),
+                        MessageType.SYSTEM
+                    )
 
-                        //suspend task for 1 second
-                        sleepFor(20)
+                    //suspend task for 1 second
+                    sleepFor(20)
 
-                        TntBlock.primeTnt(this, it.pos.up(2))
-                    }
+                    TntBlock.primeTnt(this, it.pos.up(2))
                 }
             }
         }
     }
+}
 
-    ServerTickEvents.START.register {
-        if (server.registryKey == World.OVERWORLD) {
-            //pass the ServerWorld as context and advance the tasks
-            scheduler.tick(server)
-        }
+ServerTickEvents.START.register {
+    if (server.registryKey == World.OVERWORLD) {
+        //pass the ServerWorld as context and advance the tasks
+        scheduler.tick(server)
     }
+}
 ```
-
+</div>
 </details>
 
 # Why use scheduling?
