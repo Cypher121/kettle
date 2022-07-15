@@ -1,0 +1,22 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+details {
+  summary::before {
+    content: "▶";
+    margin-right: 12px;
+    display: inline-block;
+    transition: 0.25s ease-in-out;
+  }
+
+
+  &[open] summary::before {
+    rotate: 90deg;
+  }
+}
+
+h1 {
+  margin-top: 12px;
+}
