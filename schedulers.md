@@ -6,7 +6,7 @@ allowing creation of configurable suspendable tasks. The tasks, similarly to the
 coroutines to describe computations that can be stopped, delayed, and resume at will.
 
 For example, the code below drops TNT on a random living player in the Overworld once a minute:
-<details>
+<details markdown="1">
     <summary>Example</summary>
 
 ```kotlin
