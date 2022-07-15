@@ -9,7 +9,7 @@ For example, the code below drops TNT on a random living player in the Overworld
 <details>
     <summary>Example</summary>
 
-{% highlight kotlin linenos %}
+```kotlin
     //create a scheduler with a server world context
     val scheduler = scheduler<ServerWorld> {
         //add a task
@@ -19,7 +19,7 @@ For example, the code below drops TNT on a random living player in the Overworld
             run infinitely {
                 pause = 60 * 20
             }
-    
+
             action {
                 //use the ServerWorld as `this`
                 withContext {
@@ -28,24 +28,24 @@ For example, the code below drops TNT on a random living player in the Overworld
                             Text.literal("Think fast"),
                             MessageType.SYSTEM
                         )
-    
+
                         //suspend task for 1 second
                         sleepFor(20)
-    
+
                         TntBlock.primeTnt(this, it.pos.up(2))
                     }
                 }
             }
         }
     }
-    
+
     ServerTickEvents.START.register {
         if (server.registryKey == World.OVERWORLD) {
             //pass the ServerWorld as context and advance the tasks
             scheduler.tick(server)
         }
     }
-{% endhighlight %}
+```
 
 </details>
 
@@ -55,8 +55,8 @@ For example, the code below drops TNT on a random living player in the Overworld
     <summary>Long-running tasks</summary>
 
 Like other Kotlin coroutines, scheduled tasks can be suspended to pause the task.
-Functions like [`sleepFor`](reference/kettle/coffee.cypher.kettle.scheduler/-task-context/sleep-for.md)
-or [`waitUntil`](reference/kettle/coffee.cypher.kettle.scheduler/-task-context/wait-until.md)
+Functions like [sleepFor](reference/kettle/coffee.cypher.kettle.scheduler/-task-context/sleep-for.md)
+or [waitUntil](reference/kettle/coffee.cypher.kettle.scheduler/-task-context/wait-until.md)
 cleanly describe how tasks behave over multiple ticks without having to resort
 to manually splitting up the code and keeping track of conditions, states, and timers.
 
@@ -288,8 +288,9 @@ In place of `sleepFor`, the Farmland task now calls [yield](reference/kettle/cof
 Unlike `sleepFor`,`yield` does not suspend the task unconditionally. However, if it detects that the
 task has taken too long since it last resumed, as configured by `yieldsAfterMs`, it suspends the task until next tick.
 
-**Note**: like other coroutines, tasks rely on cooperative multitasking. While
-yield is a useful tool for mitigating lag, you must call it yourself at key points,
+**Note**: like other coroutines, tasks rely on cooperative multitasking, meaning
+they have to allow control to be taken away from them and will not be stopped unexpectedly.
+While yield is a useful tool for mitigating lag, you must call it yourself at key points,
 such as within long-running loops, allowing the scheduler to take back control.
 Additionally, you should expect that the operation may or may not continue on the
 same tick and not make unsafe assumptions about whether your code is running continuously.
