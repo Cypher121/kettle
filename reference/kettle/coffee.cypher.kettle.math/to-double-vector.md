@@ -14,4 +14,8 @@ fun Vec3i.[toDoubleVector](to-double-vector.html)(): Vec3d
 
 
 
+Converts this Vec3i to a Vec3d.
+
+
+
 

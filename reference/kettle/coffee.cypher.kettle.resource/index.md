@@ -14,5 +14,5 @@ title: coffee.cypher.kettle.resource
 
 | Name | Summary |
 |---|---|
-| [getClientResources](get-client-resources.html) | [jvm]<br>@Environment(value = EnvType.CLIENT)<br>fun Identifier.[getClientResources](get-client-resources.html)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;Resource&gt; |
+| [getClientResources](get-client-resources.html) | [jvm]<br>@Environment(value = EnvType.CLIENT)<br>fun Identifier.[getClientResources](get-client-resources.html)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;Resource&gt;<br>Retrieves all client Resources associated with this Identifier. |
 

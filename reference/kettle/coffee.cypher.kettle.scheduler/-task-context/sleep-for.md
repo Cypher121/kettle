@@ -14,4 +14,8 @@ suspend fun [sleepFor](sleep-for.html)(ticks: [Int](https://kotlinlang.org/api/l
 
 
 
+Suspends the task for the specified number of [ticks](sleep-for.html).
+
+
+
 

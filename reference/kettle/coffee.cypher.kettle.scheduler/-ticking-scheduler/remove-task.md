@@ -14,4 +14,8 @@ fun [removeTask](remove-task.html)(task: [Task](../-task/index.html)&lt;[T](inde
 
 
 
+Removes the specified [task](remove-task.html) from this scheduler.
+
+
+
 

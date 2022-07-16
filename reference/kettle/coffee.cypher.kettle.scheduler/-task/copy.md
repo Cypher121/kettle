@@ -14,4 +14,12 @@ abstract fun [copy](copy.html)(): [Task](index.html)&lt;[T](index.html)&gt;
 
 
 
+Creates a copy of this task with identical configuration and executed code.
+
+
+
+Does not copy the current state or progress of the task.
+
+
+
 

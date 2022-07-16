@@ -22,4 +22,12 @@ fun Identifier.[getClientResources](get-client-resources.html)(): [List](https:/
 
 
 
+Retrieves all client Resources associated with this Identifier.
+
+
+
+This extension is only available on the physical client.
+
+
+
 

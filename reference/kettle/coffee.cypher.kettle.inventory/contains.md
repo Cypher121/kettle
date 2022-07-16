@@ -14,4 +14,8 @@ operator fun Inventory.[contains](contains.html)(item: Item): [Boolean](https://
 
 
 
+Returns `true` if any slots of this Inventory contain an ItemStack of the given [item](contains.html), or `false` otherwise.
+
+
+
 

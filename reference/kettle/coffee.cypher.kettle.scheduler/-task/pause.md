@@ -14,4 +14,12 @@ abstract fun [pause](pause.html)()
 
 
 
+Pauses the task, so it can be resumed later using [resume](resume.html).
+
+
+
+Throws an exception if called while the task is executing.
+
+
+
 

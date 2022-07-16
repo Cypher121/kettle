@@ -14,4 +14,8 @@ fun &lt;[T](task-ticker.html) : BlockEntity&gt; [taskTicker](task-ticker.html)(c
 
 
 
+Creates a [TaskTicker](-task-ticker/index.html) and configures its [TickingScheduler](../coffee.cypher.kettle.scheduler/-ticking-scheduler/index.html) with the [config](task-ticker.html) action.
+
+
+
 

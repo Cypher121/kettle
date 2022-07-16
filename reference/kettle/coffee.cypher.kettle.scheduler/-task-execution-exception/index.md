@@ -12,6 +12,8 @@ title: TaskExecutionException
 [jvm]\
 class [TaskExecutionException](index.html) : [RuntimeException](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html)
 
+Exception representing a failure that occurred while executing a task.
+
 
 
 ## Functions

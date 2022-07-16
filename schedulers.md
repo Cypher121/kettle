@@ -205,8 +205,8 @@ is a method of TaskContext allowing the task to suspend itself for
 a specified number of ticks. The task is then recorded to a continuation and begins
 counting down whenever the scheduler (in this case ticker) calls it.
 
-`run once {}` creates a default [ExecutionConfiguration.Once](reference/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/-companion/once.md),
-meaning the task will not re-run once completed.
+`run once {}` creates a default [ExecutionConfiguration](reference/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/-companion/once.md),
+for a single execution meaning the task will not re-run once completed.
 
 ## Building on the task
 

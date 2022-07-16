@@ -14,4 +14,19 @@ operator fun Inventory.[get](get.html)(slot: [Int](https://kotlinlang.org/api/la
 
 
 
+Returns the ItemStack contained in the given [slot](get.html) of this Inventory.
+
+
+
+## See also
+
+
+jvm
+
+| | |
+|---|---|
+| net.minecraft.inventory.Inventory |  |
+
+
+
 

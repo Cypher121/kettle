@@ -12,6 +12,8 @@ title: UnstableApi
 [jvm]\
 annotation class [UnstableApi](index.html)
 
+Marks parts of the API that are still in the development process, and may change unpredictably.
+
 
 
 ## Constructors

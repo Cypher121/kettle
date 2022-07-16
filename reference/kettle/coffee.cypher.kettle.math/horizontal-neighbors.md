@@ -14,4 +14,8 @@ val BlockPos.[horizontalNeighbors](horizontal-neighbors.html): [List](https://ko
 
 
 
+Returns a list of horizontal direct neighbors (shared face, same height) of this BlockPos.
+
+
+
 

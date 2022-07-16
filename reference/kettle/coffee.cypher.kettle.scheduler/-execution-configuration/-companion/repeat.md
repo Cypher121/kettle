@@ -14,4 +14,8 @@ fun [repeat](repeat.html)(initialDelay: [Int](https://kotlinlang.org/api/latest/
 
 
 
+Creates an [ExecutionConfiguration](../index.html) for a task that will execute specified number of times [times](repeat.html) after [initialDelay](repeat.html) ticks, pauses for [pause](repeat.html) ticks after each execution and yields after executing for at least [yieldsAfterMs](repeat.html) milliseconds.
+
+
+
 

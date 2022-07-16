@@ -14,4 +14,8 @@ operator fun Inventory.[iterator](iterator.html)(): [Iterator](https://kotlinlan
 
 
 
+Returns the [Iterator](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html) for this Inventory's slots.
+
+
+
 

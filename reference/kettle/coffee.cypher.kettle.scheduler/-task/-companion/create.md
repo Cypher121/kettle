@@ -14,4 +14,8 @@ fun &lt;[T](create.html) : [Any](https://kotlinlang.org/api/latest/jvm/stdlib/ko
 
 
 
+Creates a new [Task](../index.html) with the given [name](create.html) and execution [configuration](create.html), that will execute the given [taskBlock](create.html) when started.
+
+
+
 

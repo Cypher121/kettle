@@ -2,14 +2,14 @@ $dokka.format:jekyll-v1
 $dokka.linkExtension:html
 $dokka.location:coffee.cypher.kettle.inventory////PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/index.html
 $dokka.location:coffee.cypher.kettle.inventory//asIterable/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/as-iterable.html
-$dokka.location:coffee.cypher.kettle.inventory//asList/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/as-list.html
 $dokka.location:coffee.cypher.kettle.inventory//asSequence/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/as-sequence.html
 $dokka.location:coffee.cypher.kettle.inventory//contains/net.minecraft.inventory.Inventory#net.minecraft.item.Item/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/contains.html
 $dokka.location:coffee.cypher.kettle.inventory//get/net.minecraft.inventory.Inventory#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/get.html
 $dokka.location:coffee.cypher.kettle.inventory//getSideAccess/net.minecraft.inventory.Inventory#net.minecraft.util.math.Direction/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/get-side-access.html
 $dokka.location:coffee.cypher.kettle.inventory//iterator/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/iterator.html
-$dokka.location:coffee.cypher.kettle.inventory//set/net.minecraft.inventory.Inventory#kotlin.Int#net.minecraft.item.ItemStack?/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/set.html
+$dokka.location:coffee.cypher.kettle.inventory//set/net.minecraft.inventory.Inventory#kotlin.Int#net.minecraft.item.ItemStack/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/set.html
 $dokka.location:coffee.cypher.kettle.inventory//slotRange/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/slot-range.html
+$dokka.location:coffee.cypher.kettle.inventory//toList/net.minecraft.inventory.Inventory#/PointingToDeclaration/kettle/coffee.cypher.kettle.inventory/to-list.html
 $dokka.location:coffee.cypher.kettle.item////PointingToDeclaration/kettle/coffee.cypher.kettle.item/index.html
 $dokka.location:coffee.cypher.kettle.item//createStack/net.minecraft.item.ItemConvertible#kotlin.Int#net.minecraft.nbt.NbtCompound?/PointingToDeclaration/kettle/coffee.cypher.kettle.item/create-stack.html
 $dokka.location:coffee.cypher.kettle.item//equals/net.minecraft.item.ItemStack?#net.minecraft.item.ItemStack?#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/kettle/coffee.cypher.kettle.item/equals.html
@@ -17,34 +17,18 @@ $dokka.location:coffee.cypher.kettle.math////PointingToDeclaration/kettle/coffe
 $dokka.location:coffee.cypher.kettle.math//boxTo/net.minecraft.util.math.Vec3d#net.minecraft.util.math.Vec3d/PointingToDeclaration/kettle/coffee.cypher.kettle.math/box-to.html
 $dokka.location:coffee.cypher.kettle.math//boxTo/net.minecraft.util.math.Vec3i#net.minecraft.util.math.Vec3i/PointingToDeclaration/kettle/coffee.cypher.kettle.math/box-to.html
 $dokka.location:coffee.cypher.kettle.math//component1/net.minecraft.util.math.Box#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component1.html
-$dokka.location:coffee.cypher.kettle.math//component1/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component1.html
-$dokka.location:coffee.cypher.kettle.math//component1/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component1.html
 $dokka.location:coffee.cypher.kettle.math//component2/net.minecraft.util.math.Box#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component2.html
-$dokka.location:coffee.cypher.kettle.math//component2/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component2.html
-$dokka.location:coffee.cypher.kettle.math//component2/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component2.html
-$dokka.location:coffee.cypher.kettle.math//component3/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component3.html
-$dokka.location:coffee.cypher.kettle.math//component3/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/component3.html
 $dokka.location:coffee.cypher.kettle.math//copy/net.minecraft.util.math.Vec3d#kotlin.Double#kotlin.Double#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.math/copy.html
 $dokka.location:coffee.cypher.kettle.math//copy/net.minecraft.util.math.Vec3i#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.math/copy.html
-$dokka.location:coffee.cypher.kettle.math//div/net.minecraft.util.math.Vec3d#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.math/div.html
 $dokka.location:coffee.cypher.kettle.math//getContainedBlockPos/net.minecraft.util.math.Box#kotlin.Boolean/PointingToDeclaration/kettle/coffee.cypher.kettle.math/get-contained-block-pos.html
 $dokka.location:coffee.cypher.kettle.math//horizontalNeighbors/net.minecraft.util.math.BlockPos#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/horizontal-neighbors.html
-$dokka.location:coffee.cypher.kettle.math//length/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/length.html
-$dokka.location:coffee.cypher.kettle.math//minus/net.minecraft.util.math.Vec3d#net.minecraft.util.math.Vec3d/PointingToDeclaration/kettle/coffee.cypher.kettle.math/minus.html
-$dokka.location:coffee.cypher.kettle.math//minus/net.minecraft.util.math.Vec3i#net.minecraft.util.math.Vec3i/PointingToDeclaration/kettle/coffee.cypher.kettle.math/minus.html
 $dokka.location:coffee.cypher.kettle.math//neighbors/net.minecraft.util.math.BlockPos#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/neighbors.html
-$dokka.location:coffee.cypher.kettle.math//plus/net.minecraft.util.math.Vec3d#net.minecraft.util.math.Vec3d/PointingToDeclaration/kettle/coffee.cypher.kettle.math/plus.html
-$dokka.location:coffee.cypher.kettle.math//plus/net.minecraft.util.math.Vec3i#net.minecraft.util.math.Vec3i/PointingToDeclaration/kettle/coffee.cypher.kettle.math/plus.html
-$dokka.location:coffee.cypher.kettle.math//times/net.minecraft.util.math.Vec3d#kotlin.Double/PointingToDeclaration/kettle/coffee.cypher.kettle.math/times.html
-$dokka.location:coffee.cypher.kettle.math//times/net.minecraft.util.math.Vec3i#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.math/times.html
 $dokka.location:coffee.cypher.kettle.math//toBlockPos/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-block-pos.html
 $dokka.location:coffee.cypher.kettle.math//toDoubleVector/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-double-vector.html
 $dokka.location:coffee.cypher.kettle.math//toTriple/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-triple.html
 $dokka.location:coffee.cypher.kettle.math//toTriple/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-triple.html
 $dokka.location:coffee.cypher.kettle.math//toVector/kotlin.Triple[kotlin.Double,kotlin.Double,kotlin.Double]#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-vector.html
 $dokka.location:coffee.cypher.kettle.math//toVector/kotlin.Triple[kotlin.Int,kotlin.Int,kotlin.Int]#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/to-vector.html
-$dokka.location:coffee.cypher.kettle.math//unaryMinus/net.minecraft.util.math.Vec3d#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/unary-minus.html
-$dokka.location:coffee.cypher.kettle.math//unaryMinus/net.minecraft.util.math.Vec3i#/PointingToDeclaration/kettle/coffee.cypher.kettle.math/unary-minus.html
 $dokka.location:coffee.cypher.kettle.resource////PointingToDeclaration/kettle/coffee.cypher.kettle.resource/index.html
 $dokka.location:coffee.cypher.kettle.resource//getClientResources/net.minecraft.util.Identifier#/PointingToDeclaration/kettle/coffee.cypher.kettle.resource/get-client-resources.html
 $dokka.location:coffee.cypher.kettle.scheduler////PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/index.html
@@ -108,7 +92,6 @@ $dokka.location:coffee.cypher.kettle.scheduler/TaskContext///PointingToDeclarati
 $dokka.location:coffee.cypher.kettle.scheduler/TaskContext/endTick/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/end-tick.html
 $dokka.location:coffee.cypher.kettle.scheduler/TaskContext/rescheduleOn/#coffee.cypher.kettle.scheduler.TickingScheduler[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/reschedule-on.html
 $dokka.location:coffee.cypher.kettle.scheduler/TaskContext/sleepFor/#kotlin.Int/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/sleep-for.html
-$dokka.location:coffee.cypher.kettle.scheduler/TaskContext/updateContext/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/update-context.html
 $dokka.location:coffee.cypher.kettle.scheduler/TaskContext/waitUntil/#kotlin.Int#kotlin.Boolean#kotlin.Function0[kotlin.Boolean]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/wait-until.html
 $dokka.location:coffee.cypher.kettle.scheduler/TaskContext/withContext/#kotlin.Function1[TypeParam(bounds=[kotlin.Any]),kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/with-context.html
 $dokka.location:coffee.cypher.kettle.scheduler/TaskContext/yield/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task-context/yield.html
@@ -119,9 +102,6 @@ $dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/addTask/#coffee.
 $dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/removeTask/#coffee.cypher.kettle.scheduler.Task[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/remove-task.html
 $dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/tasks/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/tasks.html
 $dokka.location:coffee.cypher.kettle.scheduler/TickingScheduler/tick/#kotlin.Function0[TypeParam(bounds=[kotlin.Any])]#kotlin.Function1[TypeParam(bounds=[kotlin.Any]),kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-ticking-scheduler/tick.html
-$dokka.location:coffee.cypher.kettle.text////PointingToDeclaration/kettle/coffee.cypher.kettle.text/index.html
-$dokka.location:coffee.cypher.kettle.text//toLiteralComponent/kotlin.String#/PointingToDeclaration/kettle/coffee.cypher.kettle.text/to-literal-component.html
-$dokka.location:coffee.cypher.kettle.text//toTranslatableComponent/kotlin.String#kotlin.Array[kotlin.Any]/PointingToDeclaration/kettle/coffee.cypher.kettle.text/to-translatable-component.html
 $dokka.location:coffee.cypher.kettle.tickers.task////PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/index.html
 $dokka.location:coffee.cypher.kettle.tickers.task//taskTicker/#kotlin.Function1[coffee.cypher.kettle.scheduler.TickingScheduler[coffee.cypher.kettle.tickers.task.TickerContext[TypeParam(bounds=[net.minecraft.block.entity.BlockEntity])]],kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/task-ticker.html
 $dokka.location:coffee.cypher.kettle.tickers.task/TaskTicker///PointingToDeclaration/kettle/coffee.cypher.kettle.tickers.task/-task-ticker/index.html
@@ -152,7 +132,6 @@ coffee.cypher.kettle.item
 coffee.cypher.kettle.math
 coffee.cypher.kettle.resource
 coffee.cypher.kettle.scheduler
-coffee.cypher.kettle.text
 coffee.cypher.kettle.tickers
 coffee.cypher.kettle.tickers.task
 coffee.cypher.kettle.world

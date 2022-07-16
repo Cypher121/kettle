@@ -10,7 +10,22 @@ title: set
 
 
 [jvm]\
-operator fun Inventory.[set](set.html)(slot: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), stack: ItemStack?)
+operator fun Inventory.[set](set.html)(slot: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), stack: ItemStack)
+
+
+
+Sets the ItemStack contained in the given [slot](set.html) of this Inventory to the provided [stack](set.html).
+
+
+
+## See also
+
+
+jvm
+
+| | |
+|---|---|
+| net.minecraft.inventory.Inventory |  |
 
 
 

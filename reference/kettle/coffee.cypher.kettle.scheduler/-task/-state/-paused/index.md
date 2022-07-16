@@ -12,4 +12,6 @@ title: Paused
 [jvm]\
 sealed class [Paused](index.html) : [Task.State](../index.html)
 
+Represents a task that is running, but is currently [paused](../../pause.html).
+
 

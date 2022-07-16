@@ -14,4 +14,16 @@ fun [tick](tick.html)(newContext: () -&gt; [T](index.html), updateContext: ([T](
 
 
 
+Executes all tasks registered on this scheduler until they finish or suspend.
+
+
+
+Tasks executing for the first time will be provided a context created by [newContext](tick.html).
+
+
+
+Tasks that already have a context will instead have it updated using [updateContext](tick.html), if provided.
+
+
+
 

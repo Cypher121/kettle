@@ -14,4 +14,12 @@ fun &lt;[T](cast.html) : BlockEntity, [E](cast.html) : BlockEntity&gt; BlockEnti
 
 
 
+Casts a BlockEntityTicker to the specified BlockEntity type [E](cast.html).
+
+
+
+Mainly used when returning from BlockWithEntity.getTicker to return the correct generic type, when it's expected to match this ticker's.
+
+
+
 

@@ -14,4 +14,12 @@ suspend fun [yield](yield.html)()
 
 
 
+Suspends the task if it has been running for longer than [ExecutionConfiguration.yieldsAfterMs](../-execution-configuration/yields-after-ms.html) specified in its configuration.
+
+
+
+Should be called often in long-running blocks to mitigate lag.
+
+
+
 

@@ -14,4 +14,8 @@ fun ItemConvertible.[createStack](create-stack.html)(size: [Int](https://kotlinl
 
 
 
+Creates an ItemStack from this ItemConvertible with the specified [size](create-stack.html) (1 by default) and, if provided, the specified [nbt](create-stack.html) tag.
+
+
+
 

@@ -14,4 +14,8 @@ fun &lt;[T](as-simple-ticker.html) : BlockEntity&gt; (World, BlockPos, BlockStat
 
 
 
+Wraps a function taking the arguments for BlockEntityTicker.tick into a BlockEntityTicker.
+
+
+
 

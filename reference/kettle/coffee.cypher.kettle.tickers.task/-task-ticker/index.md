@@ -10,7 +10,9 @@ title: TaskTicker
 
 
 [jvm]\
-class [TaskTicker](index.html)&lt;[T](index.html) : BlockEntity&gt;(config: [TaskTickerScheduler](../index.html#-1067649280%2FClasslikes%2F863300109)&lt;[T](index.html)&gt;.() -&gt; [Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)) : BlockEntityTicker&lt;[T](index.html)&gt;
+class [TaskTicker](index.html)&lt;[T](index.html) : BlockEntity&gt;(config: [TaskTickerScheduler](../index.html#-1067649280%2FClasslikes%2F863300109)&lt;[T](index.html)&gt;.() -&gt; [Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)) : BlockEntityTicker&lt;[T](index.html)&gt; 
+
+A type of [TickingScheduler](../../coffee.cypher.kettle.scheduler/-ticking-scheduler/index.html) suitable for use as a BlockEntityTicker for entities of type [T](index.html).
 
 
 

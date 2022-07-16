@@ -14,4 +14,21 @@ val [run](run.html): (configuration: [ExecutionConfiguration](../-execution-conf
 
 
 
+Configuration setter for this builder.
+
+
+
+Can be used with extension functions [infinitely](../infinitely.html), [once](../once.html), and [multiple](../multiple.html).
+
+
+
+Example:
+
+```kotlin
+run once {
+    initialDelay = 5
+}
+```
+
+
 

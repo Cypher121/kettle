@@ -12,4 +12,6 @@ title: Stopped
 [jvm]\
 sealed class [Stopped](index.html) : [Task.State](../index.html)
 
+Represents a task that has finished execution or has been [stopped](../../stop.html).
+
 

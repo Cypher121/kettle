@@ -14,4 +14,8 @@ fun [infinite](infinite.html)(initialDelay: [Int](https://kotlinlang.org/api/lat
 
 
 
+Creates an [ExecutionConfiguration](../index.html) for a task that will execute infinitely after [initialDelay](infinite.html) ticks, pauses for [pause](infinite.html) ticks after each execution and yields after executing for at least [yieldsAfterMs](infinite.html) milliseconds.
+
+
+
 

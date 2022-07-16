@@ -10,7 +10,7 @@ title: blockEntity
 
 
 [jvm]\
-val [blockEntity](block-entity.html): [T](index.html)
+var [blockEntity](block-entity.html): [T](index.html)
 
 
 

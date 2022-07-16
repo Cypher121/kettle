@@ -14,4 +14,8 @@ fun Inventory.[asIterable](as-iterable.html)(): [Iterable](https://kotlinlang.or
 
 
 
+Returns this Inventory's slots as an [Iterable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html) of ItemStacks contained within.
+
+
+
 

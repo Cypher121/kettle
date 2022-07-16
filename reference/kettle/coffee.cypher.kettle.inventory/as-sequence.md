@@ -14,4 +14,8 @@ fun Inventory.[asSequence](as-sequence.html)(): [Sequence](https://kotlinlang.or
 
 
 
+Returns this Inventory's slots as a [Sequence](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html) of ItemStacks contained within.
+
+
+
 

@@ -14,4 +14,8 @@ fun Vec3i.[toBlockPos](to-block-pos.html)(): BlockPos
 
 
 
+Converts this Vec3i to a BlockPos.
+
+
+
 

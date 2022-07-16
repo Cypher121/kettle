@@ -14,4 +14,12 @@ fun ItemStack?.[equals](equals.html)(that: ItemStack?, ignoreDurability: [Boolea
 
 
 
+Compares this ItemStack to a given target.
+
+
+
+Strictly compares durability (or whether stacks are damageable), stack size and NBT tags, unless [ignoreDurability](equals.html), [ignoreSize](equals.html), or [ignoreNBT](equals.html) are set to true.
+
+
+
 

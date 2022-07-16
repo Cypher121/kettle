@@ -14,4 +14,8 @@ fun [TickingScheduler](-ticking-scheduler/index.html)&lt;[Unit](https://kotlinla
 
 
 
+Advances all tasks registered on this scheduler until they finish or suspend.
+
+
+
 

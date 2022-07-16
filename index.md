@@ -48,7 +48,7 @@ To view the full API documentation, [follow this link.](reference/index.md)
 Kettle includes a variety of extension functions and properties, such as:
 
 * [Accessing inventories with operators and iterables](reference/kettle/coffee.cypher.kettle.inventory/index.md)
-* [Idiomatic vector math](reference/kettle/coffee.cypher.kettle.math/index.md)
+* [Vector and box utilities](reference/kettle/coffee.cypher.kettle.math/index.md)
 * [World access shorthands](reference/kettle/coffee.cypher.kettle.world/index.md)
 * and more!
 

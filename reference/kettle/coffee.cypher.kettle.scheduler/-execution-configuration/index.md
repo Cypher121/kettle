@@ -12,6 +12,8 @@ title: ExecutionConfiguration
 [jvm]\
 sealed class [ExecutionConfiguration](index.html)
 
+Description of a [Task](../-task/index.html)'s execution pattern dictating how often it will execute, how many times, etc.
+
 
 
 ## Types

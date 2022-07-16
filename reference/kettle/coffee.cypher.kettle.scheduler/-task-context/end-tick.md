@@ -14,4 +14,8 @@ suspend fun [endTick](end-tick.html)()
 
 
 
+Suspends the task until the next tick.
+
+
+
 

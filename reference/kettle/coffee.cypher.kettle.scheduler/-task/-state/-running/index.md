@@ -12,4 +12,6 @@ title: Running
 [jvm]\
 sealed class [Running](index.html) : [Task.State](../index.html)
 
+Represents a task that is currently running.
+
 

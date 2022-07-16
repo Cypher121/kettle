@@ -14,4 +14,8 @@ val Inventory.[slotRange](slot-range.html): [IntRange](https://kotlinlang.org/ap
 
 
 
+Returns a range of all slot indices of this Inventory.
+
+
+
 

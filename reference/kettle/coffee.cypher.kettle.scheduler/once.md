@@ -14,4 +14,19 @@ infix fun ([ExecutionConfiguration](-execution-configuration/index.html)) -&gt; 
 
 
 
+Creates an [ExecutionConfiguration](-execution-configuration/index.html) that executes the task once, further configured with the provided [configuration](once.html).
+
+
+
+## See also
+
+
+jvm
+
+| | |
+|---|---|
+| [TaskBuilder.run](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/index.html) |  |
+
+
+
 

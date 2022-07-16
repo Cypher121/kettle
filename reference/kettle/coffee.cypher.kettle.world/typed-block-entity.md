@@ -14,4 +14,12 @@ inline fun &lt;[T](typed-block-entity.html) : BlockEntity&gt; BlockView.[typedBl
 
 
 
+Returns the BlockEntity contained at the given [pos](typed-block-entity.html) in this BlockView, if it exists and is of type [T](typed-block-entity.html).
+
+
+
+Otherwise, returns null.
+
+
+
 

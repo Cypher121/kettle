@@ -14,4 +14,8 @@ inline fun [withContext](with-context.html)(block: [T](index.html).() -&gt; [Uni
 
 
 
+Provides the generic context of type [T](index.html) that is available to the task and may change after suspension.
+
+
+
 

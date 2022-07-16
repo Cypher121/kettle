@@ -14,4 +14,8 @@ val BlockPos.[neighbors](neighbors.html): [List](https://kotlinlang.org/api/late
 
 
 
+Returns a list of all direct neighbors (shared face) of this BlockPos.
+
+
+
 
