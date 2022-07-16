@@ -4,6 +4,11 @@ import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 
+/**
+ * Creates an [ItemStack] from this [ItemConvertible]
+ * with the specified [size] (1 by default) and,
+ * if provided, the specified [nbt] tag.
+ */
 public fun ItemConvertible.createStack(size: Int = 1, nbt: NbtCompound? = null): ItemStack =
     ItemStack(this, size).apply {
         if (nbt != null) {
@@ -11,6 +16,13 @@ public fun ItemConvertible.createStack(size: Int = 1, nbt: NbtCompound? = null):
         }
     }
 
+/**
+ * Compares this [ItemStack] to a given target.
+ *
+ * Strictly compares durability (or whether stacks are damageable),
+ * stack size and NBT tags, unless [ignoreDurability], [ignoreSize],
+ * or [ignoreNBT] are set to true.
+ */
 public fun ItemStack?.equals(
     that: ItemStack?,
     ignoreDurability: Boolean = false,
@@ -21,14 +33,22 @@ public fun ItemStack?.equals(
         return this === that
     }
 
-    with(that) {}
-
-    if (this.item != that.item) {
+    if (that.isOf(this.item)) {
         return false
     }
 
-    if (!ignoreDurability && this.item.isDamageable && (this.damage != that.damage)) {
+    if (!ignoreDurability && this.isDamageable && (this.damage != that.damage)) {
         return false
+    }
+
+    if (!ignoreDurability) {
+        if (this.isDamageable != that.isDamageable) {
+            return false
+        }
+
+        if (this.isDamageable && (this.damage != that.damage)) {
+            return false
+        }
     }
 
     if (!ignoreSize && (this.count != that.count)) {

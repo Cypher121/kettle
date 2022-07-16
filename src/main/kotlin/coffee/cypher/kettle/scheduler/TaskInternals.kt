@@ -200,5 +200,5 @@ internal class TaskInternals<T : Any> internal constructor(
 
 internal fun <T : Any> Task<T>.internal(): TaskInternals<T> {
     return this as? TaskInternals<T>
-        ?: throw IllegalStateException("Unknown task implementation found: do not implement Task yourself")
+        ?: error("Unknown task implementation found: do not implement Task yourself")
 }
