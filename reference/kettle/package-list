@@ -124,8 +124,8 @@ $dokka.location:coffee.cypher.kettle.world//onServer/net.minecraft.block.entity.
 $dokka.location:coffee.cypher.kettle.world//onServer/net.minecraft.world.WorldView#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.world/on-server.html
 $dokka.location:coffee.cypher.kettle.world//typedBlockEntity/net.minecraft.world.BlockView#net.minecraft.util.math.BlockPos/PointingToDeclaration/kettle/coffee.cypher.kettle.world/typed-block-entity.html
 $dokka.location:coffee.cypher.kettle////PointingToDeclaration/kettle/coffee.cypher.kettle/index.html
-$dokka.location:coffee.cypher.kettle/UnstableApi///PointingToDeclaration/kettle/coffee.cypher.kettle/-unstable-api/index.html
-$dokka.location:coffee.cypher.kettle/UnstableApi/UnstableApi/#/PointingToDeclaration/kettle/coffee.cypher.kettle/-unstable-api/-unstable-api.html
+$dokka.location:coffee.cypher.kettle/Brewing///PointingToDeclaration/kettle/coffee.cypher.kettle/-brewing/index.html
+$dokka.location:coffee.cypher.kettle/Brewing/Brewing/#/PointingToDeclaration/kettle/coffee.cypher.kettle/-brewing/-brewing.html
 coffee.cypher.kettle
 coffee.cypher.kettle.inventory
 coffee.cypher.kettle.item
