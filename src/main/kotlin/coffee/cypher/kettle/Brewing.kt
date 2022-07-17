@@ -8,4 +8,4 @@ package coffee.cypher.kettle
     "This API is unstable and can be deprecated or removed in a minor version update",
     level = RequiresOptIn.Level.WARNING
 )
-public annotation class UnstableApi
+public annotation class Brewing

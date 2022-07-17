@@ -1,0 +1,67 @@
+name: Release
+on: workflow_dispatch
+jobs:
+  build-release:
+    name: Build Artifacts and Release on External Platforms
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+      - uses: actions/checkout@v3
+      - name: Build published JAR
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: remapJar
+      - name: Validate API keys
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: validateKeys
+      - name: Publish to external platforms
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: publishAll
+        env:
+          ORG_GRADLE_PROJECT_curseforgeToken: ${{ secrets.CURSEFORGE_TOKEN }}
+          ORG_GRADLE_PROJECT_modrinthToken: ${{ secrets.MODRINTH_TOKEN }}
+          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.OSS_USERNAME }}
+          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.OSS_PASSWORD }}
+          ORG_GRADLE_PROJECT_pgpKey: ${{ secrets.PGP_KEY }}
+          ORG_GRADLE_PROJECT_pgpPassword: ${{ secrets.PGP_PASSWORD }}
+          ORG_GRADLE_PROJECT_artifactDir: build/github/
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: prepareGithubArtifacts
+      - uses: actions/upload-artifact@v3
+        with:
+          name: release-artifacts
+          path: build/github/
+
+  tag-release:
+    name: Tag and Release on GitHub
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [build-release]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: release-artifacts
+      - name: Read Release Properties
+        id: release_properties
+        run: |
+          content=`cat ./release.json`
+          echo "::set-output name=properties::$content"
+      - name: Publish release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ fromJSON(steps.release_properties.outputs.properties).tag_name }}
+          commit: ${{ github.ref }}
+          name: Release ${{ fromJSON(steps.release_properties.outputs.properties).version }}
+          prerelease: ${{ fromJSON(steps.release_properties.outputs.properties).pre_release }}
+          artifacts: artifacts/*
+
+
+

@@ -1,8 +1,10 @@
 @file:Suppress("UnstableApiUsage")
 
+import groovy.json.JsonOutput
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.net.URL
+import java.net.*
+import java.net.http.*
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -13,8 +15,6 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.unipub)
 }
-
-apply(plugin = "org.jetbrains.dokka")
 
 base {
     @Suppress("DEPRECATION")
@@ -28,7 +28,7 @@ repositories {
 }
 
 sourceSets {
-    create("testmod") {
+    val testmod by creating {
         compileClasspath += sourceSets.main.get().compileClasspath
         runtimeClasspath += sourceSets.main.get().runtimeClasspath
     }
@@ -48,7 +48,7 @@ dependencies {
     // TODO consider this
     // QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
     // Quilted Fabric API will automatically pull in the correct QSL version.
-    modImplementation(libs.bundles.qsl)
+    "testmodImplementation"(libs.bundles.qsl)
 
     afterEvaluate {
         "testmodImplementation"(sourceSets.main.map { it.output })
@@ -91,7 +91,7 @@ tasks {
             useK2 = false
             jvmTarget = javaVersion.toString()
             freeCompilerArgs =
-                listOf("-Xenable-builder-inference", "-Xcontext-receivers")
+                listOf("-Xenable-builder-inference")
         }
     }
 
@@ -134,14 +134,17 @@ tasks {
                 }
 
                 jdkVersion.set(java.toolchain.languageVersion.get().asInt())
-                platform.set(org.jetbrains.dokka.Platform.jvm)
 
                 reportUndocumented.set(true)
             }
         }
     }
 
-    javadoc { dependsOn(dokkaJavadoc) }
+    javadoc {
+        dependsOn(dokkaJavadoc)
+
+        taskActions.clear()
+    }
 
     register("buildUserGuide", Copy::class) {
         group = "documentation"
@@ -151,6 +154,99 @@ tasks {
         into(project.buildDir.resolve("docs"))
     }
 }
+
+//region publishing
+
+class Keystore(project: Project) {
+    val curseforgeToken: String? by project
+    val modrinthToken: String? by project
+
+    val pgpKey: String? by project
+    val pgpPassword: String? by project
+
+    val sonatypeUsername: String? by project
+    val sonatypePassword: String? by project
+}
+
+tasks.register("validateKeys") {
+    group = "verification"
+
+    doFirst {
+        with(Keystore(project)) {
+            requireNotNull(pgpKey)
+            requireNotNull(pgpPassword)
+
+            requireNotNull(curseforgeToken)
+            requireNotNull(modrinthToken)
+
+            requireNotNull(sonatypeUsername)
+            requireNotNull(sonatypePassword)
+
+            val httpClient = HttpClient.newHttpClient()
+
+            val cfRequest = HttpRequest
+                .newBuilder(
+                    URL("https://minecraft.curseforge.com/api/game/versions").toURI()
+                )
+                .header("X-Api-Token", curseforgeToken)
+                .GET()
+                .build()
+
+            val cfResponse = httpClient.send(
+                cfRequest, HttpResponse.BodyHandlers.ofString()
+            )
+
+            require(cfResponse.statusCode() == 200) {
+                "CurseForge auth failed"
+            }
+
+            val modrinthRequest = HttpRequest
+                .newBuilder(
+                    URL("https://api.github.com").toURI()
+                )
+                .header("Authorization", "token $modrinthToken")
+                .GET()
+                .build()
+
+            val modrinthResponse = httpClient.send(
+                modrinthRequest, HttpResponse.BodyHandlers.ofString()
+            )
+
+            require(modrinthResponse.statusCode() == 200) {
+                "Modrinth auth failed (via GitHub token)"
+            }
+
+            val ossClient = HttpClient.newBuilder()
+                .authenticator(
+                    object : Authenticator() {
+                        override fun getPasswordAuthentication() =
+                            PasswordAuthentication(
+                                sonatypeUsername,
+                                sonatypePassword?.toCharArray()
+                            )
+                    }
+                )
+                .build()
+
+            val ossRequest = HttpRequest
+                .newBuilder(
+                    URL("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+                        .toURI()
+                )
+                .GET()
+                .build()
+
+            val ossResponse = ossClient.send(
+                ossRequest, HttpResponse.BodyHandlers.ofString()
+            )
+
+            require(ossResponse.statusCode() !in listOf(401, 403)) {
+                "Maven Central auth failed"
+            }
+        }
+    }
+}
+
 
 unifiedPublishing {
     project {
@@ -167,16 +263,12 @@ unifiedPublishing {
         mainPublication(tasks.remapJar.get())
 
         curseforge {
-            val curseforgeApiKey: String? by project
-
-            token.set(curseforgeApiKey.orEmpty())
+            token.set(Keystore(project).curseforgeToken.orEmpty())
             id.set("316905")
         }
 
         modrinth {
-            val modrinthApiKey: String? by project
-
-            token.set(modrinthApiKey.orEmpty())
+            token.set(Keystore(project).modrinthToken.orEmpty())
             id.set("SRCaBfKA")
         }
     }
@@ -225,11 +317,8 @@ publishing {
                 uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
 
             credentials {
-                val sonatypeUsername: String? by project
-                val sonatypePassword: String? by project
-
-                username = sonatypeUsername.orEmpty()
-                password = sonatypePassword.orEmpty()
+                username = Keystore(project).sonatypeUsername.orEmpty()
+                password = Keystore(project).sonatypePassword.orEmpty()
             }
         }
         mavenLocal()
@@ -238,4 +327,51 @@ publishing {
 
 signing {
     sign(publishing.publications)
+
+    if (hasProperty("envKeys")) {
+        useInMemoryPgpKeys(
+            Keystore(project).pgpKey,
+            Keystore(project).pgpPassword
+        )
+    }
 }
+
+tasks.register("publishAll") {
+    group = "publishing"
+
+    dependsOn(tasks.publish, tasks.publishUnified)
+}
+
+tasks.register("prepareGithubArtifacts", Copy::class) {
+    group = "publishing"
+
+    val artifactDir: String? by project
+
+    dependsOn(tasks.remapJar, tasks.javadoc, tasks.remapSourcesJar)
+
+    from(project.buildDir.resolve("libs")) {
+        include("**/*.jar")
+    }
+
+    val parent = artifactDir?.let(::File)
+        ?: project.buildDir.resolve("release")
+
+    into(File(parent, "artifacts"))
+
+    doLast {
+        File(parent, "release.json").writeText(
+            JsonOutput.toJson(
+                mapOf(
+                    "pre_release" to (
+                        "alpha" in version.toString() ||
+                            "beta" in version.toString()
+                        ),
+                    "version" to version,
+                    "tag_name" to "v$version"
+                )
+            )
+        )
+    }
+}
+
+//endregion publishing

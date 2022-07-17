@@ -14,6 +14,15 @@
             distribution: "temurin"
             java-version: "17"
         - uses: actions/checkout@v3
+        - uses: actions/cache@v3
+          with:
+            path: |
+              ~/.gradle/caches
+              ~/.gradle/wrapper
+              ./build/quilt-loom-cache
+            key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/*.versions.toml') }}
+            restore-keys: |
+              ${{ runner.os }}-gradle-
         - run: chmod +x ./gradlew
         - run: ./gradlew buildUserGuide
         - uses: s0/git-publish-subdir-action@develop
@@ -21,4 +30,5 @@
             REPO: self
             BRANCH: gh-pages
             FOLDER: build/docs
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ github.token }}
+        - run: ./gradlew --stop
