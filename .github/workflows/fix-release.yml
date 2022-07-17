@@ -1,4 +1,4 @@
-name: Release
+name: Fix Release
 on: workflow_dispatch
 jobs:
   build-release:
@@ -14,29 +14,6 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: remapJar
-      - name: Validate API keys
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: validateKeys
-        env:
-          ORG_GRADLE_PROJECT_curseforgeToken: ${{ secrets.CURSEFORGE_TOKEN }}
-          ORG_GRADLE_PROJECT_modrinthToken: ${{ secrets.MODRINTH_TOKEN }}
-          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.OSS_USERNAME }}
-          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.OSS_PASSWORD }}
-          ORG_GRADLE_PROJECT_pgpKey: ${{ secrets.PGP_KEY }}
-          ORG_GRADLE_PROJECT_pgpPassword: ${{ secrets.PGP_PASSWORD }}
-      - name: Publish to external platforms
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: publishAll
-        env:
-          ORG_GRADLE_PROJECT_curseforgeToken: ${{ secrets.CURSEFORGE_TOKEN }}
-          ORG_GRADLE_PROJECT_modrinthToken: ${{ secrets.MODRINTH_TOKEN }}
-          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.OSS_USERNAME }}
-          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.OSS_PASSWORD }}
-          ORG_GRADLE_PROJECT_pgpKey: ${{ secrets.PGP_KEY }}
-          ORG_GRADLE_PROJECT_pgpPassword: ${{ secrets.PGP_PASSWORD }}
-          ORG_GRADLE_PROJECT_artifactDir: build/github/
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: prepareGithubArtifacts
