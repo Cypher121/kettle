@@ -17,10 +17,12 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: prepareGithubArtifacts
+        env:
+          ORG_GRADLE_PROJECT_artifactDir: build/github/
       - uses: actions/upload-artifact@v3
         with:
           name: release-artifacts
-          path: ./build/github/*
+          path: ./build/github/
 
   tag-release:
     name: Tag and Release on GitHub
