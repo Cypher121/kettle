@@ -328,10 +328,12 @@ publishing {
 signing {
     sign(publishing.publications)
 
-    if (hasProperty("envKeys")) {
+    val keystore = Keystore(project)
+
+    if (keystore.pgpKey != null) {
         useInMemoryPgpKeys(
-            Keystore(project).pgpKey,
-            Keystore(project).pgpPassword
+            keystore.pgpKey,
+            keystore.pgpPassword
         )
     }
 }
