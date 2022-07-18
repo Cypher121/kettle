@@ -1,0 +1,13 @@
+{
+    "core": {
+        "version": "2.1.0+1.19"
+    },
+    "platforms": {
+        "modrinth": {
+            "id": "SRCaBfKA"
+        },
+        "curseforge": {
+            "id": "316905"
+        }
+    }
+}

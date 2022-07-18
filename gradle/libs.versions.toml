@@ -28,4 +28,3 @@ qsl = ["quilt-fapi", "qkl"]
 quilt_loom = { id = "org.quiltmc.loom", version = "0.12.+" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
-unipub = { id = "me.shedaniel.unified-publishing", version = "0.1.+" }

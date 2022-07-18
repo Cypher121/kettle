@@ -1,10 +1,9 @@
-@file:Suppress("UnstableApiUsage")
+@file:Suppress("UnstableApiUsage", "UNCHECKED_CAST")
 
-import groovy.json.JsonOutput
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.*
-import java.net.http.*
+import groovy.json.JsonSlurper
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -13,14 +12,17 @@ plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.quilt.loom)
     alias(libs.plugins.dokka)
-    alias(libs.plugins.unipub)
 }
 
 base {
     @Suppress("DEPRECATION")
     archivesBaseName = "kettle"
 }
-version = "2.1.0+1.19"
+
+val modProps =
+    JsonSlurper().parseText(File("mod.json").readText()) as Map<String, Any>
+
+version = (modProps.getValue("core") as Map<String, Any>).getValue("version")
 group = "coffee.cypher.kettle"
 
 repositories {
@@ -157,121 +159,30 @@ tasks {
 
 //region publishing
 
-class Keystore(project: Project) {
-    val curseforgeToken: String? by project
-    val modrinthToken: String? by project
+tasks {
+    dokkaJavadoc {
+        onlyIf { !hasProperty("publishOnly") }
+    }
 
+    javadoc {
+        onlyIf { !hasProperty("publishOnly") }
+    }
+
+    remapJar {
+        onlyIf { !hasProperty("publishOnly") }
+    }
+
+    remapSourcesJar {
+        onlyIf { !hasProperty("publishOnly") }
+    }
+}
+
+class Keystore(project: Project) {
     val pgpKey: String? by project
     val pgpPassword: String? by project
 
     val sonatypeUsername: String? by project
     val sonatypePassword: String? by project
-}
-
-tasks.register("validateKeys") {
-    group = "verification"
-
-    doFirst {
-        with(Keystore(project)) {
-            requireNotNull(pgpKey)
-            requireNotNull(pgpPassword)
-
-            requireNotNull(curseforgeToken)
-            requireNotNull(modrinthToken)
-
-            requireNotNull(sonatypeUsername)
-            requireNotNull(sonatypePassword)
-
-            val httpClient = HttpClient.newHttpClient()
-
-            val cfRequest = HttpRequest
-                .newBuilder(
-                    URL("https://minecraft.curseforge.com/api/game/versions").toURI()
-                )
-                .header("X-Api-Token", curseforgeToken)
-                .GET()
-                .build()
-
-            val cfResponse = httpClient.send(
-                cfRequest, HttpResponse.BodyHandlers.ofString()
-            )
-
-            require(cfResponse.statusCode() == 200) {
-                "CurseForge auth failed"
-            }
-
-            val modrinthRequest = HttpRequest
-                .newBuilder(
-                    URL("https://api.github.com").toURI()
-                )
-                .header("Authorization", "token $modrinthToken")
-                .GET()
-                .build()
-
-            val modrinthResponse = httpClient.send(
-                modrinthRequest, HttpResponse.BodyHandlers.ofString()
-            )
-
-            require(modrinthResponse.statusCode() == 200) {
-                "Modrinth auth failed (via GitHub token)"
-            }
-
-            val ossClient = HttpClient.newBuilder()
-                .authenticator(
-                    object : Authenticator() {
-                        override fun getPasswordAuthentication() =
-                            PasswordAuthentication(
-                                sonatypeUsername,
-                                sonatypePassword?.toCharArray()
-                            )
-                    }
-                )
-                .build()
-
-            val ossRequest = HttpRequest
-                .newBuilder(
-                    URL("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-                        .toURI()
-                )
-                .GET()
-                .build()
-
-            val ossResponse = ossClient.send(
-                ossRequest, HttpResponse.BodyHandlers.ofString()
-            )
-
-            require(ossResponse.statusCode() !in listOf(401, 403)) {
-                "Maven Central auth failed"
-            }
-        }
-    }
-}
-
-
-unifiedPublishing {
-    project {
-        gameVersions.set(libs.versions.minecraft.map { listOf(it) })
-        gameLoaders.set(listOf("quilt"))
-        releaseType.set(
-            when {
-                "alpha" in project.version.toString() -> "alpha"
-                "beta" in project.version.toString() -> "beta"
-                else -> "release"
-            }
-        )
-
-        mainPublication(tasks.remapJar.get())
-
-        curseforge {
-            token.set(Keystore(project).curseforgeToken.orEmpty())
-            id.set("316905")
-        }
-
-        modrinth {
-            token.set(Keystore(project).modrinthToken.orEmpty())
-            id.set("SRCaBfKA")
-        }
-    }
 }
 
 publishing {
@@ -338,13 +249,7 @@ signing {
     }
 }
 
-tasks.register("publishAll") {
-    group = "publishing"
-
-    dependsOn(tasks.publish, tasks.publishUnified)
-}
-
-tasks.register("prepareGithubArtifacts", Copy::class) {
+tasks.register("prepareArtifacts", Copy::class) {
     group = "publishing"
 
     val artifactDir: String? by project
@@ -355,25 +260,10 @@ tasks.register("prepareGithubArtifacts", Copy::class) {
         include("**/*.jar")
     }
 
-    val parent = artifactDir?.let(::File)
+    val destination = artifactDir?.let(::File)
         ?: project.buildDir.resolve("release")
 
-    into(File(parent, "artifacts"))
-
-    doLast {
-        File(parent, "release.json").writeText(
-            JsonOutput.toJson(
-                mapOf(
-                    "pre_release" to (
-                        "alpha" in version.toString() ||
-                            "beta" in version.toString()
-                        ),
-                    "version" to version,
-                    "tag_name" to "v$version"
-                )
-            )
-        )
-    }
+    into(destination)
 }
 
 //endregion publishing

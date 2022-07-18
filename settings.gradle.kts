@@ -8,6 +8,11 @@ pluginManagement {
         maven("https://maven.quiltmc.org/repository/release") {
             name = "Quilt"
         }
+
+        maven("https://maven.quiltmc.org/repository/snapshot/") {
+            name = "Quilt Snapshots"
+        }
+
         maven("https://maven.architectury.dev/")
 
         // Currently needed for Intermediary and other temporary dependencies

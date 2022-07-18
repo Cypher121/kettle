@@ -1,0 +1,126 @@
+name: Release (v2)
+on:
+  workflow_dispatch:
+    inputs:
+      modrinth:
+        type: boolean
+        description: Whether this release should be published on Modrinth
+        required: true
+        default: true
+      curseforge:
+        type: boolean
+        description: Whether this release should be published on CurseForge
+        required: true
+        default: true
+      github:
+        type: boolean
+        description: Whether this release should be published on GitHub Releases
+        required: true
+        default: true
+      maven:
+        type: boolean
+        description: Whether this release should be published on Maven Central
+        required: true
+        default: true
+jobs:
+  build-artifacts:
+    name: Build Artifacts
+    runs-on: ubuntu-latest
+    outputs:
+      mod: ${{ steps.metadata.outputs.value }}
+    steps:
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+      - uses: gradle/gradle-build-action@v2
+      - name: Build JARs for publishing
+        run: ./gradlew prepareArtifacts
+        env:
+          ORG_GRADLE_PROJECT_artifactDir: build/github/
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-artifacts
+          path: ./build/github/
+      - name: Retrieve mod metadata
+        id: metadata
+        run: |
+          metadata=`cat ./mod.json`
+          echo "::set-output name=value::$metadata"
+  maven-publish:
+    name: Publish to Maven Central
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.maven }}
+    needs: [build-artifacts]
+    steps:
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+      - uses: gradle/gradle-build-action@v2
+      - uses: actions/download-artifact@v3
+        with:
+          name: release-artifacts
+          path: ./build/libs/
+      - name: Publish to Maven Central
+        run: ./gradlew publish -DpublishOnly
+        env:
+          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.OSS_USERNAME }}
+          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.OSS_PASSWORD }}
+          ORG_GRADLE_PROJECT_pgpKey: ${{ secrets.PGP_KEY }}
+          ORG_GRADLE_PROJECT_pgpPassword: ${{ secrets.PGP_PASSWORD }}
+  curseforge-publish:
+    name: Publish to CurseForge
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.curseforge }}
+    needs: [ build-artifacts ]
+    steps:
+      - uses: action/download-artifact@v3
+        with:
+          name: release-artifacts
+      - uses: Kir-Antipov/mc-publish@v3.1
+        with:
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          curseforge-id: ${{ fromJSON(needs.build-artifacts.outputs.mod).platforms.curseforge.id }}
+          files-primary: ./!(*-@(dev|sources)).jar
+          files-secondary: ./*-@(dev|sources).jar
+          name: ""
+  modrinth-publish:
+    name: Publish to Modrinth
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.modrinth }}
+    needs: [ build-artifacts ]
+    steps:
+      - uses: action/download-artifact@v3
+        with:
+          name: release-artifacts
+      - uses: Kir-Antipov/mc-publish@v3.1
+        with:
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-id: ${{ fromJSON(needs.build-artifacts.outputs.mod).platforms.modrinth.id }}
+          files-primary: ./!(*-@(dev|sources)).jar
+          files-secondary: ./*-@(dev|sources).jar
+          name: ""
+  github-publish:
+    name: Publish to GitHub Releases
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.github }}
+    needs: [ build-artifacts ]
+    steps:
+      - uses: action/download-artifact@v3
+        with:
+          name: release-artifacts
+      - name: Publish GitHubRelease
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ format("v{0}", fromJSON(steps.release_properties.outputs.properties).tag_name }}
+          commit: ${{ github.ref }}
+          name: Release ${{ fromJSON(needs.build-artifacts.outputs.mod).core.version }}
+          prerelease: ${{ contains(fromJSON(needs.build-artifacts.outputs.mod).core.version, 'alpha') || contains(fromJSON(needs.build-artifacts.outputs.mod).core.version, 'beta') }}
+          artifacts: ./*.jar
+
+
+
+
+
