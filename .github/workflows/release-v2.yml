@@ -119,8 +119,3 @@ jobs:
           name: Release ${{ fromJSON(needs.build-artifacts.outputs.mod).core.version }}
           prerelease: ${{ contains(fromJSON(needs.build-artifacts.outputs.mod).core.version, 'alpha') || contains(fromJSON(needs.build-artifacts.outputs.mod).core.version, 'beta') }}
           artifacts: ./*.jar
-
-
-
-
-
