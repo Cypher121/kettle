@@ -12,23 +12,22 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.item.BlockItem
+import net.minecraft.item.Item
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
 import net.minecraft.util.registry.Registry
 import net.minecraft.world.World
 import org.quiltmc.loader.api.ModContainer
-import org.quiltmc.qkl.wrapper.qsl.blocks.blockSettingsOf
-import org.quiltmc.qkl.wrapper.qsl.blocks.materialOf
-import org.quiltmc.qkl.wrapper.qsl.items.itemSettingsOf
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer
 
+@Suppress("unused")
 object SchedulerTestMod : ModInitializer {
     override fun onInitialize(mod: ModContainer) {
         Registry.register(Registry.BLOCK, Identifier("kettle_test", "test_block"), TestBlock)
         Registry.register(Registry.BLOCK_ENTITY_TYPE, Identifier("kettle_test", "test_be"), testBEType)
         Registry.register(
-            Registry.ITEM, Identifier("kettle_test", "test_block"), BlockItem(TestBlock, itemSettingsOf())
+            Registry.ITEM, Identifier("kettle_test", "test_block"), BlockItem(TestBlock, Item.Settings())
         )
     }
 }
@@ -97,8 +96,9 @@ val testBEType: BlockEntityType<TestBlockEntity> by lazy {
     BlockEntityType(::TestBlockEntity, setOf(TestBlock), null)
 }
 
+@Suppress("unused")
 object TestBlock : BlockWithEntity(
-    blockSettingsOf(materialOf(MapColor.BLACK))
+    Settings.of(Material.Builder(MapColor.BLACK).build())
 ) {
     override fun createBlockEntity(pos: BlockPos, state: BlockState) = TestBlockEntity(pos, state)
 
