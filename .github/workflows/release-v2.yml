@@ -4,22 +4,22 @@ on:
     inputs:
       modrinth:
         type: boolean
-        description: Whether this release should be published on Modrinth
+        description: Publish on Modrinth
         required: true
         default: true
       curseforge:
         type: boolean
-        description: Whether this release should be published on CurseForge
+        description: Publish on CurseForge
         required: true
         default: true
       github:
         type: boolean
-        description: Whether this release should be published on GitHub Releases
+        description: Publish on GitHub Releases
         required: true
         default: true
       maven:
         type: boolean
-        description: Whether this release should be published on Maven Central
+        description: Publish on Maven Central
         required: true
         default: true
 jobs:
