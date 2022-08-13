@@ -6,22 +6,18 @@ on:
         type: boolean
         description: Publish on Modrinth
         required: true
-        default: true
       curseforge:
         type: boolean
         description: Publish on CurseForge
         required: true
-        default: true
       github:
         type: boolean
         description: Publish on GitHub Releases
         required: true
-        default: true
       maven:
         type: boolean
         description: Publish on Maven Central
         required: true
-        default: true
 jobs:
   build-artifacts:
     name: Build Artifacts
@@ -53,7 +49,7 @@ jobs:
   maven-publish:
     name: Publish to Maven Central
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.maven == true }}
+    if: ${{ github.event.inputs.maven }}
     needs: [build-artifacts]
     steps:
       - uses: actions/setup-java@v3
@@ -78,7 +74,7 @@ jobs:
   curseforge-publish:
     name: Publish to CurseForge
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.curseforge == true }}
+    if: ${{ github.event.inputs.curseforge }}
     needs: [ build-artifacts ]
     steps:
       - uses: actions/download-artifact@v3
@@ -94,7 +90,7 @@ jobs:
   modrinth-publish:
     name: Publish to Modrinth
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.modrinth == true }}
+    if: ${{ github.event.inputs.modrinth }}
     needs: [ build-artifacts ]
     steps:
       - uses: actions/download-artifact@v3
@@ -110,7 +106,7 @@ jobs:
   github-publish:
     name: Publish to GitHub Releases
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.github == true }}
+    if: ${{ github.event.inputs.github }}
     needs: [ build-artifacts ]
     steps:
       - uses: actions/download-artifact@v3
