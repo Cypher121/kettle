@@ -1,9 +1,9 @@
 @file:Suppress("UnstableApiUsage", "UNCHECKED_CAST")
 
+import groovy.json.JsonSlurper
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.net.*
-import groovy.json.JsonSlurper
+import java.net.URL
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.quilt.loom)
     alias(libs.plugins.dokka)
+    alias(libs.plugins.nexus)
 }
 
 base {
@@ -50,7 +51,7 @@ dependencies {
     // TODO consider this
     // QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
     // Quilted Fabric API will automatically pull in the correct QSL version.
-    "testmodImplementation"(libs.bundles.qsl)
+    modImplementation(libs.bundles.qsl)
 
     afterEvaluate {
         "testmodImplementation"(sourceSets.main.map { it.output })
@@ -223,16 +224,16 @@ publishing {
     }
 
     repositories {
-        maven {
-            url =
-                uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
-
-            credentials {
-                username = Keystore(project).sonatypeUsername.orEmpty()
-                password = Keystore(project).sonatypePassword.orEmpty()
-            }
-        }
         mavenLocal()
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            username.set(Keystore(project).sonatypeUsername.orEmpty())
+            password.set(Keystore(project).sonatypePassword.orEmpty())
+        }
     }
 }
 

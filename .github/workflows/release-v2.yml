@@ -64,7 +64,7 @@ jobs:
           name: release-artifacts
           path: ./build/libs/
       - name: Publish to Maven Central
-        run: ./gradlew publish -DpublishOnly
+        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -DpublishOnly
         env:
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.OSS_USERNAME }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.OSS_PASSWORD }}
