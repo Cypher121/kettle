@@ -1,0 +1,22 @@
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        type: boolean
+        description: "test"
+        required: true
+jobs:
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ toJSON(github.event.inputs) }}"
+  test2:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.test }}
+    steps:
+      - run: echo "bool"
+  test3:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.test == 'true' }}
+    steps:
+      - run: echo "string"
