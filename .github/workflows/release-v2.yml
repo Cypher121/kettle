@@ -48,12 +48,12 @@ jobs:
       - name: Retrieve mod metadata
         id: metadata
         run: |
-          metadata=`cat ./mod.json`
+          metadata=`cat ./mod.json | tr '\n' ' '`
           echo "::set-output name=value::$metadata"
   maven-publish:
     name: Publish to Maven Central
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.maven }}
+    if: ${{ github.event.inputs.maven == true }}
     needs: [build-artifacts]
     steps:
       - uses: actions/setup-java@v3
@@ -78,7 +78,7 @@ jobs:
   curseforge-publish:
     name: Publish to CurseForge
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.curseforge }}
+    if: ${{ github.event.inputs.curseforge == true }}
     needs: [ build-artifacts ]
     steps:
       - uses: actions/download-artifact@v3
@@ -94,7 +94,7 @@ jobs:
   modrinth-publish:
     name: Publish to Modrinth
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.modrinth }}
+    if: ${{ github.event.inputs.modrinth == true }}
     needs: [ build-artifacts ]
     steps:
       - uses: actions/download-artifact@v3
@@ -110,7 +110,7 @@ jobs:
   github-publish:
     name: Publish to GitHub Releases
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.github }}
+    if: ${{ github.event.inputs.github == true }}
     needs: [ build-artifacts ]
     steps:
       - uses: actions/download-artifact@v3
@@ -119,7 +119,7 @@ jobs:
       - name: Publish GitHubRelease
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ format('v{0}', fromJSON(steps.release_properties.outputs.properties).tag_name) }}
+          tag: ${{ format('v{0}', fromJSON(needs.build-artifacts.outputs.mod).core.version) }}
           commit: ${{ github.ref }}
           name: Release ${{ fromJSON(needs.build-artifacts.outputs.mod).core.version }}
           prerelease: ${{ contains(fromJSON(needs.build-artifacts.outputs.mod).core.version, 'alpha') || contains(fromJSON(needs.build-artifacts.outputs.mod).core.version, 'beta') }}
