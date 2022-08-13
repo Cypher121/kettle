@@ -162,19 +162,19 @@ tasks {
 
 tasks {
     dokkaJavadoc {
-        onlyIf { !hasProperty("publishOnly") }
+        onlyIf { !project.hasProperty("publishOnly") }
     }
 
     javadoc {
-        onlyIf { !hasProperty("publishOnly") }
+        onlyIf { !project.hasProperty("publishOnly") }
     }
 
     remapJar {
-        onlyIf { !hasProperty("publishOnly") }
+        onlyIf { !project.hasProperty("publishOnly") }
     }
 
     remapSourcesJar {
-        onlyIf { !hasProperty("publishOnly") }
+        onlyIf { !project.hasProperty("publishOnly") }
     }
 }
 

@@ -34,7 +34,7 @@ jobs:
           distribution: "temurin"
           java-version: "17"
       - uses: actions/checkout@v3
-      - name: Build JARs for
+      - name: Build JARs for publishing
         uses: gradle/gradle-build-action@v2
         with:
           arguments: prepareArtifacts
@@ -69,7 +69,7 @@ jobs:
       - name: Publish to Maven Central
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository -DpublishOnly
+          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository -PpublishOnly=true
         env:
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.OSS_USERNAME }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.OSS_PASSWORD }}
@@ -81,7 +81,7 @@ jobs:
     if: ${{ github.event.inputs.curseforge }}
     needs: [ build-artifacts ]
     steps:
-      - uses: action/download-artifact@v3
+      - uses: actions/download-artifact@v3
         with:
           name: release-artifacts
       - uses: Kir-Antipov/mc-publish@v3.1
@@ -97,7 +97,7 @@ jobs:
     if: ${{ github.event.inputs.modrinth }}
     needs: [ build-artifacts ]
     steps:
-      - uses: action/download-artifact@v3
+      - uses: actions/download-artifact@v3
         with:
           name: release-artifacts
       - uses: Kir-Antipov/mc-publish@v3.1
@@ -113,7 +113,7 @@ jobs:
     if: ${{ github.event.inputs.github }}
     needs: [ build-artifacts ]
     steps:
-      - uses: action/download-artifact@v3
+      - uses: actions/download-artifact@v3
         with:
           name: release-artifacts
       - name: Publish GitHubRelease
