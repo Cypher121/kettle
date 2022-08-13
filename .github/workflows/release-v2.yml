@@ -114,7 +114,7 @@ jobs:
       - name: Publish GitHubRelease
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ format('v{0}', fromJSON(steps.release_properties.outputs.properties).tag_name }}
+          tag: ${{ format('v{0}', fromJSON(steps.release_properties.outputs.properties).tag_name) }}
           commit: ${{ github.ref }}
           name: Release ${{ fromJSON(needs.build-artifacts.outputs.mod).core.version }}
           prerelease: ${{ contains(fromJSON(needs.build-artifacts.outputs.mod).core.version, 'alpha') || contains(fromJSON(needs.build-artifacts.outputs.mod).core.version, 'beta') }}
