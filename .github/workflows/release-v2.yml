@@ -30,6 +30,7 @@ jobs:
       mod: ${{ steps.metadata.outputs.value }}
     steps:
       - uses: actions/setup-java@v3
+      - uses: actions/checkout@v3
         with:
           distribution: "temurin"
           java-version: "17"
@@ -56,6 +57,7 @@ jobs:
     needs: [build-artifacts]
     steps:
       - uses: actions/setup-java@v3
+      - uses: actions/checkout@v3
         with:
           distribution: "temurin"
           java-version: "17"
