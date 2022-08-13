@@ -33,9 +33,10 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "17"
-      - uses: gradle/gradle-build-action@v2
-      - name: Build JARs for publishing
-        run: ./gradlew prepareArtifacts
+      - name: Build JARs for
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: prepareArtifacts
         env:
           ORG_GRADLE_PROJECT_artifactDir: build/github/
       - name: Upload artifacts
@@ -64,7 +65,9 @@ jobs:
           name: release-artifacts
           path: ./build/libs/
       - name: Publish to Maven Central
-        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -DpublishOnly
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository -DpublishOnly
         env:
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.OSS_USERNAME }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.OSS_PASSWORD }}
