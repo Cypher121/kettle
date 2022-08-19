@@ -33,20 +33,15 @@ public fun ItemStack?.equals(
         return this === that
     }
 
-    if (that.isOf(this.item)) {
-        return false
-    }
-
-    if (!ignoreDurability && this.isDamageable && (this.damage != that.damage)) {
+    if (!that.isOf(this.item)) {
         return false
     }
 
     if (!ignoreDurability) {
-        if (this.isDamageable != that.isDamageable) {
-            return false
-        }
+        val thisDamage = if (this.isDamageable) this.damage else 0
+        val thatDamage = if (that.isDamageable) this.damage else 0
 
-        if (this.isDamageable && (this.damage != that.damage)) {
+        if (thisDamage != thatDamage) {
             return false
         }
     }
