@@ -10,7 +10,7 @@ title: TickingScheduler
 
 
 [jvm]\
-fun [TickingScheduler](-ticking-scheduler.html)()
+constructor()
 
 
 

@@ -18,15 +18,12 @@ Returns the ItemStack contained in the given [slot](get.html) of this Inventory.
 
 
 
-## See also
+#### See also
 
 
-jvm
-
-| | |
-|---|---|
-| net.minecraft.inventory.Inventory |  |
-
+| |
+|---|
+| Inventory.getStack |
 
 
 

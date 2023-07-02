@@ -10,7 +10,7 @@ title: pause
 
 
 [jvm]\
-var [pause](pause.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 1
+var [pause](pause.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
 
 
 

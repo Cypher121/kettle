@@ -5,7 +5,7 @@ title: coffee.cypher.kettle.item
 
 
 
-# Package coffee.cypher.kettle.item
+# Package-level declarations
 
 
 

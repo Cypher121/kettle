@@ -21,7 +21,7 @@ A builder object for an [ExecutionConfiguration](../../-execution-configuration/
 
 | | |
 |---|---|
-| [Multiple](-multiple.html) | [jvm]<br>fun [Multiple](-multiple.html)() |
+| [Multiple](-multiple.html) | [jvm]<br>constructor() |
 
 
 ## Properties
@@ -29,8 +29,8 @@ A builder object for an [ExecutionConfiguration](../../-execution-configuration/
 
 | Name | Summary |
 |---|---|
-| [initialDelay](../initial-delay.html) | [jvm]<br>var [initialDelay](../initial-delay.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 0<br>delay in ticks before the task first executes |
-| [pause](pause.html) | [jvm]<br>var [pause](pause.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 1<br>delay in ticks between each execution |
-| [times](times.html) | [jvm]<br>var [times](times.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 1<br>number of times to execute the task |
-| [yieldsAfterMs](../yields-after-ms.html) | [jvm]<br>var [yieldsAfterMs](../yields-after-ms.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 50.0<br>number of milliseconds in one execution until [TaskContext.yield](../../-task-context/yield.html) suspends the task. |
+| [initialDelay](../initial-delay.html) | [jvm]<br>var [initialDelay](../initial-delay.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)<br>delay in ticks before the task first executes |
+| [pause](pause.html) | [jvm]<br>var [pause](pause.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)<br>delay in ticks between each execution |
+| [times](times.html) | [jvm]<br>var [times](times.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)<br>number of times to execute the task |
+| [yieldsAfterMs](../yields-after-ms.html) | [jvm]<br>var [yieldsAfterMs](../yields-after-ms.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)<br>number of milliseconds in one execution until [TaskContext.yield](../../-task-context/yield.html) suspends the task. |
 

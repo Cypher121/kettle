@@ -10,7 +10,7 @@ title: start
 
 
 [jvm]\
-var [start](start.html): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false
+var [start](start.html): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
 
 
 

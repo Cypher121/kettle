@@ -5,8 +5,17 @@ title: coffee.cypher.kettle.math
 
 
 
-# Package coffee.cypher.kettle.math
+# Package-level declarations
 
+
+
+## Properties
+
+
+| Name | Summary |
+|---|---|
+| [horizontalNeighbors](horizontal-neighbors.html) | [jvm]<br>val BlockPos.[horizontalNeighbors](horizontal-neighbors.html): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;BlockPos&gt;<br>Returns a list of horizontal direct neighbors (shared face, same height) of this BlockPos. |
+| [neighbors](neighbors.html) | [jvm]<br>val BlockPos.[neighbors](neighbors.html): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;BlockPos&gt;<br>Returns a list of all direct neighbors (shared face) of this BlockPos. |
 
 
 ## Functions
@@ -23,13 +32,4 @@ title: coffee.cypher.kettle.math
 | [toDoubleVector](to-double-vector.html) | [jvm]<br>fun Vec3i.[toDoubleVector](to-double-vector.html)(): Vec3d<br>Converts this Vec3i to a Vec3d. |
 | [toTriple](to-triple.html) | [jvm]<br>fun Vec3d.[toTriple](to-triple.html)(): [Triple](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html)&lt;[Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)&gt;<br>Converts this Vec3d to a [Triple](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html) of its components.<br>[jvm]<br>fun Vec3i.[toTriple](to-triple.html)(): [Triple](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html)&lt;[Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)&gt;<br>Converts this Vec3i to a [Triple](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html) of its components. |
 | [toVector](to-vector.html) | [jvm]<br>fun [Triple](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html)&lt;[Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)&gt;.[toVector](to-vector.html)(): Vec3d<br>Creates a Vec3d from the components of this [Triple](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html).<br>[jvm]<br>fun [Triple](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html)&lt;[Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)&gt;.[toVector](to-vector.html)(): Vec3i<br>Creates a Vec3i from the components of this [Triple](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html). |
-
-
-## Properties
-
-
-| Name | Summary |
-|---|---|
-| [horizontalNeighbors](horizontal-neighbors.html) | [jvm]<br>val BlockPos.[horizontalNeighbors](horizontal-neighbors.html): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;BlockPos&gt;<br>Returns a list of horizontal direct neighbors (shared face, same height) of this BlockPos. |
-| [neighbors](neighbors.html) | [jvm]<br>val BlockPos.[neighbors](neighbors.html): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;BlockPos&gt;<br>Returns a list of all direct neighbors (shared face) of this BlockPos. |
 

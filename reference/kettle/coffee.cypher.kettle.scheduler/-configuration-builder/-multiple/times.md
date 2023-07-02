@@ -10,7 +10,7 @@ title: times
 
 
 [jvm]\
-var [times](times.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 1
+var [times](times.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
 
 
 

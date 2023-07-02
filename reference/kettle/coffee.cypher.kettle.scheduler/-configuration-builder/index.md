@@ -7,13 +7,20 @@ title: ConfigurationBuilder
 
 # ConfigurationBuilder
 
-
-
-[jvm]\
 sealed class [ConfigurationBuilder](index.html)
 
 A builder object representing the [Task](../-task/index.html)'s [ExecutionConfiguration](../-execution-configuration/index.html).
 
+
+
+#### Inheritors
+
+
+| |
+|---|
+| [Once](-once/index.html) |
+| [Multiple](-multiple/index.html) |
+| [Infinite](-infinite/index.html) |
 
 
 ## Types
@@ -31,16 +38,6 @@ A builder object representing the [Task](../-task/index.html)'s [ExecutionConfig
 
 | Name | Summary |
 |---|---|
-| [initialDelay](initial-delay.html) | [jvm]<br>var [initialDelay](initial-delay.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 0<br>delay in ticks before the task first executes |
-| [yieldsAfterMs](yields-after-ms.html) | [jvm]<br>var [yieldsAfterMs](yields-after-ms.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 50.0<br>number of milliseconds in one execution until [TaskContext.yield](../-task-context/yield.html) suspends the task. |
-
-
-## Inheritors
-
-
-| Name |
-|---|
-| [Once](-once/index.html) |
-| [Multiple](-multiple/index.html) |
-| [Infinite](-infinite/index.html) |
+| [initialDelay](initial-delay.html) | [jvm]<br>var [initialDelay](initial-delay.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)<br>delay in ticks before the task first executes |
+| [yieldsAfterMs](yields-after-ms.html) | [jvm]<br>var [yieldsAfterMs](yields-after-ms.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)<br>number of milliseconds in one execution until [TaskContext.yield](../-task-context/yield.html) suspends the task. |
 

@@ -7,13 +7,18 @@ title: TaskBuilder
 
 # TaskBuilder
 
-
-
-[jvm]\
 open class [TaskBuilder](index.html)&lt;[T](index.html) : [Any](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)&gt;
 
 A builder object used with DSL extensions to create a [Task](../-task/index.html).
 
+
+
+#### Inheritors
+
+
+| |
+|---|
+| [AttachedTaskBuilder](../-attached-task-builder/index.html) |
 
 
 ## Properties
@@ -25,15 +30,7 @@ A builder object used with DSL extensions to create a [Task](../-task/index.html
 | [run](run.html) | [jvm]<br>val [run](run.html): (configuration: [ExecutionConfiguration](../-execution-configuration/index.html)) -&gt; [Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Configuration setter for this builder. |
 
 
-## Inheritors
-
-
-| Name |
-|---|
-| [AttachedTaskBuilder](../-attached-task-builder/index.html) |
-
-
-## Extensions
+## Functions
 
 
 | Name | Summary |

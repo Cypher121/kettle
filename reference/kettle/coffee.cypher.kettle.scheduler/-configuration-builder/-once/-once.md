@@ -10,7 +10,7 @@ title: Once
 
 
 [jvm]\
-fun [Once](-once.html)()
+constructor()
 
 
 

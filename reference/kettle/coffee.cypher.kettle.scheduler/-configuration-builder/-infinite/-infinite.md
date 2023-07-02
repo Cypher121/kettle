@@ -10,7 +10,7 @@ title: Infinite
 
 
 [jvm]\
-fun [Infinite](-infinite.html)()
+constructor()
 
 
 

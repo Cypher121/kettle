@@ -10,7 +10,7 @@ title: TaskTicker
 
 
 [jvm]\
-fun [TaskTicker](-task-ticker.html)(config: [TaskTickerScheduler](../index.html#-1067649280%2FClasslikes%2F863300109)&lt;[T](index.html)&gt;.() -&gt; [Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html))
+constructor(config: [TaskTickerScheduler](../index.html#-1067649280%2FClasslikes%2F863300109)&lt;[T](index.html)&gt;.() -&gt; [Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html))
 
 
 

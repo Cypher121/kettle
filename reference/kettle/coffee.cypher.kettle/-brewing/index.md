@@ -15,11 +15,3 @@ annotation class [Brewing](index.html)
 Marks parts of the API that are still in the development process, and may change unpredictably.
 
 
-
-## Constructors
-
-
-| | |
-|---|---|
-| [Brewing](-brewing.html) | [jvm]<br>fun [Brewing](-brewing.html)() |
-

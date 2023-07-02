@@ -19,11 +19,3 @@ annotation class [SchedulerDsl](index.html)
 Marks functions and types belonging to the scheduler creation DSL.
 
 
-
-## Constructors
-
-
-| | |
-|---|---|
-| [SchedulerDsl](-scheduler-dsl.html) | [jvm]<br>fun [SchedulerDsl](-scheduler-dsl.html)() |
-

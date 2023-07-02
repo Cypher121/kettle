@@ -10,7 +10,7 @@ title: initialDelay
 
 
 [jvm]\
-var [initialDelay](initial-delay.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 0
+var [initialDelay](initial-delay.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
 
 
 

@@ -10,7 +10,7 @@ title: Multiple
 
 
 [jvm]\
-fun [Multiple](-multiple.html)()
+constructor()
 
 
 

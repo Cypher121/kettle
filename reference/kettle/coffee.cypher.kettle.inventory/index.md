@@ -5,8 +5,16 @@ title: coffee.cypher.kettle.inventory
 
 
 
-# Package coffee.cypher.kettle.inventory
+# Package-level declarations
 
+
+
+## Properties
+
+
+| Name | Summary |
+|---|---|
+| [slotRange](slot-range.html) | [jvm]<br>val Inventory.[slotRange](slot-range.html): [IntRange](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html)<br>Returns a range of all slot indices of this Inventory. |
 
 
 ## Functions
@@ -22,12 +30,4 @@ title: coffee.cypher.kettle.inventory
 | [iterator](iterator.html) | [jvm]<br>operator fun Inventory.[iterator](iterator.html)(): [Iterator](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html)&lt;ItemStack&gt;<br>Returns the [Iterator](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html) for this Inventory's slots. |
 | [set](set.html) | [jvm]<br>operator fun Inventory.[set](set.html)(slot: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), stack: ItemStack)<br>Sets the ItemStack contained in the given [slot](set.html) of this Inventory to the provided [stack](set.html). |
 | [toList](to-list.html) | [jvm]<br>fun Inventory.[toList](to-list.html)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;ItemStack&gt;<br>Returns the ItemStack contents of this Inventory's slots collected into a [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html). |
-
-
-## Properties
-
-
-| Name | Summary |
-|---|---|
-| [slotRange](slot-range.html) | [jvm]<br>val Inventory.[slotRange](slot-range.html): [IntRange](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html)<br>Returns a range of all slot indices of this Inventory. |
 

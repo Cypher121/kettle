@@ -63,7 +63,6 @@ $dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration///Pointing
 $dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration/initialDelay/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/initial-delay.html
 $dokka.location:coffee.cypher.kettle.scheduler/ExecutionConfiguration/yieldsAfterMs/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-execution-configuration/yields-after-ms.html
 $dokka.location:coffee.cypher.kettle.scheduler/SchedulerDsl///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-scheduler-dsl/index.html
-$dokka.location:coffee.cypher.kettle.scheduler/SchedulerDsl/SchedulerDsl/#/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-scheduler-dsl/-scheduler-dsl.html
 $dokka.location:coffee.cypher.kettle.scheduler/Task.Companion///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task/-companion/index.html
 $dokka.location:coffee.cypher.kettle.scheduler/Task.Companion/create/#kotlin.String#coffee.cypher.kettle.scheduler.ExecutionConfiguration#kotlin.coroutines.SuspendFunction1[coffee.cypher.kettle.scheduler.TaskContext[TypeParam(bounds=[kotlin.Any])],kotlin.Unit]/PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task/-companion/create.html
 $dokka.location:coffee.cypher.kettle.scheduler/Task.State.Created///PointingToDeclaration/kettle/coffee.cypher.kettle.scheduler/-task/-state/-created/index.html
@@ -125,7 +124,6 @@ $dokka.location:coffee.cypher.kettle.world//onServer/net.minecraft.world.WorldVi
 $dokka.location:coffee.cypher.kettle.world//typedBlockEntity/net.minecraft.world.BlockView#net.minecraft.util.math.BlockPos/PointingToDeclaration/kettle/coffee.cypher.kettle.world/typed-block-entity.html
 $dokka.location:coffee.cypher.kettle////PointingToDeclaration/kettle/coffee.cypher.kettle/index.html
 $dokka.location:coffee.cypher.kettle/Brewing///PointingToDeclaration/kettle/coffee.cypher.kettle/-brewing/index.html
-$dokka.location:coffee.cypher.kettle/Brewing/Brewing/#/PointingToDeclaration/kettle/coffee.cypher.kettle/-brewing/-brewing.html
 coffee.cypher.kettle
 coffee.cypher.kettle.inventory
 coffee.cypher.kettle.item

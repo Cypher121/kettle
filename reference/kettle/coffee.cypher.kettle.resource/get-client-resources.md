@@ -14,7 +14,7 @@ title: getClientResources
 
 
 
-@Environment(value = EnvType.CLIENT)
+@ClientOnly
 
 
 

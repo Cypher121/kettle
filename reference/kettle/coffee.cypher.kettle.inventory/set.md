@@ -18,15 +18,12 @@ Sets the ItemStack contained in the given [slot](set.html) of this Inventory to 
 
 
 
-## See also
+#### See also
 
 
-jvm
-
-| | |
-|---|---|
-| net.minecraft.inventory.Inventory |  |
-
+| |
+|---|
+| Inventory.setStack |
 
 
 
