@@ -41,12 +41,14 @@ sourceSets {
 // See https://docs.gradle.org/current/userguide/platforms.html for information on how version catalogs work.
 dependencies {
     minecraft(libs.minecraft)
-    mappings(loom.layered {
-        addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:v2"))
-    })
+    mappings(
+        variantOf(libs.quilt.mappings) {
+            classifier("intermediary-v2")
+        }
+    )
     modImplementation(libs.quilt.loader)
 
-    implementation(libs.bundles.kotlin)
+    modImplementation(libs.bundles.kotlin)
 
     // TODO consider this
     // QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
@@ -91,7 +93,7 @@ tasks {
 
     withType<KotlinCompile> {
         kotlinOptions {
-            useK2 = false
+            languageVersion = "2.0"
             jvmTarget = javaVersion.toString()
             freeCompilerArgs =
                 listOf("-Xenable-builder-inference")
@@ -122,7 +124,7 @@ tasks {
     dokkaJavadoc.configure {
         description = "Generates Javadoc for the project"
 
-        outputDirectory.set(this@tasks.javadoc.map { it.destinationDir!! })
+        outputDirectory.fileProvider(this@tasks.javadoc.map { it.destinationDir!! })
     }
 
     withType<DokkaTask> {
