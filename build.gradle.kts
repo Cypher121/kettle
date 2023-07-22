@@ -93,7 +93,7 @@ tasks {
 
     withType<KotlinCompile> {
         kotlinOptions {
-            languageVersion = "2.0"
+            //languageVersion = "2.0"
             jvmTarget = javaVersion.toString()
             freeCompilerArgs =
                 listOf("-Xenable-builder-inference")
@@ -231,7 +231,7 @@ publishing {
 }
 
 nexusPublishing {
-    repositories {
+    this.repositories {
         sonatype {
             username.set(Keystore(project).sonatypeUsername.orEmpty())
             password.set(Keystore(project).sonatypePassword.orEmpty())
